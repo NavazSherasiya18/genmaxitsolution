@@ -1,0 +1,29 @@
+[
+  {
+    "id": "lead-1794459487932",
+    "name": "Hardik Patel",
+    "email": "hardik.patel@gmail.com",
+    "phone": "+91 98765 12345",
+    "source": "Verify Your Details Popup",
+    "createdAt": "2026-11-12T04:58:07.932Z",
+    "formattedDate": "12/11/2026, 10:28:07 am"
+  },
+  {
+    "id": "lead-1794458402543",
+    "name": "Navaz Sherasiya",
+    "email": "navaz@example.com",
+    "phone": "+91 99383 07637",
+    "source": "Verify Your Details Popup",
+    "createdAt": "2026-11-12T04:40:02.543Z",
+    "formattedDate": "12/11/2026, 10:10:02 am"
+  },
+  {
+    "id": "lead-seed-1",
+    "name": "Rohit Sharma",
+    "email": "rohit.sharma@example.com",
+    "phone": "+91 99383 07637",
+    "source": "Website Verify Popup",
+    "createdAt": "2026-11-12T04:39:58.713Z",
+    "formattedDate": "12/11/2026, 10:09:58 am"
+  }
+]

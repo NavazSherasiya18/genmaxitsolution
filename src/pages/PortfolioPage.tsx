@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CASE_STUDIES } from '../data/websiteContent';
 import { ArrowRight, CheckCircle2, TrendingUp, Sparkles, ExternalLink } from 'lucide-react';
+import { FeaturedProjectsSection } from '../components/sections/FeaturedProjectsSection';
 
 interface PortfolioPageProps {
   onOpenAudit: () => void;
@@ -80,9 +81,16 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
           </div>
         </div>
       </section>
+ 
+      {/* 5 Distinct Live Interactive Projects with First-Page Design Previews */}
+      <FeaturedProjectsSection 
+        onOpenAudit={onOpenAudit}
+        title="Interactive Production Deployments"
+        subtitle="Explore our flagship client builds. Each application is engineered with an independent design system, bespoke palette, and interactive first-page design."
+      />
 
       {/* Case Studies Detailed Grid */}
-      <section className="py-20">
+      <section className="py-20 border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {filteredStudies.map((study, idx) => (
             <div

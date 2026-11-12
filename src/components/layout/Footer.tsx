@@ -4,7 +4,11 @@ import { GenmaxLogo } from '../brand/GenmaxLogo';
 import { COMPANY_DETAILS } from '../../data/websiteContent';
 import { MapPin, Phone, Mail, Clock, ShieldCheck, HeartHandshake, Zap, ArrowUpRight } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenVerify?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenVerify }) => {
   return (
     <footer className="relative bg-[#070B16] border-t border-slate-800/80 text-slate-400 pt-16 pb-12 overflow-hidden">
       {/* Ambient background glow */}
@@ -172,6 +176,13 @@ export const Footer: React.FC = () => {
             <Link to="/portfolio" className="hover:text-slate-300 transition-colors">Case Studies</Link>
             <Link to="/pricing" className="hover:text-slate-300 transition-colors">Pricing</Link>
             <Link to="/contact" className="hover:text-slate-300 transition-colors">Contact</Link>
+            <Link
+              to="/admin/leads"
+              className="text-slate-600 hover:text-slate-400 text-[11px] transition-colors"
+              title="Company Management Portal & Excel Export"
+            >
+              <span>Admin Portal</span>
+            </Link>
             <a
               href="https://genmaxitsolution.com"
               target="_blank"

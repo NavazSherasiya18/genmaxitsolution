@@ -14,7 +14,11 @@ import { PricingPage } from './pages/PricingPage';
 import { BlogPage } from './pages/BlogPage';
 import { BlogPostPage } from './pages/BlogPostPage';
 import { ContactPage } from './pages/ContactPage';
+import { AdminLeadsPage } from './pages/AdminLeadsPage';
+import { ProjectLiveDetailPage } from './pages/ProjectLiveDetailPage';
 import { GenmaxAiChatbot } from './components/chat/GenmaxAiChatbot';
+import { ScrollProgressBar } from './components/ui/ScrollProgressBar';
+import { VerifyDetailsModal } from './components/ui/VerifyDetailsModal';
 
 // Scroll to top automatically on route changes
 function ScrollToTop() {
@@ -31,11 +35,21 @@ function MainApp() {
   const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
   const [auditDefaultService, setAuditDefaultService] = useState('Free Comprehensive SEO & Website Audit');
   const [gmpQuotaExceeded, setGmpQuotaExceeded] = useState(false);
+  const [isVerifyModalOpen, setIsVerifyModalOpen] = useState(false);
 
   useEffect(() => {
     const handleQuotaExceeded = () => setGmpQuotaExceeded(true);
     window.addEventListener('gmp-quota-exceeded', handleQuotaExceeded);
     return () => window.removeEventListener('gmp-quota-exceeded', handleQuotaExceeded);
+  }, []);
+
+  // Automatically trigger the "Verify Your Details" popup 5 to 6 seconds after website load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVerifyModalOpen(true);
+    }, 5500); // 5.5 seconds
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleOpenAudit = (serviceName?: string) => {
@@ -45,9 +59,16 @@ function MainApp() {
     setIsAuditModalOpen(true);
   };
 
+  const handleOpenVerify = () => {
+    setIsVerifyModalOpen(true);
+  };
+
   return (
     <Router>
       <ScrollToTop />
+      {/* Slim, gradient-colored scroll progress bar tracking page depth */}
+      <ScrollProgressBar />
+
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 flex flex-col selection:bg-indigo-500/20 selection:text-indigo-900 dark:selection:bg-cyan-500/30 dark:selection:text-cyan-200 transition-colors duration-300">
         
         {/* Google Maps Platform Quota Defense Banner (Tier 2 Notification) */}
@@ -69,7 +90,7 @@ function MainApp() {
         )}
 
         {/* Sticky Header */}
-        <Navbar onOpenAudit={() => handleOpenAudit()} />
+        <Navbar onOpenAudit={() => handleOpenAudit()} onOpenVerify={handleOpenVerify} />
 
         {/* Main Routed Content */}
         <main className="flex-1">
@@ -79,23 +100,32 @@ function MainApp() {
             <Route path="/services" element={<ServicesHubPage onOpenAudit={() => handleOpenAudit()} />} />
             <Route path="/services/:slug" element={<ServiceDetailPage onOpenAudit={() => handleOpenAudit()} />} />
             <Route path="/portfolio" element={<PortfolioPage onOpenAudit={() => handleOpenAudit()} />} />
+            <Route path="/project/:slug" element={<ProjectLiveDetailPage onOpenAudit={() => handleOpenAudit()} />} />
             <Route path="/pricing" element={<PricingPage onOpenAudit={() => handleOpenAudit()} />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage onOpenAudit={() => handleOpenAudit()} />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admin/leads" element={<AdminLeadsPage />} />
+            <Route path="/admin" element={<AdminLeadsPage />} />
             {/* Fallback to Home */}
             <Route path="*" element={<HomePage onOpenAudit={() => handleOpenAudit()} />} />
           </Routes>
         </main>
 
         {/* Luxurious Footer */}
-        <Footer />
+        <Footer onOpenVerify={handleOpenVerify} />
 
         {/* Floating Quick WhatsApp and Scroll-To-Top Controls */}
         <FloatingActions />
 
         {/* Gemini AI Consultant Multi-Turn Chatbot */}
         <GenmaxAiChatbot onOpenAudit={handleOpenAudit} />
+
+        {/* Themed "Verify Your Details" Popup with Duplicate Email Prevention & Company Email Dispatch */}
+        <VerifyDetailsModal
+          isOpen={isVerifyModalOpen}
+          onClose={() => setIsVerifyModalOpen(false)}
+        />
 
         {/* Global Free Consultation & SEO Audit Modal */}
         <FreeAuditModal

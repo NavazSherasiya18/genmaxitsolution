@@ -7,9 +7,10 @@ import { useTheme } from '../../context/ThemeContext';
 
 interface NavbarProps {
   onOpenAudit: () => void;
+  onOpenVerify?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -131,11 +132,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
 
               <Link
                 to="/portfolio"
-                className={`whitespace-nowrap transition-colors hover:text-indigo-600 dark:hover:text-white ${
+                className={`whitespace-nowrap transition-colors hover:text-indigo-600 dark:hover:text-white flex items-center gap-1.5 ${
                   location.pathname === '/portfolio' ? 'text-indigo-600 dark:text-cyan-400 font-semibold' : ''
                 }`}
               >
-                Case Studies
+                <span>Projects & Showcase</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
               </Link>
 
               <Link
@@ -257,9 +259,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
 
             <Link
               to="/portfolio"
-              className="text-base font-semibold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 py-2 border-b border-slate-100 dark:border-slate-800"
+              className="text-base font-semibold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 py-2 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between"
             >
-              Case Studies
+              <span>Projects & Showcase</span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400">Live Demos</span>
             </Link>
 
             <Link

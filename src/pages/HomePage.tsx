@@ -15,6 +15,7 @@ import { HeroVisualHub } from '../components/sections/HeroVisualHub';
 import { EngineeredHeroSection } from '../components/sections/EngineeredHeroSection';
 import { TrustedBySection } from '../components/sections/TrustedBySection';
 import { ServiceFocusShowcase } from '../components/sections/ServiceFocusShowcase';
+import { FeaturedProjectsSection } from '../components/sections/FeaturedProjectsSection';
 import { SpotlightCard } from '../components/animations/SpotlightCard';
 import { AnimatedCounter } from '../components/animations/AnimatedCounter';
 import { RoiCalculator } from '../components/sections/RoiCalculator';
@@ -207,81 +208,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
         </section>
       </ScrollReveal>
 
-      {/* ---------------- 8. PORTFOLIO & CASE STUDIES ---------------- */}
+      {/* ---------------- 8. PRODUCTION PROJECT SHOWCASE (LIVE FIRST-PAGE DESIGN) ---------------- */}
       <ScrollReveal yOffset={28} duration={800} threshold={0.1}>
-        <section className="py-24 bg-slate-100/60 dark:bg-slate-900/30 border-t border-slate-200 dark:border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-              <div>
-                <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-widest mb-2">
-                  Proven Client Outcomes
-                </div>
-                <h2 className="text-3xl sm:text-4xl font-bold font-heading text-slate-900 dark:text-white">
-                  Featured Case Studies & Results
-                </h2>
-              </div>
-              <Link
-                to="/portfolio"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 dark:text-cyan-400 hover:text-indigo-700 dark:hover:text-cyan-300"
-              >
-                <span>Explore All Case Studies</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {CASE_STUDIES.map((study) => (
-                <SpotlightCard
-                  key={study.id}
-                  className="rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-indigo-400 dark:hover:border-indigo-500/50 transition-all group flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={study.image}
-                        alt={study.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-90" />
-                      <span className="absolute top-4 left-4 px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-white/10 text-[11px] font-medium text-slate-200">
-                        {study.category}
-                      </span>
-                    </div>
-
-                    <div className="p-6">
-                      <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-cyan-400 transition-colors">
-                        {study.title}
-                      </h3>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                        {study.summary}
-                      </p>
-
-                      <div className="grid grid-cols-3 gap-2 py-3 border-y border-slate-100 dark:border-slate-800 text-center">
-                        {study.metrics.map((m, idx) => (
-                          <div key={idx}>
-                            <div className="text-sm font-bold font-heading text-indigo-600 dark:text-cyan-400">{m.value}</div>
-                            <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">{m.label}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-6 pt-0">
-                    <div className="flex flex-wrap gap-1.5 pt-4">
-                      {study.tags.map((tag, tIdx) => (
-                        <span key={tIdx} className="text-[11px] text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/80 px-2 py-0.5 rounded">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </SpotlightCard>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FeaturedProjectsSection onOpenAudit={onOpenAudit} />
       </ScrollReveal>
 
       {/* ---------------- 9. PRICING PLANS ---------------- */}

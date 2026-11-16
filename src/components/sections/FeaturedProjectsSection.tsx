@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
 import { 
-  ExternalLink, Eye, Sparkles, ArrowRight, CheckCircle2, 
-  Layers, Monitor, Smartphone, Tablet, Flame, Code2, Globe
+  ExternalLink, CheckCircle2, Code2, ArrowUpRight
 } from 'lucide-react';
-import { SHOWCASE_PROJECTS, ShowcaseProject } from '../../data/showcaseProjects';
-import { ProjectFirstPageViewer } from './ProjectFirstPageViewer';
+import { SHOWCASE_PROJECTS } from '../../data/showcaseProjects';
+import { ProjectBrandLogo } from '../brand/ProjectLogos';
 
 interface FeaturedProjectsSectionProps {
-  onOpenAudit?: () => void;
+  onOpenAudit?: (serviceName?: string) => void;
   title?: string;
   subtitle?: string;
 }
 
 export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = ({
   onOpenAudit,
-  title = "Interactive Production Deployments",
-  subtitle = "Click on any project to explore its interactive, live first-page design crafted with a bespoke visual identity and dedicated tech stack."
+  title = "Live Production Client Projects",
+  subtitle = "Click any project below to open its full standalone experience in a new tab—complete with bespoke visual identity, logo mark, and interactive capabilities."
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedProject, setSelectedProject] = useState<ShowcaseProject | null>(null);
 
   const categories = [
     { id: 'all', label: 'All Projects', count: SHOWCASE_PROJECTS.length },
@@ -35,19 +33,15 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
 
   return (
     <section id="projects-showcase" className="py-24 relative overflow-hidden bg-white dark:bg-[#0B1020] border-t border-slate-200 dark:border-slate-800 transition-colors">
-      {/* Background ambient glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-indigo-500/10 via-cyan-500/10 to-amber-500/5 blur-3xl pointer-events-none rounded-full" />
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-cyan-400 border border-indigo-200 dark:border-indigo-800/80 mb-3 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Interactive Project Portfolio</span>
+          <div className="text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-cyan-400 mb-3">
+            Interactive Project Showcase
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-bold font-heading text-slate-900 dark:text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-bold font-heading text-slate-900 dark:text-white tracking-tight mb-4" style={{ textWrap: 'balance' }}>
             {title}
           </h2>
 
@@ -56,195 +50,202 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
           </p>
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Interactive Category Segmented Filter Controls */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 ${
                 selectedCategory === cat.id
-                  ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md shadow-indigo-500/20 scale-105'
+                  ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md shadow-indigo-500/20'
                   : 'bg-slate-100 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
               }`}
             >
               <span>{cat.label}</span>
-              <span className={`text-[11px] px-1.5 py-0.2 rounded-full ${
-                selectedCategory === cat.id ? 'bg-white/25 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'
-              }`}>
-                {cat.count}
-              </span>
+              <span className="tabular-nums opacity-75 text-[11px]">({cat.count})</span>
             </button>
           ))}
         </div>
 
         {/* Project Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          {filteredProjects.map((project, idx) => (
-            <div
-              key={project.id}
-              className="rounded-3xl overflow-hidden bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800/80 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group hover:border-indigo-400 dark:hover:border-indigo-500/50"
-            >
-              {/* Card Thumbnail & Live Action Overlay */}
-              <div className="relative h-64 sm:h-72 overflow-hidden bg-slate-950 cursor-pointer" onClick={() => setSelectedProject(project)}>
-                <img
-                  src={project.thumbnail}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                />
-                
-                {/* Gradient vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent opacity-90" />
+          {filteredProjects.map((project) => {
+            const targetUrl = project.demoUrl || `/project/${project.slug}`;
+            const primaryCta = project.primaryCtaLabel || 'Open Full Landing Page';
+            const secondaryCta = project.secondaryCtaLabel || 'Request Quote';
 
-                {/* Top Badges */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
-                  <span 
-                    className="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase backdrop-blur-md border shadow-xs"
-                    style={{
-                      backgroundColor: project.themeStyle.badgeBg,
-                      color: project.themeStyle.accent,
-                      borderColor: project.themeStyle.borderColor,
-                    }}
-                  >
-                    {project.categoryLabel}
-                  </span>
+            return (
+              <div
+                key={project.id}
+                className="rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:border-indigo-400 dark:hover:border-indigo-500/50"
+              >
+                {/* Card Thumbnail & New-Tab Launch Link */}
+                <a
+                  href={targetUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative h-64 sm:h-72 overflow-hidden bg-slate-950 block cursor-pointer"
+                  aria-label={`${primaryCta}: ${project.title} in new tab`}
+                >
+                  <img
+                    src={project.thumbnail}
+                    alt={`${project.title} storefront preview`}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                  />
+                  
+                  {/* Contrast Scrim */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/20" />
 
-                  <span className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[11px] font-mono border border-white/10">
-                    {project.timeline}
-                  </span>
-                </div>
-
-                {/* Center Hover Action Cue */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-950/40 backdrop-blur-xs">
-                  <div className="px-5 py-2.5 rounded-full bg-white text-slate-950 font-bold text-xs uppercase tracking-wider shadow-2xl flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                    <Eye className="w-4 h-4 text-indigo-600" />
-                    <span>Launch Live First-Page Design</span>
-                  </div>
-                </div>
-
-                {/* Bottom Tagline on Thumbnail */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="text-xs font-semibold text-cyan-300 uppercase tracking-wider mb-0.5">
-                    {project.clientName}
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold font-heading text-white line-clamp-1">
-                    {project.title}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-6">
-                <div>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
-                    {project.description}
-                  </p>
-
-                  {/* Tech Stack Pills */}
-                  <div className="mb-6">
-                    <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2 flex items-center gap-1.5">
-                      <Code2 className="w-3.5 h-3.5" />
-                      <span>Bespoke Engineering Stack</span>
+                  {/* Top Brand Logo Overlay */}
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                    <div className="px-3 py-1.5 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/15 shadow-lg">
+                      <ProjectBrandLogo projectId={project.id} size="sm" tone="light" />
                     </div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.techStack.map((tech, tIdx) => (
-                        <span 
-                          key={tIdx} 
-                          className="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60"
-                        >
-                          {tech}
-                        </span>
+
+                    <span className="px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md text-white text-xs font-medium inline-flex items-center gap-1.5 border border-white/15">
+                      <span>{project.conceptLabel || 'Live Site'}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-cyan-400" />
+                    </span>
+                  </div>
+
+                  {/* Hover Overlay CTA */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-950/45 backdrop-blur-xs">
+                    <span className="px-5 py-2.5 rounded-xl bg-white text-slate-950 font-bold text-xs tracking-wide shadow-2xl inline-flex items-center gap-2">
+                      <span>{primaryCta}</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-indigo-600" />
+                    </span>
+                  </div>
+
+                  {/* Bottom Clean Metadata & Title */}
+                  <div className="absolute bottom-4 left-5 right-5">
+                    <div className="text-xs font-medium text-slate-200 flex items-center gap-2 mb-1">
+                      <span
+                        style={{
+                          color:
+                            project.accentColor === '#9E7B42' || project.accentColor === '#9E7C3B'
+                              ? '#DFC285'
+                              : project.accentColor === '#2E7D8C'
+                              ? '#7CC7D4'
+                              : project.accentColor,
+                        }}
+                      >
+                        {project.categoryLabel}
+                      </span>
+                      <span aria-hidden="true">·</span>
+                      <span>{project.timeline}</span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold font-heading text-white line-clamp-1">
+                      {project.title}
+                    </h3>
+                  </div>
+                </a>
+
+                {/* Card Body */}
+                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-6">
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <ProjectBrandLogo projectId={project.id} size="sm" tone="auto" />
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                        {project.year}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
+                      {project.description}
+                    </p>
+
+                    {/* Tech Stack Clean Inline Typography */}
+                    <div className="mb-6">
+                      <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 flex items-center gap-1.5">
+                        <Code2 className="w-3.5 h-3.5" />
+                        <span>Engineering Stack</span>
+                      </div>
+                      <p className="text-xs font-mono text-slate-700 dark:text-slate-300 leading-relaxed">
+                        {project.techStack.join(' · ')}
+                      </p>
+                    </div>
+
+                    {/* 3 Capability / Outcome Metrics Grid */}
+                    <div className="grid grid-cols-3 gap-3 py-3 border-y border-slate-200 dark:border-slate-800 text-center">
+                      {project.metrics.map((m, mIdx) => (
+                        <div key={mIdx} className="space-y-0.5">
+                          <div 
+                            className="text-sm sm:text-base font-bold font-heading tabular-nums"
+                            style={{ color: project.accentColor }}
+                          >
+                            {m.value}
+                          </div>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate">
+                            {m.label}
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* 3 Outcome Metrics Grid */}
-                  <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 text-center">
-                    {project.metrics.map((m, mIdx) => (
-                      <div key={mIdx} className="space-y-0.5">
-                        <div 
-                          className="text-sm sm:text-base font-bold font-heading"
-                          style={{ color: project.accentColor }}
-                        >
-                          {m.value}
-                        </div>
-                        <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate">
-                          {m.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Card Action Buttons */}
-                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-slate-200 dark:border-slate-800/80">
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="flex-1 py-3 px-4 rounded-xl text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer hover:opacity-95"
-                    style={{
-                      background: `linear-gradient(135deg, ${project.accentColor}, #4338CA)`,
-                    }}
-                  >
-                    <Eye className="w-4 h-4" />
-                    <span>Open Live First-Page Design</span>
-                  </button>
-
-                  {onOpenAudit && (
-                    <button
-                      onClick={onOpenAudit}
-                      className="py-3 px-4 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer text-center"
+                  {/* Card Action Buttons */}
+                  <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                    <a
+                      href={targetUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 py-3 px-4 rounded-xl text-white font-bold text-xs tracking-wide flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer hover:opacity-95 whitespace-nowrap shrink-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${project.accentColor}, #312E81)`,
+                      }}
                     >
-                      Request Quote
-                    </button>
-                  )}
-                </div>
+                      <span>{primaryCta}</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
 
+                    {onOpenAudit && (
+                      <button
+                        type="button"
+                        onClick={() => onOpenAudit(project.inquiryContext)}
+                        className="py-3 px-4 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs tracking-wide transition-colors cursor-pointer text-center whitespace-nowrap shrink-0"
+                      >
+                        {secondaryCta}
+                      </button>
+                    )}
+                  </div>
+
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Bottom Guarantee Banner */}
-        <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/30 text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center lg:text-left">
-            <div className="text-xs font-semibold uppercase tracking-wider text-cyan-400 flex items-center justify-center lg:justify-start gap-1.5">
+        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/30 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="space-y-1.5 text-center lg:text-left">
+            <div className="text-xs font-semibold text-cyan-400 flex items-center justify-center lg:justify-start gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <span>100% Unique Design Guarantee</span>
+              <span>100% Bespoke Engineering Guarantee</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold font-heading">
-              Need a Bespoke Web or SaaS Application for Your Business?
+              Need a Custom High-Converting Website or SaaS Platform?
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
-              We never recycle generic templates. Every client project receives an original brand style guide, rapid delivery sprint, and 365 days of included technical maintenance.
+              Every client receives an original brand architecture, distinct visual design system, rapid 7–14 day delivery, and 365 days of included maintenance.
             </p>
           </div>
 
           <div className="shrink-0 flex items-center gap-3">
             {onOpenAudit && (
               <button
-                onClick={onOpenAudit}
-                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-cyan-500 text-white font-bold text-xs uppercase tracking-wider hover:opacity-95 shadow-lg shadow-indigo-500/25 transition-all cursor-pointer"
+                type="button"
+                onClick={() => onOpenAudit()}
+                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-cyan-500 text-white font-bold text-xs tracking-wide hover:opacity-95 shadow-lg shadow-indigo-500/25 transition-all cursor-pointer whitespace-nowrap shrink-0"
               >
-                Schedule Free Project Discovery →
+                Schedule Project Discovery
               </button>
             )}
           </div>
         </div>
 
       </div>
-
-      {/* ---------------- INTERACTIVE LIVE FIRST-PAGE DESIGN MODAL ---------------- */}
-      {selectedProject && (
-        <ProjectFirstPageViewer
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-          onOpenAudit={() => {
-            setSelectedProject(null);
-            if (onOpenAudit) onOpenAudit();
-          }}
-          isModal={true}
-        />
-      )}
     </section>
   );
 };

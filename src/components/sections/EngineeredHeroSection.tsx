@@ -1,15 +1,172 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowUpRight, CheckCircle2, Globe, ShoppingBag, Terminal } from 'lucide-react';
 
 interface EngineeredHeroSectionProps {
-  onOpenAudit: () => void;
+  onOpenAudit: (serviceName?: string) => void;
 }
+
+type HeroServiceTabId = 'local-seo' | 'woocommerce' | 'web-engineering';
+
+interface HeroServiceTabConfig {
+  id: HeroServiceTabId;
+  label: string;
+  headerTitle: string;
+  headerBadge: string;
+  rows: { title: string; sub: string; delta: string; pill: string }[];
+  bars: number[];
+  axisLeft: string;
+  axisRight: string;
+  summary: string;
+  deliverables: string[];
+  serviceSlug: string;
+  serviceCta: string;
+  auditPrefill: string;
+  footerScore: number;
+  footerTitle: string;
+  footerSub: string;
+}
+
+const HERO_SERVICE_TABS: Record<HeroServiceTabId, HeroServiceTabConfig> = {
+  'local-seo': {
+    id: 'local-seo',
+    label: 'Local SEO',
+    headerTitle: 'Live Google rankings',
+    headerBadge: '#1 position',
+    rows: [
+      {
+        title: 'local seo services',
+        sub: 'Google Map 3-Pack · 420+ monthly calls',
+        delta: '▲ 14',
+        pill: '#1',
+      },
+      {
+        title: 'website development company',
+        sub: 'High-intent city landing pages · Local Schema',
+        delta: '▲ 9',
+        pill: '#1',
+      },
+      {
+        title: 'digital marketing agency',
+        sub: '60+ verified NAP citations & review velocity',
+        delta: '▲ 6',
+        pill: '#2',
+      },
+    ],
+    bars: [22, 30, 28, 45, 52, 60, 74, 88, 100],
+    axisLeft: 'Month 1',
+    axisRight: 'Calls and direction requests, month 9',
+    summary:
+      'Capture high-intent local buyers on Google Maps 3-Pack with GBP verification, city schema, and automated review velocity.',
+    deliverables: [
+      'Google Business Profile full category & Geo-grid ranking setup',
+      '60+ clean local directory NAP citations & duplicate suppression',
+      'Automated WhatsApp/SMS 5-star review pipeline for local trust',
+    ],
+    serviceSlug: '/services/local-seo',
+    serviceCta: 'Explore Local SEO details',
+    auditPrefill: 'Local SEO & Google Maps',
+    footerScore: 99,
+    footerTitle: 'Google PageSpeed',
+    footerSub: 'Zero cumulative layout shift',
+  },
+  woocommerce: {
+    id: 'woocommerce',
+    label: 'WooCommerce',
+    headerTitle: 'WooCommerce store telemetry',
+    headerBadge: '3.8% CVR · Live',
+    rows: [
+      {
+        title: 'Custom Headless Product Catalog',
+        sub: '2,400+ SKUs indexed · Zero bloated builders',
+        delta: '▲ +42% CVR',
+        pill: '0.8s',
+      },
+      {
+        title: 'Razorpay / Stripe 1-Click Checkout',
+        sub: 'UPI, cards & instant GST invoice sync',
+        delta: '▼ -38% Drop',
+        pill: 'Active',
+      },
+      {
+        title: 'Redis Object Cache & ERP Inventory',
+        sub: 'Live stock sync (Tally / Zoho / Shiprocket)',
+        delta: '▲ 99.4%',
+        pill: 'Cached',
+      },
+    ],
+    bars: [18, 29, 36, 48, 63, 71, 82, 91, 100],
+    axisLeft: 'Week 1',
+    axisRight: 'Paid checkout volume & store speed, week 9',
+    summary:
+      'High-converting custom WooCommerce stores engineered for fast SKU search, frictionless UPI/card checkout, and ERP sync.',
+    deliverables: [
+      'Custom lightweight PHP & React storefront (zero slow page builders)',
+      'Native Razorpay / Stripe / Shiprocket shipping & webhook integration',
+      'Sub-1.2s product filtering backed by Redis & Elasticsearch indexing',
+    ],
+    serviceSlug: '/services/woocommerce-development',
+    serviceCta: 'Explore WooCommerce specs',
+    auditPrefill: 'WordPress / WooCommerce',
+    footerScore: 97,
+    footerTitle: 'Storefront Core Vitals',
+    footerSub: '0.8s TTFB · Redis object cached',
+  },
+  'web-engineering': {
+    id: 'web-engineering',
+    label: 'Web engineering',
+    headerTitle: 'Production stack & API latency',
+    headerBadge: '99.98% Uptime',
+    rows: [
+      {
+        title: 'React 19 + TypeScript & Next.js SSR',
+        sub: 'Modular edge-rendered UI with strict type safety',
+        delta: '18ms Edge',
+        pill: 'v19',
+      },
+      {
+        title: 'Laravel / Node.js High-Load APIs',
+        sub: 'PostgreSQL query tuning & queued background jobs',
+        delta: '12k req/s',
+        pill: '0 Errors',
+      },
+      {
+        title: 'OWASP Auth, RBAC & CI/CD Security',
+        sub: 'Automated regression tests & TLS 1.3 hardening',
+        delta: 'Verified',
+        pill: 'SOC-Ready',
+      },
+    ],
+    bars: [34, 42, 50, 58, 68, 77, 86, 94, 100],
+    axisLeft: 'Sprint 1',
+    axisRight: 'System throughput & release stability, sprint 9',
+    summary:
+      'Mission-critical custom web apps, SaaS portals, and enterprise software architected for zero-downtime scale and maintainability.',
+    deliverables: [
+      'Strict TypeScript frontend paired with clean REST/GraphQL backends',
+      'Automated database indexing, connection pooling & edge CDN caching',
+      'Complete source handoff, technical docs & 1-year engineering support',
+    ],
+    serviceSlug: '/services/website-development',
+    serviceCta: 'Explore Engineering stack',
+    auditPrefill: 'Custom Web / App Engineering',
+    footerScore: 100,
+    footerTitle: 'Architecture Lighthouse',
+    footerSub: 'Zero blocking scripts · Edge SSR',
+  },
+};
+
+const TAB_ORDER: HeroServiceTabId[] = ['local-seo', 'woocommerce', 'web-engineering'];
 
 export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ onOpenAudit }) => {
   const heroRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const chipTopRef = useRef<HTMLDivElement>(null);
   const chipBottomRef = useRef<HTMLDivElement>(null);
+
+  // Active Interactive Console Tab
+  const [activeTab, setActiveTab] = useState<HeroServiceTabId>('local-seo');
+  const activeData = HERO_SERVICE_TABS[activeTab];
 
   // Stats count up values
   const [pageSpeedVal, setPageSpeedVal] = useState('0/100');
@@ -124,6 +281,11 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
     return () => clearTimeout(timer);
   }, []);
 
+  // Animate circular ring smoothly whenever active tab changes
+  useEffect(() => {
+    setRingVal(activeData.footerScore);
+  }, [activeData.footerScore]);
+
   // Cycling Live Notification Toast
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -152,30 +314,37 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
     };
   }, []);
 
-  // Live test button interaction
+  // Live test button interaction tailored to selected tab
   const handleLiveTest = () => {
+    const targetScore = activeData.footerScore;
     setIsAuditing(true);
     setRingVal(0);
 
     setTimeout(() => {
       const startTime = performance.now();
-      const duration = 1200;
+      const duration = 1000;
 
       const animate = (now: number) => {
         const progress = Math.min((now - startTime) / duration, 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        setRingVal(Math.round(99 * easeOut));
+        setRingVal(Math.round(targetScore * easeOut));
 
         if (progress < 1) {
           requestAnimationFrame(animate);
         } else {
-          setRingVal(99);
+          setRingVal(targetScore);
           setIsAuditing(false);
         }
       };
 
       requestAnimationFrame(animate);
-    }, 300);
+    }, 220);
+  };
+
+  const renderTabIcon = (tabId: HeroServiceTabId) => {
+    if (tabId === 'local-seo') return <Globe className="w-3.5 h-3.5 shrink-0" />;
+    if (tabId === 'woocommerce') return <ShoppingBag className="w-3.5 h-3.5 shrink-0" />;
+    return <Terminal className="w-3.5 h-3.5 shrink-0" />;
   };
 
   return (
@@ -324,7 +493,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
             }}
           >
             <button
-              onClick={onOpenAudit}
+              onClick={() => onOpenAudit(activeData.auditPrefill)}
               type="button"
               className="relative overflow-hidden inline-flex items-center justify-center text-[15px] font-semibold px-6 py-[15px] rounded-xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
               style={{
@@ -471,14 +640,14 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
                 boxShadow: '0 30px 60px -28px rgba(30, 27, 120, 0.35)',
               }}
             >
-              {/* a) Rank area (padding 22px) */}
+              {/* a) Dynamic Console Area */}
               <div className="p-[22px]">
                 <div className="flex items-center justify-between mb-4">
                   <span
                     className="text-[12px] font-semibold uppercase tracking-wider"
                     style={{ color: 'var(--muted)' }}
                   >
-                    Live Google rankings
+                    {activeData.headerTitle}
                   </span>
                   <span
                     className="inline-flex items-center gap-1 text-[12px] font-bold px-2.5 py-1 rounded-full"
@@ -488,142 +657,144 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
                       animation: 'pulseGlow 2.5s infinite ease-in-out',
                     }}
                   >
-                    #1 position
+                    {activeData.headerBadge}
                   </span>
                 </div>
 
-                {/* Keyword rows */}
-                <div className="flex flex-col gap-2">
-                  <div
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-[14px] font-semibold border transition-all duration-200 hover:border-[var(--brand)] hover:translate-x-0.5"
-                    style={{
-                      backgroundColor: 'var(--surface)',
-                      borderColor: 'var(--line)',
-                      color: 'var(--ink)',
-                      animation: 'rowSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s',
-                      opacity: 0,
-                    }}
-                  >
-                    <span className="flex-1 truncate">local seo services</span>
-                    <span className="text-[12px] font-bold" style={{ color: 'var(--ok)' }}>▲ 14</span>
-                    <span
-                      className="text-[11px] font-bold text-white px-2.5 py-0.5 rounded-full"
-                      style={{ background: 'linear-gradient(100deg, var(--brand), var(--brand2))' }}
+                {/* Dynamic Feature / Metric Rows */}
+                <div key={activeData.id} className="flex flex-col gap-2">
+                  {activeData.rows.map((row) => (
+                    <div
+                      key={row.title}
+                      className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border transition-all duration-200 hover:border-[var(--brand)] hover:translate-x-0.5"
+                      style={{
+                        backgroundColor: 'var(--surface)',
+                        borderColor: 'var(--line)',
+                        color: 'var(--ink)',
+                      }}
                     >
-                      #1
-                    </span>
-                  </div>
-
-                  <div
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-[14px] font-semibold border transition-all duration-200 hover:border-[var(--brand)] hover:translate-x-0.5"
-                    style={{
-                      backgroundColor: 'var(--surface)',
-                      borderColor: 'var(--line)',
-                      color: 'var(--ink)',
-                      animation: 'rowSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.85s',
-                      opacity: 0,
-                    }}
-                  >
-                    <span className="flex-1 truncate">website development company</span>
-                    <span className="text-[12px] font-bold" style={{ color: 'var(--ok)' }}>▲ 9</span>
-                    <span
-                      className="text-[11px] font-bold text-white px-2.5 py-0.5 rounded-full"
-                      style={{ background: 'linear-gradient(100deg, var(--brand), var(--brand2))' }}
-                    >
-                      #1
-                    </span>
-                  </div>
-
-                  <div
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-[14px] font-semibold border transition-all duration-200 hover:border-[var(--brand)] hover:translate-x-0.5"
-                    style={{
-                      backgroundColor: 'var(--surface)',
-                      borderColor: 'var(--line)',
-                      color: 'var(--ink)',
-                      animation: 'rowSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.0s',
-                      opacity: 0,
-                    }}
-                  >
-                    <span className="flex-1 truncate">digital marketing agency</span>
-                    <span className="text-[12px] font-bold" style={{ color: 'var(--ok)' }}>▲ 6</span>
-                    <span
-                      className="text-[11px] font-bold text-white px-2.5 py-0.5 rounded-full"
-                      style={{ background: 'linear-gradient(100deg, var(--brand), var(--brand2))' }}
-                    >
-                      #2
-                    </span>
-                  </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[13.5px] font-semibold truncate">{row.title}</div>
+                        <div className="text-[11px] truncate" style={{ color: 'var(--muted)' }}>
+                          {row.sub}
+                        </div>
+                      </div>
+                      <span className="text-[11.5px] font-bold whitespace-nowrap" style={{ color: 'var(--ok)' }}>
+                        {row.delta}
+                      </span>
+                      <span
+                        className="text-[11px] font-bold text-white px-2.5 py-0.5 rounded-full whitespace-nowrap"
+                        style={{ background: 'linear-gradient(100deg, var(--brand), var(--brand2))' }}
+                      >
+                        {row.pill}
+                      </span>
+                    </div>
+                  ))}
                 </div>
 
-                {/* 9-bar animated chart */}
+                {/* 9-bar dynamic growth chart */}
                 <div
-                  className="h-[76px] flex items-end gap-1.5 my-5 mb-1.5 px-1"
-                  aria-label="9-month growth chart"
+                  className="h-[72px] flex items-end gap-1.5 mt-4 mb-1.5 px-1"
+                  aria-label={`${activeData.label} 9-step growth chart`}
                 >
-                  {[
-                    { h: '22%', delay: '0.70s' },
-                    { h: '30%', delay: '0.79s' },
-                    { h: '28%', delay: '0.88s' },
-                    { h: '45%', delay: '0.97s' },
-                    { h: '52%', delay: '1.06s' },
-                    { h: '60%', delay: '1.15s' },
-                    { h: '74%', delay: '1.24s' },
-                    { h: '88%', delay: '1.33s' },
-                    { h: '100%', delay: '1.42s' },
-                  ].map((bar, idx) => (
-                    <div key={idx} className="flex-1 h-full flex items-end">
+                  {activeData.bars.map((heightPct, idx) => (
+                    <div key={`${activeData.id}-bar-${idx}`} className="flex-1 h-full flex items-end">
                       <div
-                        className="w-full rounded-t-[5px] rounded-b-[2px] opacity-85"
+                        className="w-full rounded-t-[5px] rounded-b-[2px] opacity-85 transition-all duration-500 ease-out"
                         style={{
-                          height: bar.h,
+                          height: `${heightPct}%`,
                           background: 'linear-gradient(180deg, var(--brand2), var(--brand))',
-                          transformOrigin: 'bottom',
-                          transform: 'scaleY(0.1)',
-                          animation: 'barGrow 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                          animationDelay: bar.delay,
                         }}
                       />
                     </div>
                   ))}
                 </div>
 
-                <div className="flex justify-between text-[12px] mb-4 px-0.5" style={{ color: 'var(--muted)' }}>
-                  <span>Month 1</span>
-                  <span>Calls and direction requests, month 9</span>
+                <div className="flex justify-between text-[11.5px] mb-4 px-0.5" style={{ color: 'var(--muted)' }}>
+                  <span>{activeData.axisLeft}</span>
+                  <span>{activeData.axisRight}</span>
                 </div>
 
-                {/* Tag chips */}
-                <div className="flex gap-2 flex-wrap">
-                  <span
-                    className="text-[12px] font-semibold px-2.5 py-1.5 rounded-lg text-white"
-                    style={{ backgroundColor: 'var(--brand)', border: '1px solid var(--brand)' }}
-                  >
-                    Local SEO
-                  </span>
-                  <span
-                    className="text-[12px] font-semibold px-2.5 py-1.5 rounded-lg"
-                    style={{
-                      backgroundColor: 'var(--surface)',
-                      border: '1px solid var(--line)',
-                      color: 'var(--muted)',
-                    }}
-                  >
-                    WooCommerce
-                  </span>
-                  <span
-                    className="text-[12px] font-semibold px-2.5 py-1.5 rounded-lg"
-                    style={{
-                      backgroundColor: 'var(--surface)',
-                      border: '1px solid var(--line)',
-                      color: 'var(--muted)',
-                    }}
-                  >
-                    Web engineering
-                  </span>
+                {/* Interactive Service Mode Switcher Buttons */}
+                <div className="flex gap-2 flex-wrap mb-3.5" role="tablist" aria-label="Service focus capabilities">
+                  {TAB_ORDER.map((tabId) => {
+                    const tabCfg = HERO_SERVICE_TABS[tabId];
+                    const isSelected = activeTab === tabId;
+                    return (
+                      <button
+                        key={tabId}
+                        type="button"
+                        role="tab"
+                        aria-selected={isSelected}
+                        onClick={() => setActiveTab(tabId)}
+                        className="inline-flex items-center gap-1.5 text-[12px] font-semibold px-3 py-1.5 rounded-lg cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
+                        style={
+                          isSelected
+                            ? {
+                                backgroundColor: 'var(--brand)',
+                                border: '1px solid var(--brand)',
+                                color: '#ffffff',
+                                boxShadow: '0 6px 14px -4px rgba(79, 70, 229, 0.35)',
+                              }
+                            : {
+                                backgroundColor: 'var(--surface)',
+                                border: '1px solid var(--line)',
+                                color: 'var(--ink)',
+                              }
+                        }
+                      >
+                        {renderTabIcon(tabId)}
+                        <span>{tabCfg.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Detailed Breakdown Card for Active Button */}
+                <div
+                  className="p-3.5 rounded-xl border space-y-2 transition-all duration-200"
+                  style={{
+                    backgroundColor: 'var(--bg)',
+                    borderColor: 'var(--line)',
+                  }}
+                >
+                  <p className="text-[12px] leading-relaxed" style={{ color: 'var(--ink)' }}>
+                    {activeData.summary}
+                  </p>
+                  <ul className="space-y-1">
+                    {activeData.deliverables.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-1.5 text-[11.5px]"
+                        style={{ color: 'var(--muted)' }}
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: 'var(--ok)' }} />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pt-1.5 flex items-center justify-between gap-2 border-t" style={{ borderColor: 'var(--line)' }}>
+                    <Link
+                      to={activeData.serviceSlug}
+                      className="inline-flex items-center gap-1 text-[11.5px] font-bold hover:underline"
+                      style={{ color: 'var(--brand)' }}
+                    >
+                      <span>{activeData.serviceCta}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => onOpenAudit(activeData.auditPrefill)}
+                      className="text-[11px] font-semibold hover:underline cursor-pointer"
+                      style={{ color: 'var(--muted)' }}
+                    >
+                      Request {activeData.label} Audit
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              {/* b) Footer row with circular progress ring */}
+              {/* b) Footer row with dynamic circular progress ring */}
               <div
                 className="flex items-center gap-4 px-[22px] py-[18px]"
                 style={{
@@ -637,7 +808,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
                     background: `conic-gradient(var(--ok) ${ringVal}%, var(--line) 0)`,
                     transition: 'background 0.05s linear',
                   }}
-                  aria-label={`PageSpeed ${ringVal}%`}
+                  aria-label={`${activeData.footerTitle} ${ringVal}%`}
                 >
                   <div
                     className="w-[48px] h-[48px] rounded-full flex items-center justify-center text-[16px] font-semibold"
@@ -653,10 +824,10 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
 
                 <div className="flex-1">
                   <div className="font-bold text-[14px]" style={{ color: 'var(--ink)' }}>
-                    Google PageSpeed
+                    {activeData.footerTitle}
                   </div>
                   <div className="text-[12px] mt-0.5" style={{ color: 'var(--muted)' }}>
-                    Zero cumulative layout shift
+                    {activeData.footerSub}
                   </div>
                 </div>
 

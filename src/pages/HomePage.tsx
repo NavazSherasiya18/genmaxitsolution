@@ -24,7 +24,7 @@ import { ScrollReveal } from '../components/animations/ScrollReveal';
 import { GoogleMapsSection } from '../components/maps/GoogleMapsSection';
 
 interface HomePageProps {
-  onOpenAudit: () => void;
+  onOpenAudit: (serviceName?: string) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
@@ -275,7 +275,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                   </div>
 
                   <button
-                    onClick={onOpenAudit}
+                    onClick={() => onOpenAudit()}
                     className={`w-full py-3.5 px-6 rounded-xl font-semibold text-xs tracking-wider uppercase transition-all cursor-pointer ${
                       plan.popular
                         ? 'bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white hover:opacity-95 shadow-md'
@@ -526,7 +526,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
-                onClick={onOpenAudit}
+                onClick={() => onOpenAudit()}
                 className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-500 via-indigo-400 to-cyan-400 text-slate-950 font-bold text-sm tracking-wide uppercase hover:shadow-xl hover:shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 text-slate-950" />

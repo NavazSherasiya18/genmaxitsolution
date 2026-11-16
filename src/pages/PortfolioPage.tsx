@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2, TrendingUp, Sparkles, ExternalLink } from 'lu
 import { FeaturedProjectsSection } from '../components/sections/FeaturedProjectsSection';
 
 interface PortfolioPageProps {
-  onOpenAudit: () => void;
+  onOpenAudit: (serviceName?: string) => void;
 }
 
 export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => {
@@ -149,7 +149,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
 
                   <div className="pt-2">
                     <button
-                      onClick={onOpenAudit}
+                      onClick={() => onOpenAudit()}
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold text-xs tracking-wider uppercase hover:opacity-95 shadow-md transition-all cursor-pointer"
                     >
                       <span>Inquire About Similar Outcomes</span>
@@ -173,7 +173,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
             Request an in-depth audit of your current digital footprint and discover where your competitors are leaving market share on the table.
           </p>
           <button
-            onClick={onOpenAudit}
+            onClick={() => onOpenAudit()}
             className="px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-bold text-sm tracking-wide uppercase hover:opacity-95 shadow-md transition-all cursor-pointer"
           >
             Claim Your Free Technical SEO & Web Audit

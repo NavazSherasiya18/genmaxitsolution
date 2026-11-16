@@ -10,6 +10,51 @@ interface FreeAuditModalProps {
 
 // Dynamic Mapping: Primary Service Focus -> Contextual Top Goals
 export const SERVICE_GOALS_MAP: Record<string, { label: string; goals: string[] }> = {
+  'iot-logistics': {
+    label: 'IoT fleet & cold-chain logistics platform',
+    goals: [
+      'Build a Connected Fleet Control Tower & GPS Telemetry Console',
+      'Monitor Cold-Chain Thresholds, Door Events & Sustained Excursions',
+      'Deploy a Mobile Driver App with Dispatch Replies & Digital POD',
+      'Launch a Public Customer Shipment Tracking & Proof Portal',
+    ],
+  },
+  'fintech-realestate': {
+    label: 'Institutional real estate investment platform',
+    goals: [
+      'Build a Commercial Real Estate Acquisition & Underwriting Platform',
+      'Model Multi-Scenario IRR, Sensitivity Matrices & Debt Schedules',
+      'Implement Diligence Checklists, Data Rooms & IC Governance',
+      'Launch a Read-Only Institutional LP Investor Portal',
+    ],
+  },
+  'healthtech-saas': {
+    label: 'Healthcare SaaS & hospital operations platform',
+    goals: [
+      'Build a Multi-Role Hospital & Clinic Operations Platform',
+      'Connect Reception, Doctor Prescribing, Pharmacy & Billing',
+      'Launch a Self-Service Patient Portal & Telehealth Flow',
+      'Custom Clinical Dashboards, Stock Control & Audit Workflows',
+    ],
+  },
+  'luxury-travel': {
+    label: 'Luxury travel & villa booking platform',
+    goals: [
+      'Build a Luxury Villa & Resort Booking Platform',
+      'Live Availability Calendar & Seasonal Pricing Engine',
+      'Destination Showcase Pages & Multi-Step Reservation Flow',
+      'Direct Hospitality Inquiries Without Third-Party OTA Fees',
+    ],
+  },
+  'luxury-ecommerce': {
+    label: 'Luxury e-commerce storefront',
+    goals: [
+      'Build a High-Craft Luxury E-Commerce Storefront',
+      'Custom Product Galleries, Variants & Wishlist UX',
+      'Editorial Collection Filtering & Search Architecture',
+      'Fast Mobile Shopping & Streamlined INR Checkout',
+    ],
+  },
   'ecommerce-seo': {
     label: 'eCommerce SEO',
     goals: [
@@ -105,6 +150,21 @@ export const SERVICE_GOALS_MAP: Record<string, { label: string; goals: string[] 
 const findServiceKey = (serviceName?: string): string => {
   if (!serviceName) return 'ecommerce-seo';
   const lower = serviceName.toLowerCase();
+  if (lower.includes('logistics') || lower.includes('fleet') || lower.includes('cold-chain') || lower.includes('iot') || lower.includes('aether')) {
+    return 'iot-logistics';
+  }
+  if (lower.includes('real estate') || lower.includes('underwriting') || lower.includes('investment') || lower.includes('primus')) {
+    return 'fintech-realestate';
+  }
+  if (lower.includes('health') || lower.includes('clinic') || lower.includes('hospital') || lower.includes('telehealth')) {
+    return 'healthtech-saas';
+  }
+  if (lower.includes('villa') || lower.includes('travel') || lower.includes('hospitality')) {
+    return 'luxury-travel';
+  }
+  if (lower.includes('luxury')) {
+    return 'luxury-ecommerce';
+  }
   if (lower.includes('ecom') || lower.includes('store') || lower.includes('woo')) {
     if (lower.includes('word') || lower.includes('development')) return 'wordpress-woocommerce';
     return 'ecommerce-seo';

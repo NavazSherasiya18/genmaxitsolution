@@ -287,3 +287,276 @@
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
 }
+
+/* -------------------------------------------------------------
+   SCOPED AURÉLIA & CO. CONCEPT STORE IDENTITY (PARIS–MILAN)
+   Isolated under .aurelia-storefront so Genmax styles remain untouched
+   ------------------------------------------------------------- */
+.aurelia-storefront {
+  --aur-ivory: #FAF7F2;
+  --aur-cream: #F3ECE1;
+  --aur-champagne: #EDE3D2;
+  --aur-ink: #141312;
+  --aur-charcoal: #2B2825;
+  --aur-muted: #665E55;
+  --aur-gold: #8F6D39;
+  --aur-gold-soft: #B4925A;
+  --aur-border: #E2D7C6;
+
+  font-family: 'Instrument Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--aur-ivory);
+  color: var(--aur-ink);
+  color-scheme: light;
+}
+
+.aurelia-storefront h1,
+.aurelia-storefront h2,
+.aurelia-storefront h3,
+.aurelia-storefront h4,
+.aurelia-storefront .aur-serif {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+.aurelia-storefront *:focus-visible {
+  outline: 2px solid #8F6D39;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurelia-storefront *,
+  .aurelia-storefront *::before,
+  .aurelia-storefront *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -------------------------------------------------------------
+   SCOPED AZURE ESCAPES COASTAL VILLAS DESIGN SYSTEM
+   Isolated under .azure-showcase so Genmax & Aurélia styles stay untouched
+   ------------------------------------------------------------- */
+.azure-showcase {
+  --az-blue-deep: #09263B;
+  --az-blue-med: #0F3854;
+  --az-sea-glass: #2E7D8C;
+  --az-sea-soft: #E5F1F3;
+  --az-limestone: #F6F2EB;
+  --az-sand: #EDE6DA;
+  --az-white: #FCFBF8;
+  --az-brass: #A88443;
+  --az-brass-soft: #C4A05C;
+  --az-ink: #112333;
+  --az-muted: #526372;
+  --az-border: #DDD4C6;
+
+  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--az-limestone);
+  color: var(--az-ink);
+  color-scheme: light;
+}
+
+.azure-showcase h1,
+.azure-showcase h2,
+.azure-showcase h3,
+.azure-showcase h4,
+.azure-showcase .az-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.azure-showcase .az-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.azure-showcase *:focus-visible {
+  outline: 2px solid #2E7D8C;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .azure-showcase *,
+  .azure-showcase *::before,
+  .azure-showcase *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -------------------------------------------------------------
+   SCOPED HEALTHLINK HOSPITAL SAAS DESIGN SYSTEM
+   Isolated under .healthlink-showcase so Genmax, Aurélia, & Azure stay untouched
+   ------------------------------------------------------------- */
+.healthlink-showcase {
+  --hl-navy: #0A2540;
+  --hl-teal: #0F766E;
+  --hl-teal-bright: #0D9488;
+  --hl-mint: #EDF7F5;
+  --hl-mint-border: #CBE8E2;
+  --hl-canvas: #F7FAFC;
+  --hl-surface: #FFFFFF;
+  --hl-border: #DCE6EE;
+  --hl-muted: #475569;
+
+  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--hl-canvas);
+  color: var(--hl-navy);
+  color-scheme: light;
+}
+
+.healthlink-showcase h1,
+.healthlink-showcase h2,
+.healthlink-showcase h3,
+.healthlink-showcase .hl-display {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+.healthlink-showcase .hl-mono,
+.healthlink-showcase .hl-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.healthlink-showcase *:focus-visible {
+  outline: 2px solid #0D9488;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .healthlink-showcase *,
+  .healthlink-showcase *::before,
+  .healthlink-showcase *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .hl-no-print {
+    display: none !important;
+  }
+  .hl-print-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* -------------------------------------------------------------
+   SCOPED PRIMUS CAPITAL INSTITUTIONAL REAL ESTATE SYSTEM
+   Isolated under .primus-showcase so Genmax, Aurélia, Azure & HealthLink stay untouched
+   ------------------------------------------------------------- */
+.primus-showcase {
+  --pr-navy: #0D1829;
+  --pr-navy-deep: #07101D;
+  --pr-limestone: #F6F4EF;
+  --pr-surface: #FFFFFF;
+  --pr-surface-alt: #EFECE5;
+  --pr-slate: #475569;
+  --pr-brass: #9E7C3B;
+  --pr-brass-bright: #B8934A;
+  --pr-border: #DDD7CB;
+
+  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--pr-limestone);
+  color: var(--pr-navy);
+  color-scheme: light;
+}
+
+.primus-showcase h1,
+.primus-showcase h2,
+.primus-showcase .pr-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+.primus-showcase .pr-sans {
+  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+}
+
+.primus-showcase .pr-tabular,
+.primus-showcase .pr-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+.primus-showcase *:focus-visible {
+  outline: 2px solid #9E7C3B;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primus-showcase *,
+  .primus-showcase *::before,
+  .primus-showcase *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .pr-no-print {
+    display: none !important;
+  }
+  .pr-print-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* -------------------------------------------------------------
+   SCOPED AETHER FLEET IOT LOGISTICS DESIGN SYSTEM
+   Isolated under .aether-showcase so Genmax & prior showcases stay untouched
+   ------------------------------------------------------------- */
+.aether-showcase {
+  --af-graphite: #0C131F;
+  --af-graphite-elev: #131D2E;
+  --af-graphite-border: #223047;
+  --af-canvas: #F4F7FA;
+  --af-surface: #FFFFFF;
+  --af-slate: #475569;
+  --af-cyan: #06B6D4;
+  --af-cyan-deep: #0E7490;
+  --af-amber: #D97706;
+  --af-crimson: #DC2626;
+  --af-emerald: #059669;
+
+  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+}
+
+.aether-showcase .af-tabular,
+.aether-showcase .af-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+.aether-showcase *:focus-visible {
+  outline: 2px solid #06B6D4;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aether-showcase *,
+  .aether-showcase *::before,
+  .aether-showcase *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+
+

@@ -26,10 +26,10 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
       <section className="relative py-16 lg:py-20 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
           <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-widest mb-3">
-            Transparent Pricing
+            Solutions &amp; Plans
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold font-heading text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
-            Predictable Investment. <br />
+            Tailored Solutions &amp; Plans. <br />
             <span className="gradient-text">Exceptional Return on Investment.</span>
           </h1>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">

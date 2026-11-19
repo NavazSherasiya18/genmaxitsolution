@@ -141,12 +141,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => 
               </Link>
 
               <Link
-                to="/pricing"
+                to="/solutions-and-plans"
                 className={`whitespace-nowrap transition-colors hover:text-indigo-600 dark:hover:text-white ${
-                  location.pathname === '/pricing' ? 'text-indigo-600 dark:text-cyan-400 font-semibold' : ''
+                  location.pathname === '/solutions-and-plans' || location.pathname === '/pricing'
+                    ? 'text-indigo-600 dark:text-cyan-400 font-semibold'
+                    : ''
                 }`}
               >
-                Pricing
+                Solutions &amp; Plans
               </Link>
 
               <Link
@@ -266,10 +268,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => 
             </Link>
 
             <Link
-              to="/pricing"
+              to="/solutions-and-plans"
               className="text-base font-semibold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 py-2 border-b border-slate-100 dark:border-slate-800"
             >
-              Pricing Packages
+              Solutions &amp; Plans
             </Link>
 
             <Link

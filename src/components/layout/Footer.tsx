@@ -174,7 +174,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenVerify }) => {
           <div className="flex items-center gap-6">
             <Link to="/about" className="hover:text-slate-300 transition-colors">About Us</Link>
             <Link to="/portfolio" className="hover:text-slate-300 transition-colors">Case Studies</Link>
-            <Link to="/pricing" className="hover:text-slate-300 transition-colors">Pricing</Link>
+            <Link to="/solutions-and-plans" className="hover:text-slate-300 transition-colors">Solutions &amp; Plans</Link>
             <Link to="/contact" className="hover:text-slate-300 transition-colors">Contact</Link>
             <Link
               to="/admin/leads"

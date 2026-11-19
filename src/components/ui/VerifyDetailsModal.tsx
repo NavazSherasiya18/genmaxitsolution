@@ -120,61 +120,76 @@ export const VerifyDetailsModal: React.FC<VerifyDetailsModalProps> = ({
     }
   };
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-950/60 dark:bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
+      onClick={onClose}
+      className="fixed inset-0 z-50 grid place-items-center p-4 overflow-y-auto overflow-x-hidden bg-slate-950/60 dark:bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
+      aria-label="Verify Your Details"
     >
-      {/* Modal Dialog Styled in Website Theme */}
-      <div 
-        className="relative w-full max-w-[460px] rounded-3xl bg-white dark:bg-[#0F172A] text-slate-800 dark:text-slate-100 shadow-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 overflow-hidden animate-in zoom-in-95 duration-200"
+      {/* Compact, Centered Modal Dialog — Strictly Overflow-Hidden (Zero Scrollbars) */}
+      <div
+        className="relative w-full max-w-[360px] overflow-hidden rounded-2xl bg-white dark:bg-[#0F172A] text-slate-800 dark:text-slate-100 shadow-2xl border border-slate-200 dark:border-slate-800 p-4 sm:p-5 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Subtle Ambient Brand Glow */}
-        <div className="absolute -top-20 -right-20 w-52 h-52 bg-indigo-500/10 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-20 -left-20 w-52 h-52 bg-cyan-500/10 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Subtle Ambient Brand Glow (Clipped by overflow-hidden) */}
+        <div className="absolute -top-16 -right-16 w-40 h-40 bg-indigo-500/10 dark:bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute -bottom-16 -left-16 w-40 h-40 bg-cyan-500/10 dark:bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
 
-        {/* Close Button 'X' */}
+        {/* Close Button 'X' (Elevated z-20 above inner relative container) */}
         <button
-          onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
+          className="absolute top-3 right-3 z-20 p-1.5 rounded-lg text-slate-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           aria-label="Close verify popup"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
         {!isSuccess ? (
-          <div>
-            {/* Header / Brand Identity */}
-            <div className="text-center pt-2 mb-6">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-cyan-400 border border-indigo-200/80 dark:border-indigo-500/20 mb-3">
-                <Sparkles className="w-3.5 h-3.5" />
+          <div className="relative z-10">
+            {/* Compact Header / Brand Identity */}
+            <div className="text-center pt-0.5 mb-3.5">
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-cyan-400 border border-indigo-200/80 dark:border-indigo-500/20 mb-1.5">
+                <Sparkles className="w-3 h-3" />
                 <span>Quick Verification Desk</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-heading text-slate-900 dark:text-white tracking-tight">
+              <h3 className="text-lg sm:text-xl font-bold font-heading text-slate-900 dark:text-white tracking-tight">
                 Verify Your Details
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-                Connect directly with Genmax IT Solution senior engineers for your custom web development, mobile app, or SEO project.
+              <p className="text-[11.5px] text-slate-600 dark:text-slate-400 mt-1 leading-snug">
+                Connect with Genmax senior engineers for your web, app, or SEO project.
               </p>
             </div>
 
             {/* Error Message Alert */}
             {errorMessage && (
-              <div className="mb-5 p-3.5 rounded-2xl bg-rose-50 dark:bg-rose-500/15 border border-rose-200 dark:border-rose-500/30 text-rose-700 dark:text-rose-300 text-xs flex items-start gap-2.5 animate-shake">
-                <AlertCircle className="w-4 h-4 shrink-0 text-rose-500 dark:text-rose-400 mt-0.5" />
-                <span className="leading-relaxed font-medium">{errorMessage}</span>
+              <div className="mb-3 p-2.5 rounded-xl bg-rose-50 dark:bg-rose-500/15 border border-rose-200 dark:border-rose-500/30 text-rose-700 dark:text-rose-300 text-[11px] flex items-start gap-2 animate-shake">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0 text-rose-500 dark:text-rose-400 mt-0.5" />
+                <span className="leading-snug font-medium">{errorMessage}</span>
               </div>
             )}
 
-            {/* Verification Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Compact Verification Form */}
+            <form onSubmit={handleSubmit} className="space-y-2.5">
               {/* Your Name */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label className="block text-[11px] font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Your Full Name *
                 </label>
                 <input
@@ -183,14 +198,14 @@ export const VerifyDetailsModal: React.FC<VerifyDetailsModalProps> = ({
                   placeholder="e.g. Rahul Sharma"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
                 />
               </div>
 
               {/* Email Address (Strict Unique Constraint) */}
               <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                <div className="flex items-center justify-between mb-1">
+                  <label className="text-[11px] font-semibold text-slate-700 dark:text-slate-300">
                     Business Email Address *
                   </label>
                   <span className="text-[10px] text-indigo-600 dark:text-cyan-400 font-medium">
@@ -203,13 +218,13 @@ export const VerifyDetailsModal: React.FC<VerifyDetailsModalProps> = ({
                   placeholder="name@company.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
                 />
               </div>
 
               {/* Phone Number */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label className="block text-[11px] font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Phone Number / WhatsApp *
                 </label>
                 <input
@@ -218,86 +233,86 @@ export const VerifyDetailsModal: React.FC<VerifyDetailsModalProps> = ({
                   placeholder="+91 99383 07637"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
                 />
               </div>
 
               {/* Signature Brand Gradient Verify Button */}
-              <div className="pt-2">
+              <div className="pt-1">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-bold text-sm sm:text-base tracking-wide uppercase hover:opacity-95 shadow-lg shadow-indigo-500/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-bold text-xs tracking-wide uppercase hover:opacity-95 shadow-md shadow-indigo-500/25 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   ) : (
                     <>
-                      <span>Verify & Connect With Team</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <span>Verify &amp; Connect With Team</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </>
                   )}
                 </button>
               </div>
 
               {/* Trust & Confidentiality Notice */}
-              <div className="pt-2 text-center">
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                  <span>100% Confidential under NDA • Dispatched to Genmax management • Zero Spam</span>
+              <div className="pt-0.5 text-center">
+                <p className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1">
+                  <ShieldCheck className="w-3 h-3 text-emerald-500 shrink-0" />
+                  <span>100% Confidential NDA • Zero Spam</span>
                 </p>
               </div>
             </form>
           </div>
         ) : (
-          /* Client Success Confirmation State (NO Excel Download Button) */
-          <div className="py-6 text-center space-y-5">
-            <div className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/10">
-              <CheckCircle2 className="w-9 h-9" />
+          /* Client Success Confirmation State */
+          <div className="py-2 text-center space-y-3.5 relative">
+            <div className="w-12 h-12 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto shadow-md shadow-emerald-500/10">
+              <CheckCircle2 className="w-6 h-6" />
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">
+              <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white">
                 Details Verified Successfully!
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-sm mx-auto leading-relaxed">
-                Thank you, <strong className="text-slate-900 dark:text-white">{clientInfo?.name}</strong>. Your inquiry has been securely dispatched to our senior consulting desk in Noida. We will review your project and contact you within 2 business hours.
+              <p className="text-[11.5px] text-slate-600 dark:text-slate-300 mt-1 max-w-xs mx-auto leading-snug">
+                Thank you, <strong className="text-slate-900 dark:text-white">{clientInfo?.name}</strong>. Our consulting desk will contact you within 2 business hours.
               </p>
             </div>
 
             {/* Client's verified details review */}
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 text-left text-xs space-y-2 text-slate-700 dark:text-slate-300">
-              <div className="flex items-center justify-between">
-                <span className="text-slate-500 dark:text-slate-400">Registered Email:</span>
-                <span className="font-semibold text-slate-900 dark:text-white font-mono">{clientInfo?.email}</span>
+            <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 text-left text-[11px] space-y-1.5 text-slate-700 dark:text-slate-300">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-slate-500 dark:text-slate-400">Email:</span>
+                <span className="font-semibold text-slate-900 dark:text-white font-mono truncate">{clientInfo?.email}</span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-slate-500 dark:text-slate-400">Contact Number:</span>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-slate-500 dark:text-slate-400">Phone:</span>
                 <span className="font-semibold text-slate-900 dark:text-white font-mono">{clientInfo?.phone}</span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-slate-500 dark:text-slate-400">Response Guarantee:</span>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-slate-500 dark:text-slate-400">Response SLA:</span>
                 <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Under 2 Hours</span>
               </div>
             </div>
 
             {/* Client Action CTAs */}
-            <div className="pt-2 space-y-2.5">
+            <div className="pt-1 space-y-2">
               <a
                 href={COMPANY_DETAILS.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-colors shadow-md shadow-emerald-600/20"
+                className="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-[11px] tracking-wider uppercase flex items-center justify-center gap-1.5 transition-colors shadow-sm shadow-emerald-600/20"
               >
-                <MessageSquare className="w-4 h-4" />
-                <span>Instant WhatsApp Chat: {COMPANY_DETAILS.phoneDisplay}</span>
+                <MessageSquare className="w-3.5 h-3.5" />
+                <span>WhatsApp: {COMPANY_DETAILS.phoneDisplay}</span>
               </a>
 
               <button
                 onClick={onClose}
-                className="w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition-colors cursor-pointer"
+                className="w-full py-2 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold transition-colors cursor-pointer"
               >
-                Continue Browsing Website
+                Continue Browsing
               </button>
             </div>
           </div>

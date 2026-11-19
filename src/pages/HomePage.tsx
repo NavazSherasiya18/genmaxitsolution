@@ -219,10 +219,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-widest mb-2">
-                Transparent Investment
+                Solutions &amp; Plans
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold font-heading text-slate-900 dark:text-white mb-4">
-                Simple, Transparent Pricing Packages
+                Simple, Transparent Solutions &amp; Plans
               </h2>
               <p className="text-sm text-slate-600 dark:text-slate-400">
                 Clear tiers with no hidden retainers. All standard web and SEO packages include free domain registration worth ₹999 and 1 year of free technical support.

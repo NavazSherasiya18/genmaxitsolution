@@ -205,6 +205,7 @@ function AppLayout() {
                 <Route path="/showcase/aether-fleet/track" element={<AetherCustomerPortalPage />} />
                 <Route path="/showcase/aether-fleet/track/:trackingCode" element={<AetherCustomerPortalPage />} />
 
+                <Route path="/solutions-and-plans" element={<PricingPage onOpenAudit={() => handleOpenAudit()} />} />
                 <Route path="/pricing" element={<PricingPage onOpenAudit={() => handleOpenAudit()} />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:slug" element={<BlogPostPage onOpenAudit={() => handleOpenAudit()} />} />

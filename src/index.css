@@ -76,6 +76,48 @@
 }
 
 /* Custom utility styles */
+.services-mega-menu {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-0.375rem);
+  transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
+}
+
+.services-mega-menu[data-open='true'] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+:has(> #mobile-navigation, > header .services-mega-menu[data-open='true']) > .site-floating-controls {
+  display: none;
+}
+
+.services-menu-scroll {
+  scrollbar-gutter: stable;
+}
+
+.services-accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 200ms ease, visibility 200ms;
+}
+
+.services-accordion-panel[data-open='true'] {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-mega-menu,
+  .services-accordion-panel {
+    transition: none;
+  }
+}
+
 .gradient-text {
   background: linear-gradient(135deg, #4F46E5 0%, #0891B2 50%, #7C3AED 100%);
   -webkit-background-clip: text;

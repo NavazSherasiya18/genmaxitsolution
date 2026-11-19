@@ -225,11 +225,13 @@ function AppLayout() {
         {/* Luxurious Footer (Genmax agency routes only) */}
         {!isStandaloneProjectRoute && <Footer onOpenVerify={handleOpenVerify} />}
 
-        {/* Floating Quick WhatsApp and Scroll-To-Top Controls (Genmax agency routes only) */}
-        {!isStandaloneProjectRoute && <FloatingActions />}
-
-        {/* Gemini AI Consultant Multi-Turn Chatbot (Genmax agency routes only) */}
-        {!isStandaloneProjectRoute && <GenmaxAiChatbot onOpenAudit={handleOpenAudit} />}
+        {/* Floating controls share a layer behind open navigation. */}
+        {!isStandaloneProjectRoute && (
+          <div className="site-floating-controls contents">
+            <FloatingActions />
+            <GenmaxAiChatbot onOpenAudit={handleOpenAudit} />
+          </div>
+        )}
 
         {/* Themed "Verify Your Details" Popup with Duplicate Email Prevention & Company Email Dispatch */}
         {!isStandaloneProjectRoute && (

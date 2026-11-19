@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { GenmaxLogo } from '../brand/GenmaxLogo';
-import { ChevronDown, Menu, X, ArrowUpRight, Sparkles, PhoneCall, Sun, Moon } from 'lucide-react';
-import { SERVICES, COMPANY_DETAILS } from '../../data/websiteContent';
+import { Menu, X, Sparkles, PhoneCall, Sun, Moon } from 'lucide-react';
+import { COMPANY_DETAILS } from '../../data/websiteContent';
 import { useTheme } from '../../context/ThemeContext';
+import { MobileServicesAccordion, ServicesMegaMenu } from './ServicesNavigation';
 
 interface NavbarProps {
   onOpenAudit: () => void;
@@ -13,7 +14,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const hamburger = useRef<HTMLButtonElement>(null);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
 
@@ -25,18 +26,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-    setServicesDropdownOpen(false);
-  }, [location.pathname]);
+  }, [location.key]);
 
-  const categories = [
-    { key: 'seo', name: 'Digital Marketing & SEO', items: SERVICES.filter(s => s.category === 'seo') },
-    { key: 'design', name: 'Website Design', items: SERVICES.filter(s => s.category === 'design') },
-    { key: 'development', name: 'Web Development', items: SERVICES.filter(s => s.category === 'development') },
-    { key: 'mobile', name: 'Mobile App Engineering', items: SERVICES.filter(s => s.category === 'mobile') },
-  ];
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || event.defaultPrevented) return;
+
+      event.preventDefault();
+      hamburger.current?.focus();
+      setMobileMenuOpen(false);
+    };
+    const breakpoint = window.matchMedia('(min-width: 64rem)');
+    const handleBreakpoint = () => setMobileMenuOpen(false);
+
+    document.addEventListener('keydown', handleEscape);
+    breakpoint.addEventListener('change', handleBreakpoint);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      breakpoint.removeEventListener('change', handleBreakpoint);
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -47,15 +60,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => 
             : 'bg-white/70 dark:bg-[#0B1020]/70 backdrop-blur-sm border-b border-slate-200/40 dark:border-slate-800/40 py-4 sm:py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 min-[70rem]:px-6 xl:px-8">
+          <div className="flex items-center justify-between gap-3 xl:gap-8">
             {/* Zone 1: Single Brand Element */}
             <Link to="/" className="shrink-0 flex items-center group">
               <GenmaxLogo size="md" theme={theme === 'dark' ? 'gradient' : 'dark'} />
             </Link>
 
             {/* Zone 2: Concise Nav Links */}
-            <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-700 dark:text-slate-300">
+            <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-2.5 min-[70rem]:gap-5 xl:gap-7 text-sm font-medium text-slate-700 dark:text-slate-300">
               <Link
                 to="/"
                 className={`whitespace-nowrap transition-colors hover:text-indigo-600 dark:hover:text-white ${
@@ -65,61 +78,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => 
                 Home
               </Link>
 
-              {/* Services Mega Dropdown Trigger */}
-              <div
-                className="relative"
-                onMouseEnter={() => setServicesDropdownOpen(true)}
-                onMouseLeave={() => setServicesDropdownOpen(false)}
-              >
-                <Link
-                  to="/services"
-                  className={`inline-flex items-center gap-1.5 whitespace-nowrap transition-colors hover:text-indigo-600 dark:hover:text-white py-2 ${
-                    location.pathname.startsWith('/services') ? 'text-indigo-600 dark:text-cyan-400 font-semibold' : ''
-                  }`}
-                >
-                  <span>Services</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180 text-indigo-600 dark:text-cyan-400' : ''}`} />
-                </Link>
-
-                {/* Mega Menu Dropdown */}
-                {servicesDropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[820px] mt-1 p-6 rounded-2xl bg-white dark:bg-[#0B1020]/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-150">
-                    <div className="grid grid-cols-2 gap-6">
-                      {categories.map((cat) => (
-                        <div key={cat.key} className="space-y-2.5">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-cyan-400">
-                            {cat.name}
-                          </h4>
-                          <ul className="space-y-1">
-                            {cat.items.map((svc) => (
-                              <li key={svc.id}>
-                                <Link
-                                  to={`/services/${svc.slug}`}
-                                  className="text-xs text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white hover:translate-x-1 flex items-center justify-between py-1 transition-all group/item"
-                                >
-                                  <span>{svc.title}</span>
-                                  <ArrowUpRight className="w-3 h-3 text-slate-400 dark:text-slate-500 opacity-0 group-hover/item:opacity-100 group-hover/item:text-indigo-600 dark:group-hover/item:text-cyan-400 transition-opacity" />
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                      <span>Need a custom technology roadmap?</span>
-                      <Link
-                        to="/services"
-                        className="text-indigo-600 dark:text-cyan-400 hover:underline font-semibold inline-flex items-center gap-1"
-                      >
-                        <span>View All 19 Capabilities</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <ServicesMegaMenu
+                active={location.pathname === '/services' || location.pathname.startsWith('/services/')}
+              />
 
               <Link
                 to="/about"
@@ -196,9 +157,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => 
 
               {/* Mobile Menu Hamburger Button */}
               <button
+                ref={hamburger}
+                type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="lg:hidden p-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                 aria-label="Toggle navigation menu"
+                aria-expanded={mobileMenuOpen}
+                aria-controls={mobileMenuOpen ? "mobile-navigation" : undefined}
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -209,7 +174,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => 
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 lg:hidden bg-white/98 dark:bg-[#0B1020]/95 backdrop-blur-xl pt-24 pb-8 px-6 overflow-y-auto animate-in slide-in-from-top-4 duration-200">
+        <nav
+          id="mobile-navigation"
+          aria-label="Main navigation"
+          onBlur={(event) => {
+            const next = event.relatedTarget;
+            if (next && next !== hamburger.current && !event.currentTarget.contains(next)) setMobileMenuOpen(false);
+          }}
+          className="fixed inset-0 z-30 lg:hidden bg-white/98 dark:bg-[#0B1020]/95 backdrop-blur-xl pt-24 pb-8 px-6 overflow-y-auto overscroll-contain motion-safe:animate-in motion-safe:slide-in-from-top-4 motion-safe:duration-200"
+        >
           <div className="flex flex-col space-y-3">
             <Link
               to="/"
@@ -218,39 +191,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => 
               Home
             </Link>
 
-            <Link
-              to="/services"
-              className="text-base font-semibold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 py-2 border-b border-slate-100 dark:border-slate-800"
-            >
-              All Services (19 Pillars)
-            </Link>
-
-            <div className="pl-4 space-y-1.5 border-l-2 border-slate-200 dark:border-slate-800 my-1">
-              <Link to="/services/local-seo" className="block text-xs text-slate-600 dark:text-slate-300 hover:text-indigo-600 py-1">
-                Local SEO & Maps
-              </Link>
-              <Link to="/services/seo-services" className="block text-xs text-slate-600 dark:text-slate-300 hover:text-indigo-600 py-1">
-                Comprehensive SEO
-              </Link>
-              <Link to="/services/website-design-india" className="block text-xs text-slate-600 dark:text-slate-300 hover:text-indigo-600 py-1">
-                Website Design India
-              </Link>
-              <Link to="/services/wordpress-development" className="block text-xs text-slate-600 dark:text-slate-300 hover:text-indigo-600 py-1">
-                WordPress Development
-              </Link>
-              <Link to="/services/woocommerce-web-design" className="block text-xs text-slate-600 dark:text-slate-300 hover:text-indigo-600 py-1">
-                WooCommerce Stores
-              </Link>
-              <Link to="/services/laravel-development" className="block text-xs text-slate-600 dark:text-slate-300 hover:text-indigo-600 py-1">
-                Laravel Applications
-              </Link>
-              <Link to="/services/ios-app-development" className="block text-xs text-slate-600 dark:text-slate-300 hover:text-indigo-600 py-1">
-                iOS Mobile Apps
-              </Link>
-              <Link to="/services/android-app-development" className="block text-xs text-slate-600 dark:text-slate-300 hover:text-indigo-600 py-1">
-                Android Mobile Apps
-              </Link>
-            </div>
+            <MobileServicesAccordion onNavigate={() => {
+              hamburger.current?.focus();
+              setMobileMenuOpen(false);
+            }} />
 
             <Link
               to="/about"
@@ -310,7 +254,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit, onOpenVerify }) => 
               </a>
             </div>
           </div>
-        </div>
+        </nav>
       )}
     </>
   );

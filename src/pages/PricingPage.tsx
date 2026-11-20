@@ -1,6 +1,7 @@
 import React from 'react';
 import { PRICING_PLANS, GENERAL_FAQS } from '../data/websiteContent';
 import { CheckCircle2, ShieldCheck, Zap, Sparkles, HelpCircle, ArrowRight } from 'lucide-react';
+import { WebsitePricingConfigurator } from '../components/pricing/WebsitePricingConfigurator';
 
 interface PricingPageProps {
   onOpenAudit: () => void;
@@ -169,6 +170,8 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
           </div>
         </div>
       </section>
+
+      <WebsitePricingConfigurator />
 
       {/* CTA Box */}
       <section className="py-12 text-center">

@@ -6,6 +6,8 @@ import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI } from '@google/genai';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import { submitWebsiteQuote } from './server/websiteQuotes.ts';
+import { QUOTE_API } from './src/utils/websiteQuote.ts';
 
 dotenv.config();
 
@@ -207,6 +209,12 @@ async function startServer() {
   const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
   app.use(express.json());
+
+  app.post(QUOTE_API, submitWebsiteQuote);
+  app.all(QUOTE_API, (_req, res) => {
+    res.setHeader('Allow', 'POST');
+    res.status(405).json({ ok: false, error: 'Use POST to submit a quotation request.' });
+  });
 
   // Health check endpoint
   app.get('/api/health', (_req, res) => {

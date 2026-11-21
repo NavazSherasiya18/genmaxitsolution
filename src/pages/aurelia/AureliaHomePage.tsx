@@ -86,7 +86,7 @@ export const AureliaHomePage: React.FC = () => {
               <Link
                 key={cat.name}
                 to={`/showcase/aurelia/shop?category=${encodeURIComponent(cat.name)}`}
-                className="group block border border-[#E2D7C6] bg-white hover:border-[#8F6D39] transition-colors"
+                className="box-zoom group block border border-[#E2D7C6] bg-white hover:border-[#8F6D39]"
               >
                 <div className="aspect-square overflow-hidden bg-[#F3ECE1]">
                   <img
@@ -195,7 +195,7 @@ export const AureliaHomePage: React.FC = () => {
               <Link
                 key={col.slug}
                 to={`/showcase/aurelia/collections/${col.slug}`}
-                className="group border border-[#E2D7C6] bg-white hover:border-[#8F6D39] transition-colors flex flex-col justify-between"
+                className="box-zoom group border border-[#E2D7C6] bg-white hover:border-[#8F6D39] flex flex-col justify-between"
               >
                 <div>
                   <div className="aspect-[4/3] overflow-hidden bg-[#F3ECE1] border-b border-[#E2D7C6]">
@@ -261,7 +261,7 @@ export const AureliaHomePage: React.FC = () => {
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Craftsmanship Story Card */}
-          <div className="border border-[#E2D7C6] bg-[#F3ECE1] flex flex-col">
+          <div className="box-zoom border border-[#E2D7C6] bg-[#F3ECE1] flex flex-col">
             <div className="aspect-[16/10] overflow-hidden border-b border-[#E2D7C6]">
               <img
                 src={AURELIA_ASSETS.atelierCraft}
@@ -296,7 +296,7 @@ export const AureliaHomePage: React.FC = () => {
           </div>
 
           {/* Gifting Presentation Card */}
-          <div className="border border-[#E2D7C6] bg-white flex flex-col">
+          <div className="box-zoom border border-[#E2D7C6] bg-white flex flex-col">
             <div className="aspect-[16/10] overflow-hidden border-b border-[#E2D7C6]">
               <img
                 src={AURELIA_ASSETS.bridalPair}

@@ -38,7 +38,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      className={`relative overflow-hidden transition-all duration-300 ${className}`}
+      className={`relative overflow-hidden box-zoom ${className}`}
     >
       {/* Dynamic Cursor Spotlight Radial Glow */}
       <div

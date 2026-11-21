@@ -46,10 +46,10 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
             {PRICING_PLANS.map((plan) => (
               <div
                 key={plan.id}
-                className={`rounded-2xl p-8 flex flex-col justify-between transition-all ${
+                className={`rounded-2xl p-8 flex flex-col justify-between ${
                   plan.popular
-                    ? 'bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-[#10182E] border-2 border-indigo-600 dark:border-cyan-400 shadow-xl relative scale-105 z-10'
-                    : 'bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md'
+                    ? 'bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-[#10182E] border-2 border-indigo-600 dark:border-cyan-400 shadow-xl hover:shadow-2xl relative z-10 box-zoom-popular'
+                    : 'bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-400 dark:hover:border-slate-700 box-zoom'
                 }`}
               >
                 {plan.popular && (
@@ -137,8 +137,8 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
           </div>
 
           {/* Three Universal Guarantees */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-8 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-xs">
-            <div className="flex items-start gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-lg hover:border-indigo-300 dark:hover:border-slate-700 box-zoom">
               <ShieldCheck className="w-6 h-6 text-indigo-600 dark:text-cyan-400 shrink-0 mt-1" />
               <div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1">365-Day Free Technical Support</h4>
@@ -148,7 +148,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-lg hover:border-indigo-300 dark:hover:border-slate-700 box-zoom">
               <Sparkles className="w-6 h-6 text-indigo-600 dark:text-indigo-400 shrink-0 mt-1" />
               <div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1">Free Custom Domain Registration</h4>
@@ -158,7 +158,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-lg hover:border-indigo-300 dark:hover:border-slate-700 box-zoom">
               <Zap className="w-6 h-6 text-violet-600 dark:text-violet-400 shrink-0 mt-1" />
               <div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1">Agile 7-14 Business Days Delivery</h4>

@@ -50,7 +50,7 @@ export const VillaCard: React.FC<VillaCardProps> = ({
   const primaryPhoto = villa.gallery[0];
 
   return (
-    <article className="group bg-[#FCFBF8] border border-[#DDD4C6] flex flex-col justify-between transition-colors hover:border-[#2E7D8C]">
+    <article className="box-zoom group bg-[#FCFBF8] border border-[#DDD4C6] flex flex-col justify-between hover:border-[#2E7D8C]">
       <div>
         {/* Crisp Architectural Thumbnail Container — No badge clutter overlaid on photos */}
         <div className="relative aspect-[4/3] overflow-hidden bg-[#EDE6DA]">

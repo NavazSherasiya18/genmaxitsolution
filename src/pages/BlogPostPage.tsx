@@ -86,7 +86,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ onOpenAudit }) => {
       <article className="py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-base text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
           {/* Intro callout */}
-          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-lg leading-relaxed font-medium shadow-xs">
+          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-lg leading-relaxed font-medium shadow-xs hover:shadow-md box-zoom-sm">
             {post.content.intro}
           </div>
 
@@ -113,7 +113,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ onOpenAudit }) => {
           </div>
 
           {/* In-Article Consultation Card */}
-          <div className="p-8 rounded-2xl bg-gradient-to-r from-indigo-50 to-cyan-50 dark:from-slate-900 dark:to-[#0F172A] border border-indigo-200 dark:border-cyan-500/30 shadow-md my-10">
+          <div className="p-8 rounded-2xl bg-gradient-to-r from-indigo-50 to-cyan-50 dark:from-slate-900 dark:to-[#0F172A] border border-indigo-200 dark:border-cyan-500/30 shadow-md hover:shadow-xl box-zoom-sm my-10">
             <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white mb-2">
               Ready to Implement These Findings in Your Business?
             </h3>
@@ -141,7 +141,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ onOpenAudit }) => {
               <Link
                 key={rel.id}
                 to={`/blog/${rel.slug}`}
-                className="p-6 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-cyan-500/50 shadow-xs hover:shadow-md transition-all group flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-cyan-500/50 shadow-xs hover:shadow-xl box-zoom group flex flex-col justify-between"
               >
                 <div>
                   <div className="text-[10px] font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-wider mb-2">

@@ -124,7 +124,7 @@ export const TechStackTabs: React.FC = () => {
           {current.technologies.map((t, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 transition-colors"
+              className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 hover:shadow-md box-zoom"
             >
               <div className="flex items-center gap-2 text-sm font-bold font-heading text-slate-900 dark:text-white mb-1">
                 <div className="w-2 h-2 rounded-full bg-indigo-600 dark:bg-cyan-400" />

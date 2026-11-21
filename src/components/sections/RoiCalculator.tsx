@@ -100,14 +100,14 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenAudit }) => 
             </div>
 
             {/* Explanation footnote */}
-            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 leading-relaxed box-zoom-sm hover:shadow-sm">
               Based on historical data from Genmax SEO campaigns: an average of +185% organic visibility elevation and a conversion rate improvement from 2.0% to 4.2% via custom responsive UX.
             </div>
           </div>
 
           {/* Projection Results Card */}
           <div className="lg:col-span-5">
-            <div className="p-8 rounded-2xl bg-gradient-to-br from-indigo-50 to-cyan-50 dark:from-slate-800/80 dark:to-slate-900 border border-indigo-200 dark:border-slate-700 shadow-md space-y-6">
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-indigo-50 to-cyan-50 dark:from-slate-800/80 dark:to-slate-900 border border-indigo-200 dark:border-slate-700 shadow-md hover:shadow-xl space-y-6 box-zoom">
               <div>
                 <span className="text-xs uppercase tracking-wider font-semibold text-indigo-600 dark:text-cyan-400 block mb-1">
                   Projected Monthly Inbound Inquiries

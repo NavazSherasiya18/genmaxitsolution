@@ -260,7 +260,7 @@ export const AetherPublicPage: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div className="bg-white border border-slate-200 p-5 flex flex-col justify-between space-y-4">
+          <div className="box-zoom bg-white border border-slate-200 p-5 flex flex-col justify-between space-y-4">
             <div className="space-y-2">
               <Compass className="w-6 h-6 text-cyan-600" />
               <h3 className="text-base font-bold text-[#0C131F]">1. Product Overview</h3>
@@ -277,7 +277,7 @@ export const AetherPublicPage: React.FC = () => {
             </button>
           </div>
 
-          <div className="bg-white border border-slate-200 p-5 flex flex-col justify-between space-y-4">
+          <div className="box-zoom bg-white border border-slate-200 p-5 flex flex-col justify-between space-y-4">
             <div className="space-y-2">
               <Truck className="w-6 h-6 text-cyan-600" />
               <h3 className="text-base font-bold text-[#0C131F]">2. Dispatcher Control Tower</h3>
@@ -293,7 +293,7 @@ export const AetherPublicPage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="bg-white border border-slate-200 p-5 flex flex-col justify-between space-y-4">
+          <div className="box-zoom bg-white border border-slate-200 p-5 flex flex-col justify-between space-y-4">
             <div className="space-y-2">
               <Smartphone className="w-6 h-6 text-cyan-600" />
               <h3 className="text-base font-bold text-[#0C131F]">3. Mobile Driver App</h3>
@@ -309,7 +309,7 @@ export const AetherPublicPage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="bg-white border border-slate-200 p-5 flex flex-col justify-between space-y-4">
+          <div className="box-zoom bg-white border border-slate-200 p-5 flex flex-col justify-between space-y-4">
             <div className="space-y-2">
               <ShieldCheck className="w-6 h-6 text-cyan-600" />
               <h3 className="text-base font-bold text-[#0C131F]">4. Customer Portal</h3>
@@ -366,7 +366,7 @@ export const AetherPublicPage: React.FC = () => {
 
       {/* Brand Identity & SVG Asset Export Bar */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className="bg-[#0C131F] text-white p-6 sm:p-8 border border-[#223047] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <div className="box-zoom-sm bg-[#0C131F] text-white p-6 sm:p-8 border border-[#223047] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
             <AetherBrandLogo tone="light" size="md" />
             <h3 className="text-lg font-bold pt-1">

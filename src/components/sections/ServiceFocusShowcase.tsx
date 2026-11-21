@@ -295,10 +295,10 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
               <button
                 key={item.id}
                 onClick={() => handleSelect(idx)}
-                className={`group relative text-left p-4 rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden ${
+                className={`box-zoom-sm group relative text-left p-4 rounded-2xl border cursor-pointer overflow-hidden ${
                   isSelected
                     ? 'bg-white dark:bg-slate-900 border-indigo-500/80 dark:border-cyan-400/80 shadow-lg shadow-indigo-500/10'
-                    : 'bg-white/60 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+                    : 'bg-white/60 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md'
                 }`}
               >
                 {/* Active progress indicator bar on the active tab */}
@@ -379,7 +379,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                 </div>
 
                 {/* Key Metrics Row */}
-                <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
+                <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 box-zoom-sm hover:shadow-md">
                   {activeCompetency.stats.map((stat, i) => (
                     <div key={i} className="text-left">
                       <div className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white" style={{ color: activeCompetency.accentColor }}>
@@ -452,7 +452,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
 
               {/* Right Column: Interactive Domain Canvas Simulation */}
               <div className="lg:col-span-5">
-                <div className="rounded-2xl bg-slate-900 border border-slate-800 p-6 text-white shadow-2xl relative overflow-hidden">
+                <div className="rounded-2xl bg-slate-900 border border-slate-800 p-6 text-white shadow-2xl relative overflow-hidden box-zoom hover:border-indigo-500/50">
                   
                   {/* Decorative glowing gradient orb */}
                   <div 

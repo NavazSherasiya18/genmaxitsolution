@@ -74,7 +74,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
               
               {/* Left Column: Image Asset */}
               <div className="lg:col-span-5 relative">
-                <div className="rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-700 shadow-xl relative group">
+                <div className="rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-700 shadow-xl relative group box-zoom">
                   <img
                     src="/src/assets/images/agency_workspace_1793853537773.jpg"
                     alt="Genmax IT Solution engineering team collaborating"
@@ -115,19 +115,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
 
                 {/* Four Value Anchors */}
                 <div className="grid grid-cols-2 gap-4 pt-4">
-                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs">
+                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs box-zoom-sm hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700">
                     <div className="text-sm font-bold text-slate-900 dark:text-white mb-1">Data-Driven Execution</div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">Concrete analytics, keyword telemetry, and measurable ROI.</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs">
+                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs box-zoom-sm hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700">
                     <div className="text-sm font-bold text-slate-900 dark:text-white mb-1">Ethical White-Hat</div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">Strict adherence to Google search quality standards.</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs">
+                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs box-zoom-sm hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700">
                     <div className="text-sm font-bold text-slate-900 dark:text-white mb-1">Agile Engineering</div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">Rapid bi-weekly sprints with interactive preview milestones.</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs">
+                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs box-zoom-sm hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700">
                     <div className="text-sm font-bold text-slate-900 dark:text-white mb-1">365-Day Commitment</div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">1 year of complimentary technical support with every project.</div>
                   </div>
@@ -233,10 +233,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
               {PRICING_PLANS.map((plan) => (
                 <div
                   key={plan.id}
-                  className={`rounded-2xl p-8 flex flex-col justify-between transition-all ${
+                  className={`rounded-2xl p-8 flex flex-col justify-between ${
                     plan.popular
-                      ? 'bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-[#10182E] border-2 border-indigo-600 dark:border-cyan-400 shadow-xl relative scale-105 z-10'
-                      : 'bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md'
+                      ? 'bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-[#10182E] border-2 border-indigo-600 dark:border-cyan-400 shadow-xl hover:shadow-2xl relative z-10 box-zoom-popular'
+                      : 'bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-400 dark:hover:border-slate-700 box-zoom'
                   }`}
                 >
                   {plan.popular && (
@@ -398,7 +398,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
               </h2>
             </div>
 
-            <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md relative">
+            <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl relative box-zoom-sm">
               <div className="flex items-center gap-1 text-amber-500 mb-6">
                 {[...Array(TESTIMONIALS[testimonialIdx].rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
@@ -463,7 +463,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                 return (
                   <div
                     key={idx}
-                    className="rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs transition-colors"
+                    className="rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700 box-zoom-sm"
                   >
                     <button
                       onClick={() => setActiveFaq(isOpen ? null : idx)}

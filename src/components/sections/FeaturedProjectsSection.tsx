@@ -78,7 +78,7 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
             return (
               <div
                 key={project.id}
-                className="rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:border-indigo-400 dark:hover:border-indigo-500/50"
+                className="box-zoom rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl flex flex-col justify-between group hover:border-indigo-400 dark:hover:border-indigo-500/50"
               >
                 {/* Card Thumbnail & New-Tab Launch Link */}
                 <a
@@ -218,7 +218,7 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
         </div>
 
         {/* Bottom Guarantee Banner */}
-        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/30 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/30 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6 box-zoom-sm hover:shadow-2xl">
           <div className="space-y-1.5 text-center lg:text-left">
             <div className="text-xs font-semibold text-cyan-400 flex items-center justify-center lg:justify-start gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />

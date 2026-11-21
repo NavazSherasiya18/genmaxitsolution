@@ -17,7 +17,7 @@ export function EstimateSummary({ selection, currency, onRequest }: { selection:
   const store = selection.type === 'ecommerce';
 
   return (
-    <div className={`${priceCard} self-start p-4 sm:p-6 ${onRequest ? 'lg:sticky lg:top-28 lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto' : ''}`}>
+    <div className={`${priceCard} box-zoom-sm hover:shadow-lg hover:border-indigo-300 dark:hover:border-slate-700 self-start p-4 sm:p-6 ${onRequest ? 'lg:sticky lg:top-28 lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto' : ''}`}>
       <div className="mb-4 flex items-center gap-2">
         <ClipboardList aria-hidden="true" className="size-5 shrink-0 text-indigo-600 dark:text-cyan-400" />
         <h3 className="font-heading text-lg font-bold text-slate-900 dark:text-white">Your project summary</h3>

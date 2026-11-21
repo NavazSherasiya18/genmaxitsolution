@@ -226,7 +226,7 @@ export const ContactPage: React.FC = () => {
 
             {/* Right Column: Contact Details & Office */}
             <div className="lg:col-span-5 space-y-8">
-              <div className="p-8 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-md space-y-6">
+              <div className="p-8 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl box-zoom-sm space-y-6">
                 <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
                   Direct Office Contacts
                 </h3>

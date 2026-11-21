@@ -72,7 +72,7 @@ export const BlogPage: React.FC = () => {
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="rounded-2xl p-7 bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md hover:border-indigo-400 dark:hover:border-slate-700 transition-all flex flex-col justify-between group"
+                className="rounded-2xl p-7 bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-400 dark:hover:border-slate-700 box-zoom flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4">

@@ -62,7 +62,7 @@ function PackageCards({ selection, currency, onSelect }: { selection: PackagedSe
           const isSelected = tier === selection.tier;
           const rate = pkg.rates[currency];
           return (
-            <article key={tier} className={`${priceCard} flex flex-col p-5 sm:p-6 ${isSelected ? 'ring-2 ring-indigo-600 dark:ring-cyan-400' : ''}`}>
+            <article key={tier} className={`${priceCard} box-zoom hover:shadow-xl hover:border-indigo-300 dark:hover:border-slate-700 flex flex-col p-5 sm:p-6 ${isSelected ? 'ring-2 ring-indigo-600 dark:ring-cyan-400' : ''}`}>
               <h4 className="font-heading text-xl font-bold text-slate-900 dark:text-white">{pkg.name}</h4>
               <div className="my-3 border-b border-slate-100 pb-4 dark:border-slate-800">
                 <p className={`break-words font-heading text-2xl font-bold ${accent}`}>{rate === undefined ? 'Request Pricing' : priceText(rate, currency)}</p>
@@ -150,7 +150,7 @@ function PackageRequirements({ selection, onChange }: { selection: PackagedSelec
               onChange({ ...selection, addOns });
             }
             return (
-              <div key={id} className="min-w-0 rounded-xl border border-slate-100 bg-slate-50 px-3 dark:border-slate-800 dark:bg-slate-800/50">
+              <div key={id} className="min-w-0 rounded-xl border border-slate-100 bg-slate-50 px-3 dark:border-slate-800 dark:bg-slate-800/50 box-zoom-sm hover:border-indigo-300 dark:hover:border-slate-700">
                 <label className="flex min-h-11 items-start gap-2.5 py-3">
                   <input className={checkboxStyle} type="checkbox" checked={included || quantity > 0} disabled={included} onChange={(event) => setQuantity(event.target.checked ? 1 : 0)} />
                   <span className="min-w-0">

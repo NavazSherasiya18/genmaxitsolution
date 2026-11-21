@@ -15,7 +15,7 @@ export const AureliaProductCard: React.FC<AureliaProductCardProps> = ({ product 
   const defaultVariant = product.variants[0];
 
   return (
-    <article className="group flex flex-col bg-[#FAF7F2] border border-[#E2D7C6] hover:border-[#B4925A] transition-colors">
+    <article className="box-zoom group flex flex-col bg-[#FAF7F2] border border-[#E2D7C6] hover:border-[#B4925A]">
       <div className="relative aspect-square overflow-hidden bg-[#F3ECE1] border-b border-[#E2D7C6]">
         <Link
           to={`/showcase/aurelia/product/${product.slug}`}

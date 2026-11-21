@@ -56,7 +56,7 @@ export const TrustedBySection: React.FC = () => {
           {[...row1Logos, ...row1Logos, ...row1Logos, ...row1Logos].map((client, idx) => (
             <div
               key={idx}
-              className="inline-flex items-center gap-3 py-3 px-5 pr-5 rounded-[14px] shrink-0 border transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--brand)] shadow-2xs"
+              className="inline-flex items-center gap-3 py-3 px-5 pr-5 rounded-[14px] shrink-0 border box-zoom-sm hover:border-[var(--brand)] shadow-2xs hover:shadow-md"
               style={{
                 backgroundColor: 'var(--bg)',
                 borderColor: 'var(--line)',
@@ -97,7 +97,7 @@ export const TrustedBySection: React.FC = () => {
           {[...row2Logos, ...row2Logos, ...row2Logos, ...row2Logos].map((client, idx) => (
             <div
               key={idx}
-              className="inline-flex items-center gap-3 py-3 px-5 pr-5 rounded-[14px] shrink-0 border transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--brand)] shadow-2xs"
+              className="inline-flex items-center gap-3 py-3 px-5 pr-5 rounded-[14px] shrink-0 border box-zoom-sm hover:border-[var(--brand)] shadow-2xs hover:shadow-md"
               style={{
                 backgroundColor: 'var(--bg)',
                 borderColor: 'var(--line)',

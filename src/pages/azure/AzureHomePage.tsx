@@ -141,7 +141,7 @@ export const AzureHomePage: React.FC = () => {
               <Link
                 key={dest.slug}
                 to={`/showcase/azure-escapes/destinations/${dest.slug}`}
-                className="group bg-[#FCFBF8] border border-[#DDD4C6] hover:border-[#2E7D8C] transition-colors flex flex-col"
+                className="box-zoom group bg-[#FCFBF8] border border-[#DDD4C6] hover:border-[#2E7D8C] flex flex-col"
               >
                 <div className="aspect-[4/3] overflow-hidden bg-[#EDE6DA]">
                   <img
@@ -258,7 +258,7 @@ export const AzureHomePage: React.FC = () => {
             {AZURE_EXPERIENCES.slice(0, 3).map((exp) => (
               <div
                 key={exp.id}
-                className="bg-[#FCFBF8] border border-[#DDD4C6] flex flex-col justify-between"
+                className="box-zoom bg-[#FCFBF8] border border-[#DDD4C6] flex flex-col justify-between hover:border-[#2E7D8C]"
               >
                 <div>
                   <div className="aspect-[4/3] overflow-hidden bg-[#EDE6DA]">
@@ -321,7 +321,7 @@ export const AzureHomePage: React.FC = () => {
             </div>
 
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="border border-white/15 bg-white/[0.03] p-6 space-y-2.5">
+              <div className="box-zoom-sm border border-white/15 bg-white/[0.03] p-6 space-y-2.5">
                 <ShieldCheck className="w-5 h-5 text-[#D4B06A]" />
                 <h3 className="text-xl font-semibold text-white">Seasonal Rate Breakdown</h3>
                 <p className="text-xs text-[#CBD5E1] leading-relaxed">
@@ -329,7 +329,7 @@ export const AzureHomePage: React.FC = () => {
                   per-season nightly tariffs.
                 </p>
               </div>
-              <div className="border border-white/15 bg-white/[0.03] p-6 space-y-2.5">
+              <div className="box-zoom-sm border border-white/15 bg-white/[0.03] p-6 space-y-2.5">
                 <Calendar className="w-5 h-5 text-[#6BB8C5]" />
                 <h3 className="text-xl font-semibold text-white">Turnaround Flexibility</h3>
                 <p className="text-xs text-[#CBD5E1] leading-relaxed">
@@ -337,7 +337,7 @@ export const AzureHomePage: React.FC = () => {
                   incoming reservations.
                 </p>
               </div>
-              <div className="border border-white/15 bg-white/[0.03] p-6 space-y-2.5">
+              <div className="box-zoom-sm border border-white/15 bg-white/[0.03] p-6 space-y-2.5">
                 <Compass className="w-5 h-5 text-[#D4B06A]" />
                 <h3 className="text-xl font-semibold text-white">On-Island Concierge</h3>
                 <p className="text-xs text-[#CBD5E1] leading-relaxed">
@@ -389,7 +389,7 @@ export const AzureHomePage: React.FC = () => {
           </div>
 
           {/* Private Concierge CTA Panel */}
-          <div className="lg:col-span-5 bg-[#EDE6DA] border border-[#DDD4C6] p-8 space-y-5">
+          <div className="box-zoom-sm lg:col-span-5 bg-[#EDE6DA] border border-[#DDD4C6] p-8 space-y-5">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[#85652E] font-semibold">
               <Sparkles className="w-4 h-4" />
               <span>Bespoke Coastal Planning</span>

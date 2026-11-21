@@ -618,7 +618,7 @@ export const HealthLinkPublicPage: React.FC = () => {
                 return (
                   <div
                     key={card.title}
-                    className="border border-[#DCE6EE] bg-[#F7FAFC] p-6 flex flex-col justify-between space-y-5 hover:border-[#0D9488] transition-colors"
+                    className="box-zoom border border-[#DCE6EE] bg-[#F7FAFC] p-6 flex flex-col justify-between space-y-5 hover:border-[#0D9488]"
                   >
                     <div className="space-y-3">
                       <div className="w-10 h-10 bg-[#EDF7F5] border border-[#CBE8E2] flex items-center justify-center text-[#0F766E]">
@@ -647,7 +647,7 @@ export const HealthLinkPublicPage: React.FC = () => {
         {/* Patient Portal & Telehealth Feature Highlight (#portal) */}
         <section id="portal" className="py-16 sm:py-20 bg-[#EDF7F5] border-b border-[#CBE8E2]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-6 border border-[#CBE8E2] bg-white overflow-hidden">
+            <div className="box-zoom-sm lg:col-span-6 border border-[#CBE8E2] bg-white overflow-hidden">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={HEALTHLINK_MEDIA.telehealthHome}
@@ -704,7 +704,7 @@ export const HealthLinkPublicPage: React.FC = () => {
         {/* Demo Data Transparency & FAQ (#faq) */}
         <section id="faq" className="py-16 sm:py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-            <div className="bg-[#F7FAFC] border border-[#DCE6EE] p-5 flex items-start gap-3 text-xs sm:text-sm text-[#475569]">
+            <div className="box-zoom-sm bg-[#F7FAFC] border border-[#DCE6EE] p-5 flex items-start gap-3 text-xs sm:text-sm text-[#475569]">
               <ShieldAlert className="w-5 h-5 text-[#0F766E] shrink-0 mt-0.5" />
               <div className="space-y-1">
                 <p className="font-bold text-[#0A2540]">

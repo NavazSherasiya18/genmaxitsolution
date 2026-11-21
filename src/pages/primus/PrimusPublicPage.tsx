@@ -272,7 +272,7 @@ export const PrimusPublicPage: React.FC = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-12 gap-4 items-center bg-white border border-[#DDD7CB] p-3.5">
+              <div className="box-zoom-sm grid grid-cols-12 gap-4 items-center bg-white border border-[#DDD7CB] p-3.5">
                 <img
                   src={PRIMUS_MEDIA.meridianLogistics}
                   alt="Meridian Logistics Park Singapore commercial facility"
@@ -343,22 +343,22 @@ export const PrimusPublicPage: React.FC = () => {
               </div>
 
               <div className="lg:col-span-5 grid grid-cols-2 gap-3 text-xs">
-                <div className="bg-white border border-[#DDD7CB] p-3.5">
+                <div className="box-zoom-sm bg-white border border-[#DDD7CB] p-3.5">
                   <span className="text-[#9E7C3B] font-bold block">Multi-Currency</span>
                   <strong className="text-[#0D1829] block mt-0.5">GBP · SGD · USD</strong>
                   <span className="text-[11px] text-[#64748B]">Documented demo FX rates</span>
                 </div>
-                <div className="bg-white border border-[#DDD7CB] p-3.5">
+                <div className="box-zoom-sm bg-white border border-[#DDD7CB] p-3.5">
                   <span className="text-[#9E7C3B] font-bold block">Governance Lock</span>
                   <strong className="text-[#0D1829] block mt-0.5">Frozen Revisions</strong>
                   <span className="text-[11px] text-[#64748B]">Role-gated IC voting</span>
                 </div>
-                <div className="bg-white border border-[#DDD7CB] p-3.5">
+                <div className="box-zoom-sm bg-white border border-[#DDD7CB] p-3.5">
                   <span className="text-[#9E7C3B] font-bold block">Data Room</span>
                   <strong className="text-[#0D1829] block mt-0.5">Sample CSV &amp; Packs</strong>
                   <span className="text-[11px] text-[#64748B]">Blocking task checks</span>
                 </div>
-                <div className="bg-white border border-[#DDD7CB] p-3.5">
+                <div className="box-zoom-sm bg-white border border-[#DDD7CB] p-3.5">
                   <span className="text-[#9E7C3B] font-bold block">LP Scope</span>
                   <strong className="text-[#0D1829] block mt-0.5">Strictly Scoped</strong>
                   <span className="text-[11px] text-[#64748B]">Dedicated Partner view</span>
@@ -395,7 +395,7 @@ export const PrimusPublicPage: React.FC = () => {
                 <Link
                   key={asset.id}
                   to={`/showcase/primus-capital/assets/${asset.slug}`}
-                  className="bg-white border border-[#DDD7CB] hover:border-[#9E7C3B] transition-colors flex flex-col justify-between group"
+                  className="box-zoom bg-white border border-[#DDD7CB] hover:border-[#9E7C3B] flex flex-col justify-between group"
                 >
                   <div>
                     <div className="aspect-[16/10] bg-[#EFECE5] overflow-hidden border-b border-[#DDD7CB]">
@@ -460,7 +460,7 @@ export const PrimusPublicPage: React.FC = () => {
                   Icon: ShieldCheck,
                 },
               ].map(({ num, title, desc, Icon }) => (
-                <div key={num} className="p-5 bg-[#132238] border border-slate-800 space-y-2.5">
+                <div key={num} className="box-zoom p-5 bg-[#132238] border border-slate-800 space-y-2.5">
                   <div className="flex items-center justify-between text-[#DFC285]">
                     <span className="font-mono text-xs font-bold">{num}</span>
                     <Icon className="w-4 h-4" />

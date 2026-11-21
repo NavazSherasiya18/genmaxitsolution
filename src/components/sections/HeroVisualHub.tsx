@@ -32,7 +32,7 @@ export const HeroVisualHub: React.FC = () => {
       <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500/20 via-cyan-500/20 to-violet-500/20 rounded-3xl blur-2xl opacity-70 group-hover:opacity-100 transition duration-1000" />
 
       {/* Main Glass Studio Card */}
-      <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-900 shadow-2xl">
+      <div className="box-zoom-sm relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-900 shadow-2xl">
         
         {/* Top Studio Image */}
         <div className="relative h-64 sm:h-72 overflow-hidden">
@@ -133,7 +133,7 @@ export const HeroVisualHub: React.FC = () => {
         initial={{ y: 15, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="mt-3 p-3.5 rounded-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-md flex items-center justify-between text-xs"
+        className="box-zoom-sm mt-3 p-3.5 rounded-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-md flex items-center justify-between text-xs"
       >
         <div className="flex items-center gap-2.5">
           <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />

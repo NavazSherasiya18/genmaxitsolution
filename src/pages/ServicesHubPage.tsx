@@ -5,7 +5,7 @@ import { useServiceMetadata } from '../utils/useServiceMetadata';
 import { ArrowRight, Search, Sparkles, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 interface ServicesHubPageProps {
-  onOpenAudit: () => void;
+  onOpenAudit: (serviceName?: string) => void;
 }
 
 export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit }) => {
@@ -136,7 +136,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit })
                         </Link>
                         <button
                           type="button"
-                          onClick={onOpenAudit}
+                          onClick={() => onOpenAudit(svc.title)}
                           className="text-[11px] text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-colors cursor-pointer"
                         >
                           Get Quote

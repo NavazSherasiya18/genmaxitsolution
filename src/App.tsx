@@ -147,8 +147,8 @@ function AppLayout() {
                     <Routes>
                       <Route path="/" element={<HomePage onOpenAudit={handleOpenAudit} />} />
                       <Route path="/about" element={<AboutPage onOpenAudit={() => handleOpenAudit()} />} />
-                      <Route path="/services" element={<ServicesHubPage onOpenAudit={() => handleOpenAudit()} />} />
-                      <Route path="/services/:slug" element={<ServiceDetailPage onOpenAudit={() => handleOpenAudit()} />} />
+                      <Route path="/services" element={<ServicesHubPage onOpenAudit={handleOpenAudit} />} />
+                      <Route path="/services/:slug" element={<ServiceDetailPage onOpenAudit={handleOpenAudit} />} />
                       <Route path="/portfolio" element={<PortfolioPage onOpenAudit={handleOpenAudit} />} />
                       <Route path="/project/aurelia-luxury-ecommerce" element={<Navigate to="/showcase/aurelia" replace />} />
                       <Route path="/project/azure-escapes-travel" element={<Navigate to="/showcase/azure-escapes" replace />} />

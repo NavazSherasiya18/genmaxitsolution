@@ -194,7 +194,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Conversion Funnel Tuning', description: 'Optimize product page UX and mobile checkout speeds.' }
     ],
     faqs: [
-      { question: 'Do you work with WooCommerce and Shopify?', answer: 'Yes, we have deep hands-on expertise with WooCommerce, Shopify, Magento, and custom headless eCommerce architectures.' }
+      { question: 'Do you work with WooCommerce and Shopify?', answer: 'Yes, we have deep hands-on expertise with WooCommerce, Shopify, Magento, and custom headless eCommerce architectures.' },
+      { question: 'How do you handle duplicate URLs created by size, color, and price filters?', answer: 'We configure clean canonical rules, parameter handling, and selective indexation so search engines focus crawl budget on high-value category and product pages.' }
     ]
   },
   {
@@ -229,7 +230,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Community & Funneling', description: 'Direct social interest into website inquiries and direct WhatsApp chats.' }
     ],
     faqs: [
-      { question: 'Will you manage both organic posting and paid ads?', answer: 'Yes, our social media packages include both cohesive organic content calendars and high-ROI paid ad campaigns.' }
+      { question: 'Will you manage both organic posting and paid ads?', answer: 'Yes, our social media packages include both cohesive organic content calendars and high-ROI paid ad campaigns.' },
+      { question: 'Which platforms do you focus on for B2B vs. B2C brands?', answer: 'We tailor channel mix per business—typically prioritizing LinkedIn and YouTube for B2B decision-makers alongside Instagram, Facebook, and Reels for consumer brands.' }
     ]
   },
   {
@@ -264,7 +266,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Continuous Bidding Optimization', description: 'Refine bids weekly, prune negative keywords, and double down on winning keywords.' }
     ],
     faqs: [
-      { question: 'What is the recommended minimum ad budget?', answer: 'We tailor campaigns for local businesses starting from ₹15,000/month as well as larger enterprise ad spends.' }
+      { question: 'What is the recommended minimum ad budget?', answer: 'We tailor campaigns for local businesses starting from ₹15,000/month as well as larger enterprise ad spends.' },
+      { question: 'Do we keep full ownership of our Google Ads account and billing?', answer: 'Yes. Campaigns run directly inside your own Google Ads account so you retain 100% access to historical data, audiences, and billing transparency.' }
     ]
   },
   {
@@ -299,7 +302,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Active Defense', description: 'Set up real-time probers that notify you within minutes of any new online mention.' }
     ],
     faqs: [
-      { question: 'Can negative articles be pushed down in Google search?', answer: 'Yes, by creating and ranking authoritative positive web properties, we push negative mentions below the first page fold.' }
+      { question: 'Can negative articles be pushed down in Google search?', answer: 'Yes, by creating and ranking authoritative positive web properties, we push negative mentions below the first page fold.' },
+      { question: 'How do you generate more authentic 5-star customer reviews?', answer: 'We implement automated post-purchase SMS, WhatsApp, and email review workflows with direct links and compliant response templates.' }
     ]
   },
 
@@ -372,7 +376,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Editor Training', description: 'Provide client teams with straightforward admin panels and tutorials.' }
     ],
     faqs: [
-      { question: 'Can I easily edit text and images on my own?', answer: 'Absolutely. We configure intuitive visual editing areas so you can update anything in seconds without touching code.' }
+      { question: 'Can I easily edit text and images on my own?', answer: 'Absolutely. We configure intuitive visual editing areas so you can update anything in seconds without touching code.' },
+      { question: 'Do you rely on heavy third-party page builders?', answer: 'No. We build lean custom themes and native Gutenberg blocks to keep WordPress fast, clean, and easy to maintain.' }
     ]
   },
   {
@@ -407,7 +412,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Load Testing & Go-Live', description: 'Stress-test concurrent transactions and certify PCI-DSS compliance.' }
     ],
     faqs: [
-      { question: 'Which payment gateways do you support?', answer: 'We support all major gateways including Razorpay, Stripe, PayPal, PayU, Cashfree, and cash-on-delivery.' }
+      { question: 'Which payment gateways do you support?', answer: 'We support all major gateways including Razorpay, Stripe, PayPal, PayU, Cashfree, and cash-on-delivery.' },
+      { question: 'Will our WooCommerce store be easy to manage for new products and coupons?', answer: 'Yes. We provide hands-on catalog, order, tax, and coupon training along with clean video walkthroughs for your team.' }
     ]
   },
   {
@@ -427,7 +433,8 @@ export const SERVICES: ServiceItem[] = [
       'Touch-friendly navigation drawers, button tap targets, and gesture carousels',
       'Cross-browser testing (Chrome, Safari, Firefox, Edge) across iOS and Android',
       'Adaptive image delivery using modern WebP formats for reduced mobile data consumption',
-      'Zero horizontal overflow guarantees across all screen viewports'
+      'Zero horizontal overflow guarantees across all screen viewports',
+      'Core Web Vitals layout shift (CLS) & viewport ergonomics hardening'
     ],
     features: ['Fluid Grids', 'Touch Gestures', 'Adaptive Images', 'Zero Overflow'],
     metrics: [
@@ -441,7 +448,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Optimization Sweep', description: 'Eliminate layout shifts (CLS) to secure a pristine Core Web Vitals score.' }
     ],
     faqs: [
-      { question: 'Do you design mobile-first?', answer: 'Yes, our default design philosophy begins with mobile ergonomics before expanding to desktop canvases.' }
+      { question: 'Do you design mobile-first?', answer: 'Yes, our default design philosophy begins with mobile ergonomics before expanding to desktop canvases.' },
+      { question: 'Can you make our existing desktop website fully responsive without a complete brand overhaul?', answer: 'Yes. We can refactor your CSS grid, navigation menus, tables, and breakpoints cleanly so every page adapts smoothly on phones and tablets.' }
     ]
   },
   {
@@ -476,7 +484,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Zero-Downtime Launch', description: 'Execute domain cutover, submit new sitemaps to Google, and verify indexing.' }
     ],
     faqs: [
-      { question: 'Will a redesign hurt my existing Google rankings?', answer: 'Not with us. We map 1-to-1 301 redirects and preserve your high-ranking content and metadata so you maintain and grow your rankings.' }
+      { question: 'Will a redesign hurt my existing Google rankings?', answer: 'Not with us. We map 1-to-1 301 redirects and preserve your high-ranking content and metadata so you maintain and grow your rankings.' },
+      { question: 'Does our current website stay online while the new version is being built?', answer: 'Yes. Everything is designed, populated, and tested on a private staging link with zero interruption to your live visitors.' }
     ]
   },
 
@@ -513,7 +522,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Production Deployment', description: 'Deploy to enterprise cloud infrastructure with continuous monitoring and backups.' }
     ],
     faqs: [
-      { question: 'Do I own the complete source code upon project completion?', answer: 'Yes, 100%. You receive full legal ownership of the source code, repositories, and intellectual property.' }
+      { question: 'Do I own the complete source code upon project completion?', answer: 'Yes, 100%. You receive full legal ownership of the source code, repositories, and intellectual property.' },
+      { question: 'Can our custom website integrate with CRM, WhatsApp, or payment APIs?', answer: 'Yes. We build clean REST/GraphQL integrations with HubSpot, Zoho, Razorpay, Stripe, WhatsApp Business, and internal databases.' }
     ]
   },
   {
@@ -548,7 +558,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Deployment & Cache Warmup', description: 'Deploy with Redis object caching and CDN edge routing.' }
     ],
     faqs: [
-      { question: 'Can you migrate our current site from Wix or Squarespace to WordPress?', answer: 'Yes, we execute seamless migrations preserving all blog articles, pages, images, and SEO URLs.' }
+      { question: 'Can you migrate our current site from Wix or Squarespace to WordPress?', answer: 'Yes, we execute seamless migrations preserving all blog articles, pages, images, and SEO URLs.' },
+      { question: 'Do you also build custom WordPress plugins for unique business workflows?', answer: 'Yes. We write clean, object-oriented custom plugins following WordPress coding standards so you do not rely on brittle third-party add-ons.' }
     ]
   },
   {
@@ -583,7 +594,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Stress & Concurrency Testing', description: 'Simulate high transaction loads to verify zero database deadlocks.' }
     ],
     faqs: [
-      { question: 'Can WooCommerce handle large catalogs with over 50,000 products?', answer: 'Yes, with proper database indexing, Elasticsearch, and Redis caching, WooCommerce comfortably manages 100,000+ SKUs.' }
+      { question: 'Can WooCommerce handle large catalogs with over 50,000 products?', answer: 'Yes, with proper database indexing, Elasticsearch, and Redis caching, WooCommerce comfortably manages 100,000+ SKUs.' },
+      { question: 'Can you customize the WooCommerce checkout fields and add GST invoicing?', answer: 'Yes. We engineer custom checkout flows, multi-step billing/shipping rules, automated GST PDF invoices, and WhatsApp order alerts.' }
     ]
   },
   {
@@ -618,7 +630,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Optimization & Security Verification', description: 'Audit CSRF protection, SQL injection defenses, and XSS sanitization.' }
     ],
     faqs: [
-      { question: 'Do you provide legacy CodeIgniter maintenance?', answer: 'Yes, we actively maintain, secure, and modernize existing CodeIgniter projects without needing to rebuild from scratch.' }
+      { question: 'Do you provide legacy CodeIgniter maintenance?', answer: 'Yes, we actively maintain, secure, and modernize existing CodeIgniter projects without needing to rebuild from scratch.' },
+      { question: 'Can you upgrade our CodeIgniter 3 application to CodeIgniter 4 and PHP 8+?', answer: 'Yes. We execute structured CI3-to-CI4 upgrades with compatibility refactoring, query hardening, and staging verification.' }
     ]
   },
   {
@@ -653,7 +666,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Production Hardening', description: 'Conduct cross-browser testing and performance bundle size optimization.' }
     ],
     faqs: [
-      { question: 'What is Matx Development?', answer: 'Matx is an advanced React Material Design dashboard framework that provides a rich, enterprise-ready foundation for CRM, ERP, and SaaS management back-offices.' }
+      { question: 'What is Matx Development?', answer: 'Matx is an advanced React Material Design dashboard framework that provides a rich, enterprise-ready foundation for CRM, ERP, and SaaS management back-offices.' },
+      { question: 'Can you connect a Matx React frontend to an existing Laravel or Node.js backend?', answer: 'Yes. We cleanly integrate Matx React interfaces with Laravel, Node.js, or external REST/WebSocket APIs using token-based authentication and role guards.' }
     ]
   },
   {
@@ -688,7 +702,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Continuous Integration Deploy', description: 'Configure automated testing pipelines and zero-downtime deployment scripts.' }
     ],
     faqs: [
-      { question: 'Can Laravel handle high volumes of simultaneous traffic?', answer: 'Yes, when paired with Redis caching, queue workers, and horizontal container scaling, Laravel comfortably handles millions of requests.' }
+      { question: 'Can Laravel handle high volumes of simultaneous traffic?', answer: 'Yes, when paired with Redis caching, queue workers, and horizontal container scaling, Laravel comfortably handles millions of requests.' },
+      { question: 'Do you build SaaS multi-tenancy and REST APIs for mobile apps using Laravel?', answer: 'Yes. We architect secure multi-tenant Laravel platforms using Sanctum/Passport APIs powering both web portals and native mobile apps.' }
     ]
   },
 
@@ -725,7 +740,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'App Store Submission', description: 'Manage metadata, screenshots, privacy declarations, and review approvals.' }
     ],
     faqs: [
-      { question: 'Do you guarantee App Store approval?', answer: 'Yes! We follow Apple Developer guidelines strictly and manage the complete review process until your app is live.' }
+      { question: 'Do you guarantee App Store approval?', answer: 'Yes! We follow Apple Developer guidelines strictly and manage the complete review process until your app is live.' },
+      { question: 'Will our iOS app support the latest iPhone models, iPad layouts, and iOS updates?', answer: 'Yes. Every iOS build adapts cleanly across compact and Pro Max iPhones, supports modern Safe Area/Dynamic Island insets, and includes 1 year of update support.' }
     ]
   },
   {
@@ -760,7 +776,8 @@ export const SERVICES: ServiceItem[] = [
       { step: '04', title: 'Play Store Launch', description: 'Deploy app bundles (AAB), setup store listing optimization, and launch.' }
     ],
     faqs: [
-      { question: 'Can you build an app that runs on both iOS and Android?', answer: 'Yes! Using cross-platform technologies like React Native, we can build a unified codebase that runs natively on both platforms, saving time and budget.' }
+      { question: 'Can you build an app that runs on both iOS and Android?', answer: 'Yes! Using cross-platform technologies like React Native, we can build a unified codebase that runs natively on both platforms, saving time and budget.' },
+      { question: 'Do you handle Google Play Console compliance, Data Safety forms, and AAB uploads?', answer: 'Yes. We prepare signed Android App Bundles (AAB), store graphic assets, Data Safety declarations, and handle Google Play review clearance.' }
     ]
   }
 ];

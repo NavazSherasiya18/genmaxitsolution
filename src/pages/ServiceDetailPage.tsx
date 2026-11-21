@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { COMPANY_DETAILS } from '../data/websiteContent';
-import { SERVICE_CATALOG, SERVICE_CATEGORIES, servicePath } from '../data/servicesData';
+import { SERVICE_CATALOG, SERVICE_CATEGORIES, servicePath, type ServiceCategoryId } from '../data/servicesData';
 import { useServiceMetadata } from '../utils/useServiceMetadata';
 import {
   CheckCircle2, ArrowRight, ShieldCheck, Sparkles,
@@ -9,12 +9,27 @@ import {
 } from 'lucide-react';
 
 interface ServiceDetailPageProps {
-  onOpenAudit: () => void;
+  onOpenAudit: (serviceName?: string) => void;
 }
+
+const CATEGORY_ASSURANCES: Record<ServiceCategoryId, [string, string]> = {
+  seo: ['100% White-Hat & Guideline Compliant', 'Transparent Weekly Progress Reports'],
+  paid: ['Full Ad Account & Pixel Ownership', 'Weekly Spend & CPA Optimization'],
+  design: ['1 Year Free Support Included', 'Free Domain Registration (₹999)'],
+  development: ['1 Year Free Support Included', '100% Clean Source Code Ownership'],
+  mobile: ['1 Year OS & Maintenance Support', 'Play Store & App Store Release Ready'],
+  software: ['Full Source Code & IP Ownership', '1 Year Priority Support & Docs'],
+  branding: ['100% Commercial Usage Rights', 'Editable Source & Print-Ready Exports'],
+  support: ['Pre-Change Backup & Rollback Plan', 'Verified Staging & Production QA'],
+};
 
 export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudit }) => {
   const { slug } = useParams<{ slug: string }>();
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
+
+  useEffect(() => {
+    setActiveFaq(0);
+  }, [slug]);
 
   // Find matching service
   const service = SERVICE_CATALOG.find((s) => s.slug === slug);
@@ -27,6 +42,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
   // Related services in same or complementary category
   const category = SERVICE_CATEGORIES.find((entry) => entry.id === service.category)!;
   const relatedServices = category.services.filter((entry) => entry.id !== service.id).slice(0, 3);
+  const assurances = CATEGORY_ASSURANCES[service.category];
 
   return (
     <div className="pt-28 pb-20 bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 transition-colors duration-300">
@@ -65,7 +81,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
 
               <div className="flex flex-wrap items-center gap-4 pt-4">
                 <button
-                  onClick={onOpenAudit}
+                  onClick={() => onOpenAudit(service.title)}
                   className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-semibold text-sm hover:opacity-95 shadow-md transition-all flex max-w-full items-center gap-2 text-left cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 shrink-0" />
@@ -89,7 +105,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
               <div className="lg:col-span-4">
                 <div className="p-8 rounded-2xl bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-[#0F172A] border border-slate-200 dark:border-slate-700 shadow-md space-y-6">
                   <div className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-cyan-400 pb-3 border-b border-slate-100 dark:border-slate-800">
-                    Target Performance Metrics
+                    Target Performance & Delivery
                   </div>
 
                   {service.metrics.map((m, idx) => (
@@ -102,11 +118,11 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2 text-xs text-slate-700 dark:text-slate-300">
                     <div className="flex items-center gap-2">
                       <ShieldCheck className="w-4 h-4 text-indigo-600 dark:text-cyan-400 shrink-0" />
-                      <span>1 Year Free Support Included</span>
+                      <span>{assurances[0]}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-cyan-400 shrink-0" />
-                      <span>Free Domain Registration (₹999)</span>
+                      <span>{assurances[1]}</span>
                     </div>
                   </div>
                 </div>
@@ -182,7 +198,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
 
                   <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
                     <button
-                      onClick={onOpenAudit}
+                      onClick={() => onOpenAudit(service.title)}
                       className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold text-xs tracking-wider uppercase hover:opacity-95 transition-all text-center cursor-pointer shadow-md"
                     >
                       Discuss Your {service.title} Scope

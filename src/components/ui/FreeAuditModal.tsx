@@ -144,6 +144,33 @@ export const SERVICE_GOALS_MAP: Record<string, { label: string; goals: string[] 
       'Proactive Real-Time Sentiment Monitoring',
     ],
   },
+  'software-ai-automation': {
+    label: 'Custom Software, SaaS & AI Solutions',
+    goals: [
+      'Develop Custom Software, CRM, ERP or Multi-Tenant SaaS',
+      'Deploy Grounded AI Chatbot or AI Automation Workflow',
+      'Automate Cross-Tool Processes & Eliminate Manual Entry',
+      'Build Reliable APIs, Webhooks & Third-Party Bridges',
+    ],
+  },
+  'branding-creative': {
+    label: 'Branding, Graphic & Video Creative',
+    goals: [
+      'Design Logo, Visual Identity & Brand Guidelines',
+      'Create Social Media Templates & Ad Campaign Creatives',
+      'Design Pitch Decks, Brochures, Catalogs & Print Assets',
+      'Produce Edited Promo Videos & Motion Graphics',
+    ],
+  },
+  'support-maintenance': {
+    label: 'Website Maintenance, Speed & Security',
+    goals: [
+      'Accelerate Page Speed & Core Web Vitals (LCP/INP/CLS)',
+      'Set Up Proactive Maintenance, Backups & Bug Fixes',
+      'Harden Website Security, Clean Malware & Patch Core',
+      'Execute Zero-Downtime Website Migration or DNS Setup',
+    ],
+  },
 };
 
 // Helper to match service string to a service key
@@ -165,18 +192,36 @@ const findServiceKey = (serviceName?: string): string => {
   if (lower.includes('luxury')) {
     return 'luxury-ecommerce';
   }
+  if (lower.includes('maintenance') || lower.includes('speed') || lower.includes('security') || lower.includes('hosting') || lower.includes('migration') || lower.includes('bug fix') || lower.includes('technical support')) {
+    return 'support-maintenance';
+  }
+  if (lower.includes('logo') || lower.includes('branding') || lower.includes('graphic') || lower.includes('creative') || lower.includes('video') || lower.includes('motion')) {
+    return 'branding-creative';
+  }
+  if (lower.includes('ai ') || lower.includes('chatbot') || lower.includes('automation') || lower.includes('saas') || lower.includes('crm') || lower.includes('erp') || lower.includes('software') || lower.includes('third-party integration')) {
+    return 'software-ai-automation';
+  }
+  if (lower.includes('meta ad') || lower.includes('linkedin ad') || lower.includes('youtube') || lower.includes('shopping') || lower.includes('remarketing') || lower.includes('microsoft') || lower.includes('tiktok') || lower.includes('snapchat') || lower.includes('ppc') || lower.includes('google ads') || lower.includes('paid')) {
+    return 'ppc-management';
+  }
   if (lower.includes('ecom') || lower.includes('store') || lower.includes('woo')) {
     if (lower.includes('word') || lower.includes('development')) return 'wordpress-woocommerce';
+    if (lower.includes('design')) return 'website-redesign';
     return 'ecommerce-seo';
   }
   if (lower.includes('local') || lower.includes('maps') || lower.includes('gbp')) return 'local-seo';
-  if (lower.includes('word')) return 'wordpress-woocommerce';
-  if (lower.includes('redesign') || lower.includes('design') || lower.includes('responsive')) return 'website-redesign';
-  if (lower.includes('laravel') || lower.includes('codeigniter') || lower.includes('matx') || lower.includes('engineer') || lower.includes('software')) return 'custom-web-engineering';
-  if (lower.includes('app') || lower.includes('mobile') || lower.includes('ios') || lower.includes('android')) return 'mobile-app-development';
-  if (lower.includes('ppc') || lower.includes('ad') || lower.includes('paid')) return 'ppc-management';
   if (lower.includes('reputation') || lower.includes('orm') || lower.includes('review')) return 'reputation-management';
-  if (lower.includes('seo') || lower.includes('audit')) return 'technical-seo';
+  if (lower.includes('seo') || lower.includes('audit') || lower.includes('social media management')) return 'technical-seo';
+  if (lower.includes('word')) return 'wordpress-woocommerce';
+  if (lower.includes('laravel') || lower.includes('codeigniter') || lower.includes('matx') || lower.includes('engineer') || lower.includes('react.js') || lower.includes('next.js') || lower.includes('node.js') || lower.includes('web application') || lower.includes('custom website development')) {
+    return 'custom-web-engineering';
+  }
+  if (lower.includes('app') || lower.includes('mobile') || lower.includes('ios') || lower.includes('android') || lower.includes('flutter') || lower.includes('react native') || lower.includes('cross-platform')) {
+    return 'mobile-app-development';
+  }
+  if (lower.includes('redesign') || lower.includes('design') || lower.includes('responsive') || lower.includes('landing page') || lower.includes('ui/ux')) {
+    return 'website-redesign';
+  }
   return 'ecommerce-seo';
 };
 

@@ -57,7 +57,7 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="pt-28 pb-20 bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Header */}
       <section className="relative py-16 lg:py-20 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -202,7 +202,7 @@ export const ContactPage: React.FC = () => {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-bold text-sm tracking-wide uppercase hover:opacity-95 shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+                          className="w-full py-4 px-6 rounded-xl genmax-action text-white font-bold text-sm tracking-wide uppercase hover:opacity-95 shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
                         >
                           {isSubmitting ? (
                             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

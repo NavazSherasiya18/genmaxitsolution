@@ -45,7 +45,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
   const assurances = CATEGORY_ASSURANCES[service.category];
 
   return (
-    <div className="pt-28 pb-20 bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Breadcrumb Navigation */}
       <div className="border-b border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/40">
         <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
@@ -82,7 +82,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
               <div className="flex flex-wrap items-center gap-4 pt-4">
                 <button
                   onClick={() => onOpenAudit(service.title)}
-                  className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-semibold text-sm hover:opacity-95 shadow-md transition-all flex max-w-full items-center gap-2 text-left cursor-pointer"
+                  className="px-7 py-3.5 rounded-xl genmax-action text-white font-semibold text-sm hover:opacity-95 shadow-md transition-all flex max-w-full items-center gap-2 text-left cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 shrink-0" />
                   <span>Request Proposal for {service.title}</span>

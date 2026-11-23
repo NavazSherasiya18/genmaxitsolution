@@ -105,14 +105,12 @@ function AppLayout() {
   return (
     <>
       <ScrollToTop />
-      {/* Slim, gradient-colored scroll progress bar tracking page depth (Genmax agency pages only) */}
-      {!isStandaloneProjectRoute && <ScrollProgressBar />}
-
       <div className={
         isStandaloneProjectRoute
           ? 'min-h-screen flex flex-col'
-          : 'min-h-screen bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 flex flex-col selection:bg-indigo-500/20 selection:text-indigo-900 dark:selection:bg-cyan-500/30 dark:selection:text-cyan-200 transition-colors duration-300'
+          : 'genmax-site min-h-screen bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 flex flex-col selection:bg-indigo-500/20 selection:text-indigo-900 dark:selection:bg-cyan-500/30 dark:selection:text-cyan-200 transition-colors duration-300'
       }>
+        {!isStandaloneProjectRoute && <ScrollProgressBar />}
         
         {/* Google Maps Platform Quota Defense Banner (Tier 2 Notification) */}
         {!isStandaloneProjectRoute && gmpQuotaExceeded && (

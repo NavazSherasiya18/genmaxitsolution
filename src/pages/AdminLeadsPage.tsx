@@ -71,7 +71,7 @@ export const AdminLeadsPage: React.FC = () => {
   });
 
   return (
-    <div className="pt-28 pb-20 min-h-screen bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 transition-colors">
+    <div className="pt-28 pb-20 min-h-screen bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Navigation Breadcrumb */}

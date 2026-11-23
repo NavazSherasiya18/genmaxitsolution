@@ -75,6 +75,135 @@
   }
 }
 
+/* Genmax's agency palette is scoped to the main site. */
+.genmax-site {
+  --genmax-navy: #070c23;
+  --genmax-action: linear-gradient(110deg, #2448d2 0%, #5931cc 58%, #07678d 100%);
+  --genmax-spectrum: linear-gradient(105deg, #73e7ff 0%, #8caeff 48%, #d1a5ff 100%);
+  --genmax-text-gradient: linear-gradient(105deg, #214ac8, #086b9e 48%, #6a2dbb);
+
+  --color-slate-50: #f5f7ff;
+  --color-slate-100: #ebf0fc;
+  --color-slate-200: #d9e2f5;
+  --color-slate-300: #bfcee8;
+  --color-slate-400: #a3b4d4;
+  --color-slate-500: #607292;
+  --color-slate-600: #4a5c7c;
+  --color-slate-700: #344567;
+  --color-slate-800: #202e53;
+  --color-slate-900: #131c38;
+  --color-slate-950: #080e24;
+  --color-indigo-50: #edf2ff;
+  --color-indigo-100: #e1eaff;
+  --color-indigo-200: #c9d8ff;
+  --color-indigo-300: #acbfff;
+  --color-indigo-400: #8ba6ff;
+  --color-indigo-500: #465be8;
+  --color-indigo-600: #2849d1;
+  --color-indigo-700: #233cb8;
+  --color-indigo-800: #203286;
+  --color-indigo-900: #17265f;
+  --color-indigo-950: #111a49;
+  --color-cyan-50: #eafaff;
+  --color-cyan-100: #d3f4ff;
+  --color-cyan-200: #adf0ff;
+  --color-cyan-300: #84e9ff;
+  --color-cyan-400: #56dcff;
+  --color-cyan-500: #0799c1;
+  --color-cyan-600: #08759b;
+  --color-cyan-700: #096384;
+  --color-violet-300: #ceb2ff;
+  --color-violet-400: #ba93ff;
+  --color-violet-500: #9358f5;
+  --color-violet-600: #7139cf;
+  --color-violet-700: #602fb2;
+
+  --bg-primary: var(--color-slate-50);
+  --bg-secondary: #ffffff;
+  --bg-surface: var(--color-slate-100);
+  --border-color: var(--color-slate-200);
+  --text-primary: var(--color-slate-900);
+  --text-secondary: var(--color-slate-600);
+  --text-muted: var(--color-slate-500);
+  --accent-indigo: var(--color-indigo-600);
+  --accent-cyan: var(--color-cyan-700);
+  --accent-violet: var(--color-violet-600);
+  --bg: var(--bg-primary);
+  --surface: var(--bg-secondary);
+  --ink: var(--text-primary);
+  --muted: var(--text-secondary);
+  --line: var(--border-color);
+  --brand: var(--accent-indigo);
+  --brand2: var(--accent-cyan);
+  --grid: rgb(40 73 209 / 0.07);
+  --glow: rgb(89 49 204 / 0.16);
+}
+
+.dark .genmax-site {
+  --genmax-text-gradient: var(--genmax-spectrum);
+  --color-slate-500: #8699be;
+  --bg-primary: #0a1028;
+  --bg-secondary: var(--color-slate-900);
+  --bg-surface: var(--color-slate-800);
+  --border-color: #2d3c68;
+  --text-primary: var(--color-slate-50);
+  --text-secondary: var(--color-slate-300);
+  --text-muted: var(--color-slate-400);
+  --accent-indigo: var(--color-indigo-300);
+  --accent-cyan: var(--color-cyan-300);
+  --accent-violet: var(--color-violet-300);
+  --grid: rgb(140 174 255 / 0.09);
+  --glow: rgb(100 66 228 / 0.24);
+}
+
+.genmax-action {
+  background-color: #2448d2;
+  background-image: var(--genmax-action);
+}
+
+.genmax-hero {
+  --bg: var(--genmax-navy);
+  --surface: #111a36;
+  --ink: #f6f8ff;
+  --muted: #b8c8e8;
+  --line: #303e68;
+  --brand: #9ab4ff;
+  --brand2: #6be3ff;
+  --ok: #60dfb6;
+  --grid: rgb(140 174 255 / 0.08);
+  --glow: rgb(93 60 226 / 0.16);
+
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 100% 0%, rgb(88 46 211 / 0.32), transparent 52%),
+    radial-gradient(ellipse at 0% 100%, rgb(7 143 220 / 0.21), transparent 52%),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+}
+
+.genmax-hero::before {
+  position: absolute;
+  top: -19rem;
+  right: -17rem;
+  width: min(58rem, 170vw);
+  height: 34rem;
+  transform: rotate(-22deg);
+  border: 1px solid rgb(148 122 255 / 0.35);
+  border-radius: 50%;
+  background: linear-gradient(130deg, transparent 55%, rgb(87 48 215 / 0.17));
+  box-shadow: 0 22px 88px rgb(49 91 255 / 0.22);
+  content: '';
+  pointer-events: none;
+}
+
+.genmax-footer {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgb(44 84 215 / 0.18), transparent 60%),
+    radial-gradient(ellipse at 95% 100%, rgb(100 42 195 / 0.17), transparent 50%),
+    var(--genmax-navy);
+}
+
 /* Custom utility styles */
 .services-mega-menu {
   opacity: 0;
@@ -177,13 +306,7 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #4F46E5 0%, #0891B2 50%, #7C3AED 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.dark .gradient-text {
-  background: linear-gradient(135deg, #6366F1 0%, #22D3EE 50%, #A78BFA 100%);
+  background: var(--genmax-text-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

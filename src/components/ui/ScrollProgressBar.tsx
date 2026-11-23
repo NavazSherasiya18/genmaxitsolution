@@ -35,7 +35,7 @@ export const ScrollProgressBar: React.FC = () => {
       aria-hidden="true"
     >
       <div
-        className="h-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-cyan-400 shadow-[0_0_12px_rgba(79,70,229,0.8)] transition-all duration-75 ease-out"
+        className="h-full bg-[image:var(--genmax-spectrum)] transition-all duration-75 ease-out"
         style={{
           width: `${progress}%`,
         }}

@@ -4,7 +4,7 @@ import { calculateEstimate } from '../../utils/websiteEstimate';
 
 export const priceCard = 'min-w-0 rounded-2xl border border-slate-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900/70';
 export const inputStyle = 'min-h-11 w-full min-w-0 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-600 focus:outline-2 focus:outline-indigo-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:outline-cyan-400';
-export const primaryButton = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-md hover:opacity-95 motion-safe:transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:focus-visible:outline-cyan-400 disabled:cursor-wait disabled:opacity-60';
+export const primaryButton = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-xl genmax-action px-5 py-3 text-center text-sm font-semibold text-white shadow-md hover:opacity-95 motion-safe:transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:focus-visible:outline-cyan-400 disabled:cursor-wait disabled:opacity-60';
 
 export function priceText(amount: number | null | undefined, currency: Currency) {
   return amount == null ? 'Price on Request' : formatMoney(amount, currency);

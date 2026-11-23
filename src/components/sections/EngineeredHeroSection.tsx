@@ -352,18 +352,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
       ref={heroRef}
       id="hero"
       aria-label="Hero section"
-      className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24 transition-colors duration-300"
-      style={{
-        backgroundColor: 'var(--bg)',
-        backgroundImage: `
-          radial-gradient(circle at 85% 15%, var(--glow) 0%, transparent 45%),
-          radial-gradient(circle at 10% 85%, rgba(8, 145, 178, 0.1) 0%, transparent 40%),
-          linear-gradient(var(--grid) 1px, transparent 1px),
-          linear-gradient(90deg, var(--grid) 1px, transparent 1px)
-        `,
-        backgroundSize: '100% 100%, 100% 100%, 48px 48px, 48px 48px',
-        minHeight: '820px',
-      }}
+      className="genmax-hero relative min-h-[820px] overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24"
     >
       {/* Blurred drifting background blobs */}
       <div
@@ -376,7 +365,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
           top: '-40px',
           right: '-40px',
           filter: 'blur(70px)',
-          opacity: 0.45,
+          opacity: 0.16,
           animation: 'blobDrift1 12s ease-in-out infinite alternate',
           zIndex: 1,
         }}
@@ -391,7 +380,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
           bottom: '-30px',
           left: '-30px',
           filter: 'blur(70px)',
-          opacity: 0.45,
+          opacity: 0.14,
           animation: 'blobDrift2 16s ease-in-out infinite alternate',
           zIndex: 1,
         }}
@@ -410,7 +399,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
 
       {/* Inner Hero Container (max-width 1180px, 2 columns 1.05fr / 0.95fr, gap 56px) */}
       <div
-        className="relative mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-14 items-center"
+        className="relative mx-auto w-full grid grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
         style={{ maxWidth: '1180px', zIndex: 3 }}
       >
         {/* LEFT COLUMN */}
@@ -460,7 +449,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
             Accelerate your digital presence with{' '}
             <span
               style={{
-                background: 'linear-gradient(100deg, var(--brand) 0%, var(--brand2) 50%, var(--brand) 100%)',
+                background: 'var(--genmax-spectrum)',
                 backgroundSize: '200% auto',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -495,11 +484,10 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
             <button
               onClick={() => onOpenAudit(activeData.auditPrefill)}
               type="button"
-              className="relative overflow-hidden inline-flex items-center justify-center text-[15px] font-semibold px-6 py-[15px] rounded-xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+              className="genmax-action relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl px-6 py-[15px] text-[15px] font-semibold cursor-pointer transition-all duration-200 hover:-translate-y-0.5 active:scale-95 sm:w-auto"
               style={{
-                background: 'linear-gradient(100deg, var(--brand), var(--brand2))',
                 color: '#ffffff',
-                boxShadow: '0 10px 24px -8px var(--brand)',
+                boxShadow: '0 10px 24px -8px var(--color-indigo-500)',
               }}
             >
               <span>Claim free SEO & web audit</span>
@@ -517,7 +505,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
 
             <Link
               to="/services"
-              className="inline-flex items-center justify-center text-[15px] font-semibold px-6 py-[15px] rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--brand)] shadow-xs"
+              className="inline-flex w-full items-center justify-center rounded-xl px-6 py-[15px] text-[15px] font-semibold shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--brand)] sm:w-auto"
               style={{
                 backgroundColor: 'var(--surface)',
                 border: '1px solid var(--line)',
@@ -530,7 +518,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
 
           {/* 5. Stats Row with Count-Up */}
           <div
-            className="grid grid-cols-3 pt-[22px] max-w-[520px]"
+            className="grid grid-cols-3 pt-[22px] pr-12 sm:max-w-[520px] sm:pr-0"
             style={{
               borderTop: '1px solid var(--line)',
               animation: 'heroRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.48s',
@@ -539,7 +527,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
           >
             <div className="pr-4 relative border-r border-[var(--line)]">
               <div
-                className="font-semibold text-[28px] leading-[1.1]"
+                className="font-semibold text-[clamp(20px,5.6vw,28px)] leading-[1.1]"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", color: 'var(--ink)' }}
               >
                 {pageSpeedVal}
@@ -551,7 +539,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
 
             <div className="px-4 relative border-r border-[var(--line)]">
               <div
-                className="font-semibold text-[28px] leading-[1.1]"
+                className="font-semibold text-[clamp(20px,5.6vw,28px)] leading-[1.1]"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", color: 'var(--ink)' }}
               >
                 {rankVal}
@@ -563,7 +551,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
 
             <div className="pl-4 relative">
               <div
-                className="font-semibold text-[28px] leading-[1.1]"
+                className="font-semibold text-[clamp(20px,5.6vw,28px)] leading-[1.1]"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", color: 'var(--ink)' }}
               >
                 {paintVal}
@@ -598,10 +586,9 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
           {/* Floating Chip Top-Left */}
           <div
             ref={chipTopRef}
-            className="absolute z-20 flex items-center gap-2 px-4 py-2.5 rounded-full text-[13px] font-semibold shadow-lg pointer-events-none whitespace-nowrap"
+            className="absolute left-0 z-20 flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap shadow-lg pointer-events-none sm:-left-[22px]"
             style={{
               top: '-16px',
-              left: '-22px',
               backgroundColor: 'var(--surface)',
               border: '1px solid var(--line)',
               color: 'var(--ink)',
@@ -637,7 +624,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
               style={{
                 backgroundColor: 'var(--surface)',
                 border: '1px solid var(--line)',
-                boxShadow: '0 30px 60px -28px rgba(30, 27, 120, 0.35)',
+                boxShadow: '0 30px 80px -20px rgb(2 6 22 / 0.75)',
               }}
             >
               {/* a) Dynamic Console Area */}
@@ -684,7 +671,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
                       </span>
                       <span
                         className="text-[11px] font-bold text-white px-2.5 py-0.5 rounded-full whitespace-nowrap"
-                        style={{ background: 'linear-gradient(100deg, var(--brand), var(--brand2))' }}
+                        style={{ background: 'var(--genmax-action)' }}
                       >
                         {row.pill}
                       </span>
@@ -731,10 +718,10 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
                         style={
                           isSelected
                             ? {
-                                backgroundColor: 'var(--brand)',
-                                border: '1px solid var(--brand)',
+                                background: 'var(--genmax-action)',
+                                border: '1px solid var(--line)',
                                 color: '#ffffff',
-                                boxShadow: '0 6px 14px -4px rgba(79, 70, 229, 0.35)',
+                                boxShadow: '0 6px 14px -4px var(--glow)',
                               }
                             : {
                                 backgroundColor: 'var(--surface)',
@@ -853,10 +840,8 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
           {/* Floating Chip Bottom-Right */}
           <div
             ref={chipBottomRef}
-            className="absolute z-20 flex items-center gap-2 px-4 py-2.5 rounded-full text-[13px] font-semibold shadow-lg pointer-events-none whitespace-nowrap"
+            className="absolute -bottom-6 right-0 z-20 flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap shadow-lg pointer-events-none sm:-right-3.5"
             style={{
-              bottom: '0px',
-              right: '-14px',
               backgroundColor: 'var(--surface)',
               border: '1px solid var(--line)',
               color: 'var(--ok)',

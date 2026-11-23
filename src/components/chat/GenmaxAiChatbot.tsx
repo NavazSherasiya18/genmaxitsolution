@@ -219,7 +219,7 @@ export const GenmaxAiChatbot: React.FC<GenmaxAiChatbotProps> = ({ onOpenAudit })
           </div>
 
           {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs sm:text-[13px] bg-slate-50/50 dark:bg-[#0B1020]/50">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs sm:text-[13px] bg-slate-50/50 dark:bg-[var(--bg-primary)]/50">
             {messages.map((msg) => (
               <div
                 key={msg.id}

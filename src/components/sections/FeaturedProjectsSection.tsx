@@ -32,7 +32,7 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
     : SHOWCASE_PROJECTS.filter(p => p.category === selectedCategory);
 
   return (
-    <section id="projects-showcase" className="py-24 relative overflow-hidden bg-white dark:bg-[#0B1020] border-t border-slate-200 dark:border-slate-800 transition-colors">
+    <section id="projects-showcase" className="py-24 relative overflow-hidden bg-white dark:bg-[var(--bg-primary)] border-t border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}

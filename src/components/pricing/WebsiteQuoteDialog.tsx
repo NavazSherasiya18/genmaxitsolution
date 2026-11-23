@@ -105,7 +105,7 @@ export function WebsiteQuoteDialog({ selection, currency, budget, timeline, onCl
       ref={modal}
       aria-labelledby={`${id}-title`}
       onCancel={(event) => { event.preventDefault(); close(); }}
-      className="fixed inset-0 m-auto max-h-[calc(100dvh-1rem)] w-[calc(100%-1rem)] max-w-5xl overflow-y-auto overscroll-contain rounded-2xl border border-slate-200 bg-[#F8FAFC] p-4 text-slate-800 shadow-2xl backdrop:bg-slate-950/65 backdrop:backdrop-blur-sm sm:max-h-[calc(100dvh-3rem)] sm:w-[calc(100%-3rem)] sm:p-7 dark:border-slate-700 dark:bg-[#0B1020] dark:text-slate-100"
+      className="fixed inset-0 m-auto max-h-[calc(100dvh-1rem)] w-[calc(100%-1rem)] max-w-5xl overflow-y-auto overscroll-contain rounded-2xl border border-slate-200 bg-[var(--bg-primary)] p-4 text-slate-800 shadow-2xl backdrop:bg-slate-950/65 backdrop:backdrop-blur-sm sm:max-h-[calc(100dvh-3rem)] sm:w-[calc(100%-3rem)] sm:p-7 dark:border-slate-700 dark:bg-[var(--bg-primary)] dark:text-slate-100"
     >
       <div className="mb-4 flex items-start justify-between gap-3">
         <h2 id={`${id}-title`} className="pt-1 font-heading text-2xl font-bold text-slate-900 dark:text-white">Request a custom quote</h2>

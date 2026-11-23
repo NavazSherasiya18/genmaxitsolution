@@ -135,7 +135,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenAudit }) => 
               <div className="pt-2">
                 <button
                   onClick={onOpenAudit}
-                  className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-semibold text-xs tracking-wider uppercase hover:opacity-95 shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all"
+                  className="w-full py-3.5 px-6 rounded-xl genmax-action text-white font-semibold text-xs tracking-wider uppercase hover:opacity-95 shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>Lock in This Growth Strategy</span>

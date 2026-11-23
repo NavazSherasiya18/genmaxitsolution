@@ -331,7 +331,7 @@ export const FreeAuditModal: React.FC<FreeAuditModalProps> = ({
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white dark:bg-[#0B1020] border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8"
+        className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white dark:bg-[var(--bg-primary)] border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Ambient Top Glow */}
@@ -512,7 +512,7 @@ export const FreeAuditModal: React.FC<FreeAuditModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-semibold text-sm hover:opacity-95 active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 disabled:opacity-50 cursor-pointer"
+                  className="w-full py-3 px-6 rounded-xl genmax-action text-white font-semibold text-sm hover:opacity-95 active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 disabled:opacity-50 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

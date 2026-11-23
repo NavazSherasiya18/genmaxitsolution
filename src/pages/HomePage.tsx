@@ -44,7 +44,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
   };
 
   return (
-    <div className="relative overflow-hidden bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="relative overflow-hidden bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       
       {/* ---------------- 1. SPECIFICATION HERO SECTION ---------------- */}
       <EngineeredHeroSection onOpenAudit={onOpenAudit} />
@@ -278,7 +278,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                     onClick={() => onOpenAudit()}
                     className={`w-full py-3.5 px-6 rounded-xl font-semibold text-xs tracking-wider uppercase transition-all cursor-pointer ${
                       plan.popular
-                        ? 'bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white hover:opacity-95 shadow-md'
+                        ? 'genmax-action text-white hover:opacity-95 shadow-md'
                         : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white'
                     }`}
                   >
@@ -366,7 +366,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-4 px-8 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-bold text-sm tracking-wide uppercase hover:opacity-95 shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-4 px-8 rounded-xl genmax-action text-white font-bold text-sm tracking-wide uppercase hover:opacity-95 shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <span>Run Free Audit & Send Recommendations</span>
                       <ArrowRight className="w-4 h-4" />

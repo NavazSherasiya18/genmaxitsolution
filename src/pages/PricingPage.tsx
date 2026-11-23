@@ -22,7 +22,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
   ];
 
   return (
-    <div className="pt-28 pb-20 bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Header */}
       <section className="relative py-16 lg:py-20 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
@@ -91,7 +91,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
                   onClick={onOpenAudit}
                   className={`w-full py-3.5 px-6 rounded-xl font-semibold text-xs tracking-wider uppercase transition-all cursor-pointer ${
                     plan.popular
-                      ? 'bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white hover:opacity-95 shadow-md'
+                      ? 'genmax-action text-white hover:opacity-95 shadow-md'
                       : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white'
                   }`}
                 >

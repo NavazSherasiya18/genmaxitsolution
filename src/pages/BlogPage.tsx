@@ -12,7 +12,7 @@ export const BlogPage: React.FC = () => {
   });
 
   return (
-    <div className="pt-28 pb-20 bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Header */}
       <section className="relative py-16 lg:py-20 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

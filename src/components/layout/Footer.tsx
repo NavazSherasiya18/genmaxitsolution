@@ -10,7 +10,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenVerify }) => {
   return (
-    <footer className="relative bg-[#070B16] border-t border-slate-800/80 text-slate-400 pt-16 pb-12 overflow-hidden">
+    <footer className="genmax-footer relative border-t border-indigo-400/25 text-slate-400 pt-16 pb-12 overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -54,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenVerify }) => {
           {/* Col 1: Brand Info & Contact */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="inline-block mb-2">
-              <GenmaxLogo size="lg" theme="white" />
+              <GenmaxLogo size="footer" />
             </Link>
             <p className="text-sm text-slate-300 leading-relaxed pr-4">
               {COMPANY_DETAILS.tagline}. We combine deep technical architecture, algorithmic search dominance, and conversion UI to scale ambitious businesses.
@@ -167,7 +167,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenVerify }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
             © {new Date().getFullYear()} {COMPANY_DETAILS.name}. All rights reserved.
           </div>

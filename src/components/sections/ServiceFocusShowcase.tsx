@@ -433,7 +433,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                 <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
                   <button
                     onClick={() => onOpenAudit(activeCompetency.auditService)}
-                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-indigo-500/25 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full sm:w-auto px-6 py-3 rounded-xl genmax-action text-white font-semibold text-sm hover:shadow-lg hover:shadow-indigo-500/25 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Sparkles className="w-4 h-4 text-cyan-200" />
                     <span>Request Free Audit for {activeCompetency.title}</span>

@@ -32,7 +32,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ onOpenAudit }) => {
   const relatedPosts = BLOG_POSTS.filter((p) => p.id !== post.id).slice(0, 2);
 
   return (
-    <div className="pt-28 pb-20 bg-[#F8FAFC] dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Top Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-slate-200 dark:bg-slate-800">
         <div

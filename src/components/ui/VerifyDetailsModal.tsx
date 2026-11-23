@@ -242,7 +242,7 @@ export const VerifyDetailsModal: React.FC<VerifyDetailsModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-600 text-white font-bold text-xs tracking-wide uppercase hover:opacity-95 shadow-md shadow-indigo-500/25 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
+                  className="w-full py-2.5 px-4 rounded-xl genmax-action text-white font-bold text-xs tracking-wide uppercase hover:opacity-95 shadow-md shadow-indigo-500/25 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

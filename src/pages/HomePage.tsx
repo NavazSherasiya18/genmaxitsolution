@@ -19,7 +19,7 @@ import { ServiceFocusShowcase } from '../components/sections/ServiceFocusShowcas
 import { FeaturedProjectsSection } from '../components/sections/FeaturedProjectsSection';
 import { SpotlightCard } from '../components/animations/SpotlightCard';
 import { AnimatedCounter } from '../components/animations/AnimatedCounter';
-import { RoiCalculator } from '../components/sections/RoiCalculator';
+// import { RoiCalculator } from '../components/sections/RoiCalculator';
 import { TechStackTabs } from '../components/sections/TechStackTabs';
 import { ScrollReveal } from '../components/animations/ScrollReveal';
 import { GoogleMapsSection } from '../components/maps/GoogleMapsSection';
@@ -68,13 +68,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
       </ScrollReveal>
 
       {/* ---------------- 4. INTERACTIVE ROI & GROWTH CALCULATOR ---------------- */}
-      <ScrollReveal yOffset={28} duration={800} threshold={0.1}>
+      {/* <ScrollReveal yOffset={28} duration={800} threshold={0.1}>
         <section className="py-20 bg-slate-100/60 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <RoiCalculator onOpenAudit={onOpenAudit} />
           </div>
         </section>
-      </ScrollReveal>
+      </ScrollReveal> */}
 
       {/* ---------------- 5. ABOUT COMPANY & STORY (SPLIT SCREEN) ---------------- */}
       <ScrollReveal yOffset={30} duration={800} threshold={0.1}>

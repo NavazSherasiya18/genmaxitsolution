@@ -113,9 +113,9 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
 
                   {/* Hover Overlay CTA */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-950/45 backdrop-blur-xs">
-                    <span className="px-5 py-2.5 rounded-xl bg-white text-slate-950 font-bold text-xs tracking-wide shadow-2xl inline-flex items-center gap-2">
+                    <span className="px-5 py-2.5 rounded-xl genmax-action text-white font-bold text-xs tracking-wide shadow-2xl border border-white/20 inline-flex items-center gap-2">
                       <span>{primaryCta}</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-indigo-600" />
+                      <ExternalLink className="w-3.5 h-3.5 text-cyan-200" />
                     </span>
                   </div>
 

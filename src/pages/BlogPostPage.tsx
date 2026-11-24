@@ -32,7 +32,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ onOpenAudit }) => {
   const relatedPosts = BLOG_POSTS.filter((p) => p.id !== post.id).slice(0, 2);
 
   return (
-    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-[var(--bg-primary)] pt-28 pb-20 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Top Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-slate-200 dark:bg-slate-800">
         <div
@@ -43,7 +43,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ onOpenAudit }) => {
 
       {/* Breadcrumb */}
       <div className="border-b border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/40">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
           <Link to="/" className="hover:text-indigo-600 dark:hover:text-white transition-colors">Home</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600" />
           <Link to="/blog" className="hover:text-indigo-600 dark:hover:text-white transition-colors">Blog</Link>

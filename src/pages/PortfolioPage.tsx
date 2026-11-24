@@ -19,7 +19,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
   });
 
   return (
-    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-[var(--bg-primary)] pt-28 pb-20 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Header */}
       <section className="relative py-16 lg:py-20 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +42,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
               onClick={() => setFilter('all')}
               className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 filter === 'all'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-indigo-200 dark:border-cyan-500/30 shadow-xs'
+                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
               }`}
             >
@@ -52,7 +52,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
               onClick={() => setFilter('seo')}
               className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 filter === 'seo'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-indigo-200 dark:border-cyan-500/30 shadow-xs'
+                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
               }`}
             >
@@ -62,7 +62,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
               onClick={() => setFilter('ecommerce')}
               className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 filter === 'ecommerce'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-indigo-200 dark:border-cyan-500/30 shadow-xs'
+                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
               }`}
             >
@@ -72,7 +72,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
               onClick={() => setFilter('development')}
               className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 filter === 'development'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-indigo-200 dark:border-cyan-500/30 shadow-xs'
+                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
               }`}
             >
@@ -108,7 +108,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
-                    <div className="absolute top-4 left-4 px-3 py-1 rounded-md bg-white/90 dark:bg-black/70 backdrop-blur-md border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-900 dark:text-cyan-300 shadow-xs">
+                    <div className="absolute top-4 left-4 px-3 py-1 rounded-md bg-slate-950/80 backdrop-blur-md border border-indigo-400/25 text-xs font-semibold text-cyan-300 shadow-xs">
                       {study.client}
                     </div>
                   </div>

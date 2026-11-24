@@ -6,7 +6,7 @@ import {
   ArrowRight, Sparkles, TrendingUp, ShieldCheck, CheckCircle2, 
   ChevronRight, Search, BarChart3, Globe, Smartphone, 
   Code2, Palette, Zap, Star, MessageSquare, Plus, Minus,
-  Layers, Trophy, Clock, Cpu, Headphones
+  Layers, Trophy, Clock, Cpu, Headphones, MapPin
 } from 'lucide-react';
 import { 
   COMPANY_DETAILS, SERVICES, PRICING_PLANS, WHY_CHOOSE_US, 
@@ -54,7 +54,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
   };
 
   return (
-    <div className="relative overflow-hidden bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-[var(--bg-primary)] relative overflow-hidden text-slate-800 dark:text-slate-100 transition-colors duration-300">
       
       {/* ---------------- 1. SPECIFICATION HERO SECTION ---------------- */}
       <EngineeredHeroSection onOpenAudit={onOpenAudit} />
@@ -92,14 +92,31 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
-                  <div className="genmax-card genmax-card-soft absolute bottom-6 left-6 right-6 p-4 rounded-xl backdrop-blur-md">
-                    <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-wider mb-1">
-                      Headquartered in Noida, Delhi NCR
+                  <a
+                    href="#noida-headquarters-map"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById('noida-headquarters-map')
+                        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    aria-label="Headquartered in Noida, Delhi NCR — View office location on Google Maps"
+                    className="genmax-card genmax-card-soft group/loc absolute bottom-6 left-6 right-6 p-4 rounded-xl backdrop-blur-md block cursor-pointer transition-all hover:border-cyan-400/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  >
+                    <div className="flex items-center justify-between gap-2 text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-wider mb-1">
+                      <span className="inline-flex items-center gap-1.5 underline decoration-cyan-400/50 underline-offset-4 group-hover/loc:decoration-cyan-300">
+                        <MapPin className="w-3.5 h-3.5 shrink-0" />
+                        <span>Headquartered in Noida, Delhi NCR</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium normal-case tracking-normal text-cyan-300 opacity-90 group-hover/loc:translate-x-0.5 transition-transform shrink-0">
+                        <span>View Map</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </span>
                     </div>
                     <div className="text-sm font-bold text-slate-900 dark:text-white">
                       Serving Ambitious Enterprises Across India & Worldwide
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
 
@@ -182,7 +199,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
 
       {/* ---------------- 7. WHY CHOOSE US (6 INTERACTIVE CARDS) ---------------- */}
       <ScrollReveal yOffset={28} duration={800} threshold={0.1}>
-        <section className="py-24 relative">
+        <section className="py-24 relative border-t border-slate-200 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-widest mb-2">
@@ -228,7 +245,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
 
       {/* ---------------- 9. PRICING PLANS ---------------- */}
       <ScrollReveal yOffset={28} duration={800} threshold={0.1}>
-        <section className="py-24 relative">
+        <section className="py-24 relative border-t border-slate-200 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-widest mb-2">
@@ -502,7 +519,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
 
       {/* ---------------- 12B. NOIDA HEADQUARTERS & GOOGLE MAPS ---------------- */}
       <ScrollReveal yOffset={28} duration={800} threshold={0.1}>
-        <section className="py-20 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
+        <section
+          id="noida-headquarters-map"
+          className="py-20 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 scroll-mt-24"
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-widest mb-2">

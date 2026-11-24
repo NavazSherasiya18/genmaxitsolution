@@ -45,14 +45,14 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
   const assurances = CATEGORY_ASSURANCES[service.category];
 
   return (
-    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-[var(--bg-primary)] pt-28 pb-20 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Breadcrumb Navigation */}
       <div className="border-b border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/40">
-        <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+        <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
           <Link to="/" className="hover:text-indigo-600 dark:hover:text-white transition-colors">Home</Link>
-          <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 shrink-0 text-slate-400 dark:text-slate-600" />
+          <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 shrink-0 text-slate-400 dark:text-slate-500" />
           <Link to="/services" className="hover:text-indigo-600 dark:hover:text-white transition-colors">Services</Link>
-          <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 shrink-0 text-slate-400 dark:text-slate-600" />
+          <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 shrink-0 text-slate-400 dark:text-slate-500" />
           <span aria-current="page" className="text-indigo-600 dark:text-cyan-400 font-medium truncate">{service.title}</span>
         </nav>
       </div>
@@ -182,7 +182,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
                   <div className="space-y-6 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800">
                     {service.process.map((step) => (
                       <div key={step.step} className="relative pl-9">
-                        <div className="absolute left-1.5 -translate-x-1/2 top-1 w-4 h-4 rounded-full bg-indigo-600 dark:bg-cyan-400 border-4 border-white dark:border-[#0B1020]" />
+                        <div className="absolute left-1.5 -translate-x-1/2 top-1 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#0d1735]" />
                         <div className="text-xs font-mono font-bold text-indigo-600 dark:text-cyan-400 mb-1">
                           STEP {step.step}
                         </div>

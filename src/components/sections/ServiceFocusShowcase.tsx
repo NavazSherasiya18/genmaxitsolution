@@ -299,7 +299,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
               >
                 {/* Active progress indicator bar on the active tab */}
                 {isSelected && (
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-slate-100 dark:bg-slate-800">
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-slate-800/80">
                     <div 
                       className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 transition-all duration-75 ease-linear"
                       style={{ width: `${progress}%` }}
@@ -417,7 +417,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                     {activeCompetency.techStack.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-300 shadow-2xs"
+                        className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-indigo-950/60 dark:bg-slate-800 border border-indigo-500/30 dark:border-slate-700 text-indigo-100 dark:text-slate-300 shadow-2xs"
                       >
                         {tech}
                       </span>

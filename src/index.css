@@ -79,9 +79,9 @@
 /* Genmax's agency palette is scoped to the main site. */
 .genmax-site {
   --genmax-navy: #070c23;
-  --genmax-action: linear-gradient(110deg, #2448d2 0%, #5931cc 58%, #07678d 100%);
-  --genmax-spectrum: linear-gradient(105deg, #73e7ff 0%, #8caeff 48%, #d1a5ff 100%);
-  --genmax-text-gradient: linear-gradient(105deg, #214ac8, #086b9e 48%, #6a2dbb);
+  --genmax-action: linear-gradient(90deg, #2448d2 0%, #5931cc 52%, #07678d 100%);
+  --genmax-spectrum: linear-gradient(90deg, #73e7ff 0%, #8caeff 48%, #d1a5ff 100%);
+  --genmax-text-gradient: linear-gradient(90deg, #214ac8, #086b9e 48%, #6a2dbb);
   --genmax-card-base: #0d1735;
   --genmax-card-border: #304a83;
   --genmax-card-blue: #3159f5;
@@ -167,6 +167,22 @@
   background-image: var(--genmax-action);
 }
 
+.genmax-site ::selection {
+  background-color: rgb(70 91 232 / 0.22);
+  color: #0f172a;
+  -webkit-text-fill-color: #0f172a;
+}
+
+.dark .genmax-site ::selection,
+.genmax-site .genmax-hero ::selection,
+.genmax-site .genmax-footer ::selection,
+.genmax-site .genmax-card ::selection,
+.genmax-site .genmax-card::selection {
+  background-color: rgb(34 211 238 / 0.36);
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
 .genmax-hero {
   --bg: var(--genmax-navy);
   --surface: #111a36;
@@ -210,15 +226,17 @@
     var(--genmax-navy);
 }
 
+/* Colored boxes feature rich Left-to-Right (90deg) multi-stop linear gradients */
 .genmax-site .genmax-card {
   --genmax-card-tint: var(--genmax-card-blue);
   --genmax-card-tint-end: var(--genmax-card-cyan);
   --genmax-card-accent: var(--color-indigo-400);
   --genmax-card-glint: var(--color-cyan-400);
-  --genmax-card-wash: 43%;
-  --genmax-card-wash-end: 22%;
-  --genmax-card-edge: 48%;
-  --genmax-card-hover-edge: 68%;
+  --genmax-card-lr-start: #121b48;
+  --genmax-card-lr-mid: #1e357c;
+  --genmax-card-lr-end: #0d4a76;
+  --genmax-card-edge: 52%;
+  --genmax-card-hover-edge: 78%;
   --genmax-card-highlight: 2px;
   --genmax-card-ink: #f3f7ff;
   --color-slate-400: #c3d0ea;
@@ -229,9 +247,12 @@
   color-scheme: dark;
   border: 1px solid color-mix(in srgb, var(--genmax-card-accent) var(--genmax-card-edge), var(--genmax-card-border));
   background:
-    linear-gradient(92deg, var(--genmax-card-accent), var(--genmax-card-glint) 36%, transparent 87%) top / 100% var(--genmax-card-highlight) no-repeat,
-    linear-gradient(147deg, color-mix(in srgb, var(--genmax-card-tint) var(--genmax-card-wash), var(--genmax-card-base)), color-mix(in srgb, var(--genmax-card-tint-end) var(--genmax-card-wash-end), var(--genmax-card-base)));
-  box-shadow: 0 2px 7px rgb(7 12 35 / 0.06), 0 15px 32px -19px color-mix(in srgb, var(--genmax-card-accent) 62%, transparent);
+    linear-gradient(90deg, var(--genmax-card-accent) 0%, var(--genmax-card-glint) 48%, transparent 94%) top / 100% var(--genmax-card-highlight) no-repeat,
+    linear-gradient(90deg, var(--genmax-card-lr-start) 0%, var(--genmax-card-lr-mid) 50%, var(--genmax-card-lr-end) 100%);
+  box-shadow:
+    0 4px 12px rgb(15 23 51 / 0.1),
+    0 18px 36px -16px color-mix(in srgb, var(--genmax-card-tint) 42%, transparent),
+    0 10px 24px -14px color-mix(in srgb, var(--genmax-card-glint) 28%, transparent);
 }
 
 @layer components {
@@ -245,6 +266,9 @@
   --genmax-card-tint-end: var(--genmax-card-blue);
   --genmax-card-accent: var(--color-cyan-500);
   --genmax-card-glint: var(--color-cyan-300);
+  --genmax-card-lr-start: #0b2347;
+  --genmax-card-lr-mid: #0d4b73;
+  --genmax-card-lr-end: #1d3a8a;
 }
 
 .genmax-site .genmax-card:where(:nth-child(3n of .genmax-card)) {
@@ -252,27 +276,49 @@
   --genmax-card-tint-end: var(--genmax-card-blue);
   --genmax-card-accent: var(--color-violet-400);
   --genmax-card-glint: var(--color-violet-300);
+  --genmax-card-lr-start: #1a1647;
+  --genmax-card-lr-mid: #3c2482;
+  --genmax-card-lr-end: #173d84;
 }
 
 .genmax-site .genmax-card-soft {
-  --genmax-card-wash: 25%;
-  --genmax-card-wash-end: 13%;
-  --genmax-card-edge: 28%;
-  --genmax-card-highlight: 0px;
-  box-shadow: none;
+  --genmax-card-lr-start: #0e173a;
+  --genmax-card-lr-mid: #16285e;
+  --genmax-card-lr-end: #103561;
+  --genmax-card-edge: 34%;
+  --genmax-card-highlight: 1px;
+  box-shadow:
+    0 2px 8px rgb(15 23 51 / 0.08),
+    0 10px 22px -14px color-mix(in srgb, var(--genmax-card-tint) 32%, transparent);
+}
+
+.genmax-site .genmax-card-soft:where(:nth-child(3n + 2 of .genmax-card)) {
+  --genmax-card-lr-start: #0b1f3f;
+  --genmax-card-lr-mid: #0e3c5e;
+  --genmax-card-lr-end: #183070;
+}
+
+.genmax-site .genmax-card-soft:where(:nth-child(3n of .genmax-card)) {
+  --genmax-card-lr-start: #17143e;
+  --genmax-card-lr-mid: #2c1e66;
+  --genmax-card-lr-end: #143269;
 }
 
 .genmax-site .genmax-card-emphasis {
   --genmax-card-tint: var(--genmax-card-violet);
-  --genmax-card-tint-end: var(--genmax-card-blue);
-  --genmax-card-accent: var(--color-violet-500);
+  --genmax-card-tint-end: var(--genmax-card-cyan);
+  --genmax-card-accent: var(--color-violet-400);
   --genmax-card-glint: #ffba70;
-  --genmax-card-wash: 49%;
-  --genmax-card-wash-end: 38%;
-  --genmax-card-edge: 72%;
-  --genmax-card-hover-edge: 82%;
+  --genmax-card-lr-start: #1d195c;
+  --genmax-card-lr-mid: #432899;
+  --genmax-card-lr-end: #0f5289;
+  --genmax-card-edge: 76%;
+  --genmax-card-hover-edge: 90%;
   --genmax-card-highlight: 3px;
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--genmax-card-accent) 42%, transparent), 0 17px 35px -21px color-mix(in srgb, var(--genmax-card-accent) 72%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--genmax-card-accent) 46%, transparent),
+    0 20px 44px -14px color-mix(in srgb, var(--genmax-card-tint) 52%, transparent),
+    0 10px 26px -10px color-mix(in srgb, var(--genmax-card-glint) 28%, transparent);
 }
 
 .genmax-site .genmax-card-orbit {
@@ -303,8 +349,9 @@
   border-radius: 0.875rem;
   color: color-mix(in srgb, var(--genmax-card-ink) 78%, var(--genmax-card-glint));
   border: 1px solid color-mix(in srgb, var(--genmax-card-accent) 35%, transparent);
-  background: linear-gradient(150deg,
-    color-mix(in srgb, var(--genmax-card-glint) 23%, var(--genmax-card-base)), var(--genmax-card-base));
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--genmax-card-accent) 28%, var(--genmax-card-base)),
+    color-mix(in srgb, var(--genmax-card-glint) 22%, var(--genmax-card-base)));
   box-shadow: 0 5px 14px -9px color-mix(in srgb, var(--genmax-card-accent) 72%, transparent);
 }
 
@@ -315,12 +362,13 @@
 .genmax-site .genmax-commitment-card {
   --genmax-card-cyan: #0b75a4;
   --genmax-card-base: #111d43;
-  --genmax-card-edge: 59%;
+  --genmax-card-edge: 62%;
   background:
-    linear-gradient(90deg, var(--genmax-card-glint), var(--genmax-card-accent) 45%, transparent 86%) top / 100% 2px no-repeat,
-    radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--genmax-card-tint) 75%, transparent), transparent 76%),
-    linear-gradient(125deg, #091329, #111d43);
-  box-shadow: 0 10px 26px -14px rgb(7 12 35 / 0.48), 0 20px 34px -24px color-mix(in srgb, var(--genmax-card-accent) 68%, transparent);
+    linear-gradient(90deg, var(--genmax-card-glint) 0%, var(--genmax-card-accent) 48%, transparent 92%) top / 100% 2px no-repeat,
+    linear-gradient(90deg, var(--genmax-card-lr-start) 0%, var(--genmax-card-lr-mid) 52%, var(--genmax-card-lr-end) 100%);
+  box-shadow:
+    0 10px 26px -12px rgb(7 12 35 / 0.32),
+    0 20px 38px -18px color-mix(in srgb, var(--genmax-card-tint) 48%, transparent);
 }
 
 .genmax-site .genmax-commitment-card .genmax-card-icon {
@@ -339,7 +387,38 @@
   }
 
   .genmax-site .genmax-card:hover:not(.genmax-card-soft, .genmax-card-emphasis) {
-    box-shadow: 0 5px 12px rgb(7 12 35 / 0.08), 0 16px 30px -20px color-mix(in srgb, var(--genmax-card-accent) 68%, transparent);
+    background:
+      linear-gradient(90deg, var(--genmax-card-accent) 0%, var(--genmax-card-glint) 52%, transparent 95%) top / 100% 2px no-repeat,
+      linear-gradient(90deg,
+        color-mix(in srgb, var(--genmax-card-tint) 22%, var(--genmax-card-lr-start)) 0%,
+        color-mix(in srgb, var(--genmax-card-accent) 18%, var(--genmax-card-lr-mid)) 52%,
+        color-mix(in srgb, var(--genmax-card-glint) 16%, var(--genmax-card-lr-end)) 100%);
+    box-shadow:
+      0 12px 26px -10px rgb(15 23 51 / 0.22),
+      0 22px 44px -14px color-mix(in srgb, var(--genmax-card-tint) 56%, transparent),
+      0 10px 24px -10px color-mix(in srgb, var(--genmax-card-glint) 34%, transparent);
+  }
+
+  .genmax-site .genmax-card.genmax-card-soft:hover {
+    background:
+      linear-gradient(90deg, var(--genmax-card-accent) 0%, var(--genmax-card-glint) 45%, transparent 90%) top / 100% 1px no-repeat,
+      linear-gradient(90deg,
+        color-mix(in srgb, var(--genmax-card-tint) 16%, var(--genmax-card-lr-start)) 0%,
+        color-mix(in srgb, var(--genmax-card-accent) 14%, var(--genmax-card-lr-mid)) 52%,
+        color-mix(in srgb, var(--genmax-card-glint) 12%, var(--genmax-card-lr-end)) 100%);
+    box-shadow:
+      0 10px 22px -10px rgb(15 23 51 / 0.18),
+      0 16px 34px -14px color-mix(in srgb, var(--genmax-card-tint) 44%, transparent);
+  }
+
+  .genmax-site .genmax-card.genmax-card-emphasis:hover {
+    background:
+      linear-gradient(90deg, var(--genmax-card-glint) 0%, var(--genmax-card-accent) 52%, var(--color-cyan-300) 96%) top / 100% 3px no-repeat,
+      linear-gradient(90deg, #241e6b 0%, #4d2ead 50%, #125c96 100%);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--genmax-card-accent) 66%, transparent),
+      0 26px 52px -12px color-mix(in srgb, var(--genmax-card-tint) 66%, transparent),
+      0 14px 30px -10px color-mix(in srgb, var(--genmax-card-glint) 38%, transparent);
   }
 }
 

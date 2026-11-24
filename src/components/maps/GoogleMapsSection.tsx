@@ -158,7 +158,7 @@ export const GoogleMapsSection: React.FC<GoogleMapsSectionProps> = ({ className 
         <div className={`grid grid-cols-1 ${compact ? 'lg:grid-cols-1' : 'lg:grid-cols-12'} gap-0`}>
           
           {/* Main Map Canvas */}
-          <div className={`${compact ? 'w-full' : 'lg:col-span-8'} relative min-h-[440px] bg-slate-100 dark:bg-slate-950`}>
+          <div className={`${compact ? 'w-full' : 'lg:col-span-8'} relative min-h-[440px] bg-slate-950`}>
             {apiKey ? (
               <MapContent apiKey={apiKey} onOpenDirections={handleOpenDirections} />
             ) : (
@@ -174,7 +174,7 @@ export const GoogleMapsSection: React.FC<GoogleMapsSectionProps> = ({ className 
                   referrerPolicy="no-referrer-when-downgrade"
                   src={`https://maps.google.com/maps?q=${NOIDA_HQ_COORDS.lat},${NOIDA_HQ_COORDS.lng}&hl=en&z=15&output=embed`}
                 />
-                <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-lg bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-md text-xs font-medium text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-lg bg-slate-950/90 backdrop-blur-md border border-indigo-400/30 shadow-md text-xs font-medium text-slate-100 flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                   <span>Genmax IT Solution • Noida HQ</span>
                 </div>
@@ -184,7 +184,7 @@ export const GoogleMapsSection: React.FC<GoogleMapsSectionProps> = ({ className 
 
           {/* Location & Commute Details Sidebar */}
           {!compact && (
-            <div className="lg:col-span-4 p-6 sm:p-8 bg-slate-50/70 dark:bg-slate-900/40 border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-4 p-6 sm:p-8 bg-slate-900/50 border-t lg:border-t-0 lg:border-l border-indigo-500/20 flex flex-col justify-between space-y-6">
               
               <div className="space-y-5">
                 <div>
@@ -250,7 +250,7 @@ export const GoogleMapsSection: React.FC<GoogleMapsSectionProps> = ({ className 
                   href={googleMapsDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 px-4 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-xs text-center hover:opacity-90 transition-opacity flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 px-4 rounded-xl genmax-action text-white font-semibold text-xs text-center hover:opacity-95 shadow-md transition-opacity flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Navigation className="w-4 h-4" />
                   <span>Open in Google Maps App</span>

@@ -38,7 +38,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit })
     .filter((category) => category.services.length > 0);
 
   return (
-    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-[var(--bg-primary)] pt-28 pb-20 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Header */}
       <section className="relative py-16 lg:py-20 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,8 +67,8 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit })
                   onClick={() => setActiveCategory(category.id)}
                   className={`min-h-11 px-3.5 py-2 rounded-lg text-left text-xs font-medium transition-all cursor-pointer xl:min-h-8 ${
                     activeCategory === category.id
-                      ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 shadow-xs font-semibold'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'genmax-action text-white shadow-sm font-semibold'
+                      : 'text-slate-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {category.title} ({category.services.length})
@@ -113,7 +113,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit })
                             <Icon className="size-5" />
                           </span>
                           {svc.legacy && (
-                            <span className="flex items-center gap-1.5 rounded-full bg-white/45 px-2.5 py-1 text-xs font-medium text-slate-700 dark:bg-slate-950/35 dark:text-slate-300">
+                            <span className="flex items-center gap-1.5 rounded-full bg-indigo-950/55 border border-indigo-400/25 px-2.5 py-1 text-xs font-medium text-indigo-100">
                               <Clock aria-hidden="true" className="size-3" /> 7-14 Days SLA
                             </span>
                           )}

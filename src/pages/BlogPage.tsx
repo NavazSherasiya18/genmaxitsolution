@@ -12,7 +12,7 @@ export const BlogPage: React.FC = () => {
   });
 
   return (
-    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-[var(--bg-primary)] pt-28 pb-20 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Header */}
       <section className="relative py-16 lg:py-20 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +35,7 @@ export const BlogPage: React.FC = () => {
               onClick={() => setSelectedCategory('all')}
               className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 selectedCategory === 'all'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-indigo-200 dark:border-cyan-500/30 shadow-xs'
+                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
               }`}
             >
@@ -45,7 +45,7 @@ export const BlogPage: React.FC = () => {
               onClick={() => setSelectedCategory('seo')}
               className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 selectedCategory === 'seo'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-indigo-200 dark:border-cyan-500/30 shadow-xs'
+                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
               }`}
             >
@@ -55,7 +55,7 @@ export const BlogPage: React.FC = () => {
               onClick={() => setSelectedCategory('development')}
               className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 selectedCategory === 'development'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-indigo-200 dark:border-cyan-500/30 shadow-xs'
+                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
               }`}
             >

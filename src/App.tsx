@@ -108,7 +108,7 @@ function AppLayout() {
       <div className={
         isStandaloneProjectRoute
           ? 'min-h-screen flex flex-col'
-          : 'genmax-site min-h-screen bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 flex flex-col selection:bg-indigo-500/20 selection:text-indigo-900 dark:selection:bg-cyan-500/30 dark:selection:text-cyan-200 transition-colors duration-300'
+          : 'genmax-site min-h-screen bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 flex flex-col transition-colors duration-300'
       }>
         {!isStandaloneProjectRoute && <ScrollProgressBar />}
         

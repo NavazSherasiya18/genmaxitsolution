@@ -22,7 +22,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
   ];
 
   return (
-    <div className="pt-28 pb-20 bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-[var(--bg-primary)] pt-28 pb-20 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Header */}
       <section className="relative py-16 lg:py-20 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
@@ -103,18 +103,18 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
 
           {/* Detailed Comparison Table */}
           <div className="genmax-card rounded-2xl overflow-hidden mb-16">
-            <div className="p-6 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
-              <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white">
+            <div className="p-6 bg-slate-900/75 border-b border-indigo-500/20 dark:border-slate-800">
+              <h3 className="text-lg font-bold font-heading text-white">
                 Side-by-Side Feature Comparison
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-xs text-slate-300 mt-1">
                 Verify exactly what is included in each service tier before making a decision.
               </p>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-100 dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
+                <thead className="bg-slate-900/90 text-slate-200 uppercase tracking-wider font-semibold border-b border-indigo-500/20 dark:border-slate-800">
                   <tr>
                     <th className="p-4 pl-6">Feature / Inclusions</th>
                     <th className="p-4">Starter (₹4,999)</th>

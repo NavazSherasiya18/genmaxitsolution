@@ -56,13 +56,13 @@ export const TechStackTabs: React.FC = () => {
   return (
     <div className="genmax-card rounded-3xl overflow-hidden">
       {/* Category Navigation Bar */}
-      <div className="flex border-b border-slate-100 dark:border-slate-800 overflow-x-auto scrollbar-none bg-slate-50/60 dark:bg-slate-900/60">
+      <div className="flex border-b border-indigo-500/20 dark:border-slate-800 overflow-x-auto scrollbar-none bg-[#0b1533]/80 dark:bg-slate-900/70">
         <button
           onClick={() => setActiveTab('cms')}
           className={`flex-1 min-w-[160px] py-4 px-6 text-xs sm:text-sm font-semibold transition-all border-b-2 cursor-pointer flex items-center justify-center gap-2 ${
             activeTab === 'cms'
-              ? 'border-indigo-600 text-indigo-600 dark:text-cyan-400 bg-white dark:bg-slate-900'
-              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'border-cyan-400 text-cyan-300 bg-gradient-to-r from-indigo-600/25 via-indigo-500/20 to-cyan-500/20'
+              : 'border-transparent text-slate-300 hover:text-white hover:bg-white/5'
           }`}
         >
           <Globe className="w-4 h-4" />
@@ -73,8 +73,8 @@ export const TechStackTabs: React.FC = () => {
           onClick={() => setActiveTab('backend')}
           className={`flex-1 min-w-[160px] py-4 px-6 text-xs sm:text-sm font-semibold transition-all border-b-2 cursor-pointer flex items-center justify-center gap-2 ${
             activeTab === 'backend'
-              ? 'border-indigo-600 text-indigo-600 dark:text-cyan-400 bg-white dark:bg-slate-900'
-              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'border-cyan-400 text-cyan-300 bg-gradient-to-r from-indigo-600/25 via-indigo-500/20 to-cyan-500/20'
+              : 'border-transparent text-slate-300 hover:text-white hover:bg-white/5'
           }`}
         >
           <Server className="w-4 h-4" />
@@ -85,8 +85,8 @@ export const TechStackTabs: React.FC = () => {
           onClick={() => setActiveTab('frontend')}
           className={`flex-1 min-w-[160px] py-4 px-6 text-xs sm:text-sm font-semibold transition-all border-b-2 cursor-pointer flex items-center justify-center gap-2 ${
             activeTab === 'frontend'
-              ? 'border-indigo-600 text-indigo-600 dark:text-cyan-400 bg-white dark:bg-slate-900'
-              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'border-cyan-400 text-cyan-300 bg-gradient-to-r from-indigo-600/25 via-indigo-500/20 to-cyan-500/20'
+              : 'border-transparent text-slate-300 hover:text-white hover:bg-white/5'
           }`}
         >
           <Layers className="w-4 h-4" />
@@ -97,8 +97,8 @@ export const TechStackTabs: React.FC = () => {
           onClick={() => setActiveTab('mobile')}
           className={`flex-1 min-w-[160px] py-4 px-6 text-xs sm:text-sm font-semibold transition-all border-b-2 cursor-pointer flex items-center justify-center gap-2 ${
             activeTab === 'mobile'
-              ? 'border-indigo-600 text-indigo-600 dark:text-cyan-400 bg-white dark:bg-slate-900'
-              : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'border-cyan-400 text-cyan-300 bg-gradient-to-r from-indigo-600/25 via-indigo-500/20 to-cyan-500/20'
+              : 'border-transparent text-slate-300 hover:text-white hover:bg-white/5'
           }`}
         >
           <Smartphone className="w-4 h-4" />

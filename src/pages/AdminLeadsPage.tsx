@@ -71,7 +71,7 @@ export const AdminLeadsPage: React.FC = () => {
   });
 
   return (
-    <div className="pt-28 pb-20 min-h-screen bg-[var(--bg-primary)] text-slate-800 dark:text-slate-100 transition-colors">
+    <div className="bg-[var(--bg-primary)] pt-28 pb-20 min-h-screen text-slate-800 dark:text-slate-100 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Navigation Breadcrumb */}
@@ -162,12 +162,12 @@ export const AdminLeadsPage: React.FC = () => {
 
         {/* Tab Switcher & Search Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
-          <div className="flex items-center gap-2 p-1 rounded-xl bg-slate-200/80 dark:bg-slate-800">
+          <div className="flex items-center gap-2 p-1 rounded-xl bg-slate-200/80 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
             <button
               onClick={() => setActiveTab('leads')}
               className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 activeTab === 'leads'
-                  ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
+                  ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-cyan-400 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -177,7 +177,7 @@ export const AdminLeadsPage: React.FC = () => {
               onClick={() => setActiveTab('emails')}
               className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 activeTab === 'emails'
-                  ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
+                  ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-cyan-400 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -202,7 +202,7 @@ export const AdminLeadsPage: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 font-bold uppercase tracking-wider">
+                  <tr className="bg-slate-900/80 border-b border-indigo-500/20 dark:border-slate-800 text-slate-200 font-bold uppercase tracking-wider">
                     <th className="py-3.5 px-4">#</th>
                     <th className="py-3.5 px-4">Client Name</th>
                     <th className="py-3.5 px-4">Email Address</th>

@@ -286,7 +286,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                     </div>
 
                     <div className="flex items-baseline gap-1 mb-4">
-                      <span className="text-4xl font-bold font-heading text-slate-900 dark:text-white">{plan.price}</span>
+                      <span className="genmax-price text-4xl font-bold font-heading">{plan.price}</span>
                       <span className="text-sm text-slate-500 dark:text-slate-400">{plan.period}</span>
                     </div>
 

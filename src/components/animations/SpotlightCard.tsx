@@ -10,7 +10,7 @@ interface SpotlightCardProps {
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
-  spotlightColor = 'color-mix(in srgb, var(--genmax-card-accent, #465be8) 15%, transparent)',
+  spotlightColor = 'color-mix(in srgb, var(--genmax-card-accent, #465be8) 5%, transparent)',
   onClick,
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
@@ -42,7 +42,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
     >
       {/* Dynamic Cursor Spotlight Radial Glow */}
       <div
-        className="pointer-events-none absolute -inset-px transition-opacity duration-300 z-10"
+        className="pointer-events-none absolute -inset-px motion-safe:transition-opacity duration-300 z-10"
         style={{
           opacity,
           background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,

@@ -70,7 +70,7 @@ function PackageCards({ selection, currency, onSelect }: { selection: PackagedSe
               </span>
               <h4 className="font-heading text-xl font-bold text-slate-900 dark:text-white">{pkg.name}</h4>
               <div className="genmax-card-divider my-3 border-b pb-4">
-                <p className={`break-words font-heading text-2xl font-bold ${accent}`}>{rate === undefined ? 'Request Pricing' : priceText(rate, currency)}</p>
+                <p className="genmax-price break-words font-heading text-2xl font-bold">{rate === undefined ? 'Request Pricing' : priceText(rate, currency)}</p>
                 <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">{rate !== undefined ? `Starting price · ${currency}` : currency}</p>
               </div>
               <p className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">

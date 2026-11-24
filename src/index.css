@@ -87,6 +87,8 @@
   --genmax-card-blue: #3159f5;
   --genmax-card-cyan: #086a9c;
   --genmax-card-violet: #753dea;
+  --genmax-card-backdrop: linear-gradient(90deg, #dce6fc, #d9edf8 48%, #e8dff9);
+  --genmax-price: #ffda8c;
 
   --color-slate-50: #f5f7ff;
   --color-slate-100: #ebf0fc;
@@ -147,6 +149,7 @@
 
 .dark .genmax-site {
   --genmax-text-gradient: var(--genmax-spectrum);
+  --genmax-card-backdrop: linear-gradient(90deg, #151f43, #102a43 48%, #261b46);
   --color-slate-500: #8699be;
   --bg-primary: #0a1028;
   --bg-secondary: var(--color-slate-900);
@@ -226,7 +229,17 @@
     var(--genmax-navy);
 }
 
-/* Colored boxes feature rich Left-to-Right (90deg) multi-stop linear gradients */
+/* Keep the card backdrop on the outer section when sections contain other sections. */
+.genmax-site main :where(section, article):has(.genmax-card):not(:where(
+  .genmax-hero, .genmax-hero *, .genmax-card, .genmax-card *, section:has(.genmax-card) *
+)) {
+  background-image: var(--genmax-card-backdrop);
+}
+
+.genmax-site .genmax-price {
+  color: var(--genmax-price);
+}
+
 .genmax-site .genmax-card {
   --genmax-card-tint: var(--genmax-card-blue);
   --genmax-card-tint-end: var(--genmax-card-cyan);
@@ -236,7 +249,8 @@
   --genmax-card-lr-mid: #1e357c;
   --genmax-card-lr-end: #0d4a76;
   --genmax-card-edge: 52%;
-  --genmax-card-hover-edge: 78%;
+  --genmax-card-hover-edge: 59%;
+  --genmax-card-hover-scale: 1.05;
   --genmax-card-highlight: 2px;
   --genmax-card-ink: #f3f7ff;
   --color-slate-400: #c3d0ea;
@@ -251,8 +265,8 @@
     linear-gradient(90deg, var(--genmax-card-lr-start) 0%, var(--genmax-card-lr-mid) 50%, var(--genmax-card-lr-end) 100%);
   box-shadow:
     0 4px 12px rgb(15 23 51 / 0.1),
-    0 18px 36px -16px color-mix(in srgb, var(--genmax-card-tint) 42%, transparent),
-    0 10px 24px -14px color-mix(in srgb, var(--genmax-card-glint) 28%, transparent);
+    0 20px 38px -15px color-mix(in srgb, var(--genmax-card-tint) 57%, transparent),
+    0 10px 26px -13px color-mix(in srgb, var(--genmax-card-glint) 32%, transparent);
 }
 
 @layer components {
@@ -286,10 +300,12 @@
   --genmax-card-lr-mid: #16285e;
   --genmax-card-lr-end: #103561;
   --genmax-card-edge: 34%;
+  --genmax-card-hover-edge: 41%;
+  --genmax-card-hover-scale: 1.04;
   --genmax-card-highlight: 1px;
   box-shadow:
     0 2px 8px rgb(15 23 51 / 0.08),
-    0 10px 22px -14px color-mix(in srgb, var(--genmax-card-tint) 32%, transparent);
+    0 11px 24px -13px color-mix(in srgb, var(--genmax-card-tint) 44%, transparent);
 }
 
 .genmax-site .genmax-card-soft:where(:nth-child(3n + 2 of .genmax-card)) {
@@ -313,11 +329,11 @@
   --genmax-card-lr-mid: #432899;
   --genmax-card-lr-end: #0f5289;
   --genmax-card-edge: 76%;
-  --genmax-card-hover-edge: 90%;
+  --genmax-card-hover-edge: 82%;
   --genmax-card-highlight: 3px;
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--genmax-card-accent) 46%, transparent),
-    0 20px 44px -14px color-mix(in srgb, var(--genmax-card-tint) 52%, transparent),
+    0 20px 44px -14px color-mix(in srgb, var(--genmax-card-tint) 62%, transparent),
     0 10px 26px -10px color-mix(in srgb, var(--genmax-card-glint) 28%, transparent);
 }
 
@@ -363,12 +379,13 @@
   --genmax-card-cyan: #0b75a4;
   --genmax-card-base: #111d43;
   --genmax-card-edge: 62%;
+  --genmax-card-hover-edge: 68%;
   background:
     linear-gradient(90deg, var(--genmax-card-glint) 0%, var(--genmax-card-accent) 48%, transparent 92%) top / 100% 2px no-repeat,
     linear-gradient(90deg, var(--genmax-card-lr-start) 0%, var(--genmax-card-lr-mid) 52%, var(--genmax-card-lr-end) 100%);
   box-shadow:
     0 10px 26px -12px rgb(7 12 35 / 0.32),
-    0 20px 38px -18px color-mix(in srgb, var(--genmax-card-tint) 48%, transparent);
+    0 20px 38px -15px color-mix(in srgb, var(--genmax-card-tint) 59%, transparent);
 }
 
 .genmax-site .genmax-commitment-card .genmax-card-icon {
@@ -381,54 +398,50 @@
   border-color: color-mix(in srgb, var(--genmax-card-accent) 72%, var(--genmax-card-border));
 }
 
-@media (hover: hover) {
-  .genmax-site .genmax-card:hover:not(:focus-within) {
+@media (hover: hover) and (pointer: fine) {
+  .genmax-site .genmax-card:hover:not(:focus-within, :has(.genmax-card:hover)) {
     border-color: color-mix(in srgb, var(--genmax-card-accent) var(--genmax-card-hover-edge), var(--genmax-card-border));
   }
 
-  .genmax-site .genmax-card:hover:not(.genmax-card-soft, .genmax-card-emphasis) {
-    background:
-      linear-gradient(90deg, var(--genmax-card-accent) 0%, var(--genmax-card-glint) 52%, transparent 95%) top / 100% 2px no-repeat,
-      linear-gradient(90deg,
-        color-mix(in srgb, var(--genmax-card-tint) 22%, var(--genmax-card-lr-start)) 0%,
-        color-mix(in srgb, var(--genmax-card-accent) 18%, var(--genmax-card-lr-mid)) 52%,
-        color-mix(in srgb, var(--genmax-card-glint) 16%, var(--genmax-card-lr-end)) 100%);
+  .genmax-site .genmax-card:hover:not(.genmax-card-soft, .genmax-card-emphasis, :has(.genmax-card:hover)) {
     box-shadow:
-      0 12px 26px -10px rgb(15 23 51 / 0.22),
-      0 22px 44px -14px color-mix(in srgb, var(--genmax-card-tint) 56%, transparent),
-      0 10px 24px -10px color-mix(in srgb, var(--genmax-card-glint) 34%, transparent);
+      0 10px 24px -10px rgb(15 23 51 / 0.2),
+      0 24px 42px -15px color-mix(in srgb, var(--genmax-card-tint) 64%, transparent),
+      0 12px 28px -13px color-mix(in srgb, var(--genmax-card-glint) 36%, transparent);
   }
 
-  .genmax-site .genmax-card.genmax-card-soft:hover {
-    background:
-      linear-gradient(90deg, var(--genmax-card-accent) 0%, var(--genmax-card-glint) 45%, transparent 90%) top / 100% 1px no-repeat,
-      linear-gradient(90deg,
-        color-mix(in srgb, var(--genmax-card-tint) 16%, var(--genmax-card-lr-start)) 0%,
-        color-mix(in srgb, var(--genmax-card-accent) 14%, var(--genmax-card-lr-mid)) 52%,
-        color-mix(in srgb, var(--genmax-card-glint) 12%, var(--genmax-card-lr-end)) 100%);
+  .genmax-site .genmax-card-soft:hover:not(:has(.genmax-card:hover)) {
     box-shadow:
       0 10px 22px -10px rgb(15 23 51 / 0.18),
-      0 16px 34px -14px color-mix(in srgb, var(--genmax-card-tint) 44%, transparent);
+      0 16px 32px -13px color-mix(in srgb, var(--genmax-card-tint) 52%, transparent);
   }
 
-  .genmax-site .genmax-card.genmax-card-emphasis:hover {
-    background:
-      linear-gradient(90deg, var(--genmax-card-glint) 0%, var(--genmax-card-accent) 52%, var(--color-cyan-300) 96%) top / 100% 3px no-repeat,
-      linear-gradient(90deg, #241e6b 0%, #4d2ead 50%, #125c96 100%);
+  .genmax-site .genmax-card-emphasis:hover:not(:has(.genmax-card:hover)) {
     box-shadow:
-      0 0 0 1px color-mix(in srgb, var(--genmax-card-accent) 66%, transparent),
-      0 26px 52px -12px color-mix(in srgb, var(--genmax-card-tint) 66%, transparent),
-      0 14px 30px -10px color-mix(in srgb, var(--genmax-card-glint) 38%, transparent);
+      0 0 0 1px color-mix(in srgb, var(--genmax-card-accent) 52%, transparent),
+      0 25px 50px -14px color-mix(in srgb, var(--genmax-card-tint) 70%, transparent),
+      0 13px 28px -10px color-mix(in srgb, var(--genmax-card-glint) 32%, transparent);
   }
 }
 
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .genmax-site .genmax-card-lift {
-    transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .genmax-site main .genmax-card:not(:where(dialog, dialog *, [role='dialog'], [role='dialog'] *)) {
+    transition: scale 280ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms ease, box-shadow 240ms ease;
   }
 
-  .genmax-site .genmax-card-lift:hover {
-    transform: translateY(-3px);
+  .genmax-site main .genmax-card:has(.genmax-card) {
+    --genmax-card-hover-scale: 1.025;
+  }
+
+  .genmax-site main .genmax-card:hover:not(:where(dialog, dialog *, [role='dialog'], [role='dialog'] *), :has(.genmax-card:hover)) {
+    scale: clamp(1, var(--genmax-card-hover-scale), var(--genmax-card-hover-limit, 1.05));
+    z-index: 11;
+  }
+}
+
+@media (max-width: 767px) {
+  .genmax-site {
+    --genmax-card-hover-limit: 1.025;
   }
 }
 
@@ -488,12 +501,12 @@
 }
 
 @media (hover: hover) {
-  .box-zoom:hover {
+  .box-zoom:hover:not(.genmax-site main .genmax-card) {
     transform: translate3d(0, -4px, 0) scale(1.025);
     z-index: 10;
   }
 
-  .box-zoom-sm:hover {
+  .box-zoom-sm:hover:not(.genmax-site main .genmax-card) {
     transform: translate3d(0, -2px, 0) scale(1.016);
     z-index: 10;
   }
@@ -502,7 +515,7 @@
     transform: translate3d(0, 0, 0) scale(1);
   }
 
-  .box-zoom-popular:hover {
+  .box-zoom-popular:hover:not(.genmax-site main .genmax-card) {
     transform: translate3d(0, -4px, 0) scale(1.025);
   }
 }
@@ -514,7 +527,7 @@
 }
 
 @media (min-width: 1024px) and (hover: hover) {
-  .box-zoom-popular:hover {
+  .box-zoom-popular:hover:not(.genmax-site main .genmax-card) {
     transform: translate3d(0, -5px, 0) scale(1.075);
   }
 }
@@ -526,9 +539,9 @@
     transition: none;
     will-change: auto;
   }
-  .box-zoom:hover,
-  .box-zoom-sm:hover,
-  .box-zoom-popular:hover {
+  .box-zoom:hover:not(.genmax-site main .genmax-card),
+  .box-zoom-sm:hover:not(.genmax-site main .genmax-card),
+  .box-zoom-popular:hover:not(.genmax-site main .genmax-card) {
     transform: none;
   }
 }

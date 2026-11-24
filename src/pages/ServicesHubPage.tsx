@@ -105,7 +105,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit })
                   {category.services.map((svc) => (
                     <div
                       key={svc.id}
-                      className="genmax-card genmax-card-orbit genmax-card-lift group flex flex-col justify-between rounded-2xl p-5 sm:p-7"
+                      className="genmax-card genmax-card-orbit group flex flex-col justify-between rounded-2xl p-5 sm:p-7"
                     >
                       <div>
                         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">

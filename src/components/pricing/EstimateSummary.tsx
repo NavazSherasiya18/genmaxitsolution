@@ -45,7 +45,10 @@ export function EstimateSummary({ selection, currency, onRequest }: { selection:
             {estimate.lines.map((line) => (
               <div key={line.id} className="flex flex-wrap justify-between gap-x-3 gap-y-0.5">
                 <dt className="text-slate-600 dark:text-slate-400">{line.label}{line.quantity > 1 && ` × ${line.quantity}`}</dt>
-                <dd className="ml-auto text-right font-medium">{line.included ? 'Included' : priceText(line.amount, currency)}{line.billing === 'monthly' && ' / month'}</dd>
+                <dd className="ml-auto text-right font-medium">
+                  {line.included ? 'Included' : <span className="genmax-price">{priceText(line.amount, currency)}</span>}
+                  {line.billing === 'monthly' && ' / month'}
+                </dd>
               </div>
             ))}
           </dl>
@@ -55,8 +58,8 @@ export function EstimateSummary({ selection, currency, onRequest }: { selection:
 
       <div aria-live={onRequest ? 'polite' : undefined} aria-atomic="true" className="mt-5 border-t border-slate-200 pt-4 dark:border-slate-800">
         <p className="text-xs font-semibold text-slate-600 dark:text-slate-400">{custom ? `Quotation currency · ${currency}` : `One-time development estimate · ${currency}`}</p>
-        <p className="mt-1 break-words font-heading text-xl font-bold text-indigo-700 dark:text-cyan-300">{custom ? 'Custom Pricing — Request a Quote' : priceText(estimate.oneTime, currency)}</p>
-        {estimate.hasMonthly && <p className="mt-2 text-sm font-semibold">Monthly maintenance · {priceText(estimate.monthly, currency)}</p>}
+        <p className="genmax-price mt-1 break-words font-heading text-xl font-bold">{custom ? 'Custom Pricing — Request a Quote' : priceText(estimate.oneTime, currency)}</p>
+        {estimate.hasMonthly && <p className="mt-2 text-sm font-semibold">Monthly maintenance · <span className="genmax-price">{priceText(estimate.monthly, currency)}</span></p>}
       </div>
       <p className="mt-3 text-xs leading-relaxed text-slate-600 dark:text-slate-400">Applicable taxes, provider fees, and paid third-party tools are separate from development and maintenance.</p>
       {onRequest && (

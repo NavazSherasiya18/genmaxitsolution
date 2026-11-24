@@ -72,7 +72,7 @@ export const BlogPage: React.FC = () => {
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="genmax-card genmax-card-orbit genmax-card-lift group flex flex-col justify-between rounded-2xl p-5 sm:p-7"
+                className="genmax-card genmax-card-orbit group flex flex-col justify-between rounded-2xl p-5 sm:p-7"
               >
                 <div>
                   <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4">

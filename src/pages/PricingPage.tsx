@@ -69,7 +69,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
                   </div>
 
                   <div className="flex items-baseline gap-1 mb-4">
-                    <span className="text-4xl font-bold font-heading text-slate-900 dark:text-white">{plan.price}</span>
+                    <span className="genmax-price text-4xl font-bold font-heading">{plan.price}</span>
                     <span className="text-sm text-slate-500 dark:text-slate-400">{plan.period}</span>
                   </div>
 
@@ -117,9 +117,9 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenAudit }) => {
                 <thead className="bg-slate-900/90 text-slate-200 uppercase tracking-wider font-semibold border-b border-indigo-500/20 dark:border-slate-800">
                   <tr>
                     <th className="p-4 pl-6">Feature / Inclusions</th>
-                    <th className="p-4">Starter (₹4,999)</th>
-                    <th className="p-4 text-indigo-600 dark:text-cyan-400 font-bold">Growth (₹9,999)</th>
-                    <th className="p-4 pr-6">Enterprise (₹19,999)</th>
+                    <th className="p-4">Starter <span className="genmax-price">(₹4,999)</span></th>
+                    <th className="p-4 text-indigo-600 dark:text-cyan-400 font-bold">Growth <span className="genmax-price">(₹9,999)</span></th>
+                    <th className="p-4 pr-6">Enterprise <span className="genmax-price">(₹19,999)</span></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">

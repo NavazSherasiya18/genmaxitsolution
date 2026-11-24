@@ -117,7 +117,7 @@ export const GoogleMapsSection: React.FC<GoogleMapsSectionProps> = ({ className 
 
   return (
     <div className={`w-full ${className}`}>
-      <div className="rounded-3xl overflow-hidden bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xl">
+      <div className="genmax-card rounded-3xl overflow-hidden">
         
         {/* Header Bar */}
         <div className="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">

@@ -2,7 +2,7 @@ import { ClipboardList } from 'lucide-react';
 import { PACKAGES, WEBSITE_TYPES, formatMoney, type Currency, type Selection } from '../../data/websitePricing';
 import { calculateEstimate } from '../../utils/websiteEstimate';
 
-export const priceCard = 'min-w-0 rounded-2xl border border-slate-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900/70';
+export const priceCard = 'genmax-card min-w-0 rounded-2xl';
 export const inputStyle = 'min-h-11 w-full min-w-0 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-600 focus:outline-2 focus:outline-indigo-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:outline-cyan-400';
 export const primaryButton = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-xl genmax-action px-5 py-3 text-center text-sm font-semibold text-white shadow-md hover:opacity-95 motion-safe:transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:focus-visible:outline-cyan-400 disabled:cursor-wait disabled:opacity-60';
 
@@ -17,7 +17,7 @@ export function EstimateSummary({ selection, currency, onRequest }: { selection:
   const store = selection.type === 'ecommerce';
 
   return (
-    <div className={`${priceCard} box-zoom-sm hover:shadow-lg hover:border-indigo-300 dark:hover:border-slate-700 self-start p-4 sm:p-6 ${onRequest ? 'lg:sticky lg:top-28 lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto' : ''}`}>
+    <div className={`${priceCard} box-zoom-sm self-start p-4 sm:p-6 ${onRequest ? 'lg:sticky lg:top-28 lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto' : ''}`}>
       <div className="mb-4 flex items-center gap-2">
         <ClipboardList aria-hidden="true" className="size-5 shrink-0 text-indigo-600 dark:text-cyan-400" />
         <h3 className="font-heading text-lg font-bold text-slate-900 dark:text-white">Your project summary</h3>
@@ -33,7 +33,7 @@ export function EstimateSummary({ selection, currency, onRequest }: { selection:
         </dl>
       ) : (
         <>
-          <dl className="my-4 grid grid-cols-2 gap-3 rounded-xl bg-slate-50 p-3 text-xs dark:bg-slate-800/60">
+          <dl className="genmax-card genmax-card-soft my-4 grid grid-cols-2 gap-3 rounded-xl p-3 text-xs">
             <div><dt className="text-slate-600 dark:text-slate-400">{store ? 'Informational pages' : 'Website pages'}</dt><dd className="mt-1 font-semibold">{selection.pages} requested</dd></div>
             <div><dt className="text-slate-600 dark:text-slate-400">Page allowance</dt><dd className="mt-1 font-semibold">{estimate.includedPages} included · {estimate.extraPages} extra</dd></div>
             {store && <>

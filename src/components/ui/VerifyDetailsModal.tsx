@@ -141,7 +141,7 @@ export const VerifyDetailsModal: React.FC<VerifyDetailsModalProps> = ({
     >
       {/* Compact, Centered Modal Dialog — Strictly Overflow-Hidden (Zero Scrollbars) */}
       <div
-        className="relative w-full max-w-[360px] overflow-hidden rounded-2xl bg-white dark:bg-[#0F172A] text-slate-800 dark:text-slate-100 shadow-2xl border border-slate-200 dark:border-slate-800 p-4 sm:p-5 animate-in zoom-in-95 duration-200"
+        className="genmax-card relative w-full max-w-[360px] overflow-hidden rounded-2xl text-slate-800 dark:text-slate-100 p-4 sm:p-5 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Subtle Ambient Brand Glow (Clipped by overflow-hidden) */}
@@ -281,7 +281,7 @@ export const VerifyDetailsModal: React.FC<VerifyDetailsModalProps> = ({
             </div>
 
             {/* Client's verified details review */}
-            <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 text-left text-[11px] space-y-1.5 text-slate-700 dark:text-slate-300">
+            <div className="genmax-card genmax-card-soft p-3 rounded-xl text-left text-[11px] space-y-1.5 text-slate-700 dark:text-slate-300">
               <div className="flex items-center justify-between gap-2">
                 <span className="text-slate-500 dark:text-slate-400">Email:</span>
                 <span className="font-semibold text-slate-900 dark:text-white font-mono truncate">{clientInfo?.email}</span>

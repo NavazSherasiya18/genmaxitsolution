@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SERVICE_CATALOG, SERVICE_CATEGORIES, servicePath, type ServiceCategoryId } from '../data/servicesData';
 import { useServiceMetadata } from '../utils/useServiceMetadata';
-import { ArrowRight, Search, Sparkles, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Braces, CheckCircle2, Clock, Cpu, Megaphone, Monitor, Palette, Search, ShieldCheck, Smartphone, Sparkles, Wrench } from 'lucide-react';
+
+const categoryIcons = {
+  seo: Search,
+  paid: Megaphone,
+  design: Monitor,
+  development: Braces,
+  mobile: Smartphone,
+  software: Cpu,
+  branding: Palette,
+  support: Wrench,
+} satisfies Record<ServiceCategoryId, typeof Search>;
 
 interface ServicesHubPageProps {
   onOpenAudit: (serviceName?: string) => void;
@@ -18,6 +29,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit })
     .filter((category) => activeCategory === 'all' || category.id === activeCategory)
     .map((category) => ({
       ...category,
+      Icon: categoryIcons[category.id],
       services: category.services.filter((service) =>
         [service.title, service.searchTitle, service.shortDescription, service.subtitle, category.title]
           .some((text) => text?.toLowerCase().includes(query)),
@@ -46,7 +58,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit })
           {/* Interactive Filter & Search Controls */}
           <div className="mt-12 flex flex-col xl:flex-row xl:items-start justify-between gap-4 pt-6 border-t border-slate-200 dark:border-slate-800/80">
             {/* Category Segmented Tabs */}
-            <div role="group" aria-label="Service category filters" className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <div role="group" aria-label="Service category filters" className="genmax-card genmax-card-soft flex flex-wrap items-center gap-1.5 p-1 rounded-xl">
               {[{ id: 'all' as const, title: 'All Services', services: SERVICE_CATALOG }, ...SERVICE_CATEGORIES].map((category) => (
                 <button
                   key={category.id}
@@ -84,7 +96,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit })
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-12">
-            {visibleCategories.map((category) => (
+            {visibleCategories.map(({ Icon, ...category }) => (
               <section key={category.id} aria-labelledby={`service-category-${category.id}`}>
                 <h2 id={`service-category-${category.id}`} className="mb-5 text-2xl font-bold font-heading text-slate-900 dark:text-white">
                   {category.title}
@@ -93,51 +105,55 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({ onOpenAudit })
                   {category.services.map((svc) => (
                     <div
                       key={svc.id}
-                      className="rounded-2xl p-7 bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-400 dark:hover:border-slate-700 box-zoom flex flex-col justify-between group"
+                      className="genmax-card genmax-card-orbit genmax-card-lift group flex flex-col justify-between rounded-2xl p-5 sm:p-7"
                     >
                       <div>
-                        <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-indigo-600 dark:text-cyan-400">
-                            {category.title}
+                        <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+                          <span className="genmax-card-icon" aria-hidden="true">
+                            <Icon className="size-5" />
                           </span>
-                          {svc.legacy && <span className="text-xs text-slate-500">7-14 Days SLA</span>}
+                          {svc.legacy && (
+                            <span className="flex items-center gap-1.5 rounded-full bg-white/45 px-2.5 py-1 text-xs font-medium text-slate-700 dark:bg-slate-950/35 dark:text-slate-300">
+                              <Clock aria-hidden="true" className="size-3" /> 7-14 Days SLA
+                            </span>
+                          )}
                         </div>
 
                         <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-cyan-400 transition-colors">
                           {svc.title}
                         </h3>
 
-                        <p className="text-xs text-indigo-700 dark:text-indigo-300/80 mb-3 font-semibold">
+                        <p className="mb-3 text-xs font-semibold text-indigo-700 dark:text-indigo-300">
                           {svc.subtitle}
                         </p>
 
-                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                        <p className="mb-5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                           {svc.shortDescription}
                         </p>
 
-                        <div className="space-y-1.5 mb-6 border-t border-slate-100 dark:border-slate-800/80 pt-4 text-xs text-slate-700 dark:text-slate-300">
-                          {svc.features.map((feat, fIdx) => (
-                            <div key={fIdx} className="flex items-center gap-2">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 dark:text-cyan-400 shrink-0" />
+                        <ul className="mb-5 space-y-2 text-xs text-slate-700 dark:text-slate-300">
+                          {svc.features.map((feat) => (
+                            <li key={feat} className="flex items-start gap-2">
+                              <CheckCircle2 aria-hidden="true" className="mt-px size-3.5 shrink-0 text-indigo-600 dark:text-cyan-400" />
                               <span>{feat}</span>
-                            </div>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
 
-                      <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                      <div className="genmax-card-divider flex flex-wrap items-center justify-between gap-x-2 border-t pt-2">
                         <Link
                           to={servicePath(svc.slug)}
                           aria-label={`View full deliverables for ${svc.title}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-cyan-400 hover:text-indigo-700 dark:hover:text-cyan-300 transition-colors"
+                          className="inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-cyan-400 dark:hover:text-cyan-300"
                         >
                           <span>View Full Deliverables</span>
-                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight aria-hidden="true" className="size-3.5 motion-safe:transition-transform motion-safe:group-hover:translate-x-1" />
                         </Link>
                         <button
                           type="button"
                           onClick={() => onOpenAudit(svc.title)}
-                          className="text-[11px] text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-colors cursor-pointer"
+                          className="min-h-11 cursor-pointer text-xs font-medium text-slate-700 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-white"
                         >
                           Get Quote
                         </button>

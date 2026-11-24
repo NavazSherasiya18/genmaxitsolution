@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import agencyWorkspace from '../assets/images/agency_workspace_1793853537773.jpg';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { 
   ArrowRight, Sparkles, TrendingUp, ShieldCheck, CheckCircle2, 
   ChevronRight, Search, BarChart3, Globe, Smartphone, 
   Code2, Palette, Zap, Star, MessageSquare, Plus, Minus,
-  Layers, Trophy, Clock, Cpu
+  Layers, Trophy, Clock, Cpu, Headphones
 } from 'lucide-react';
 import { 
   COMPANY_DETAILS, SERVICES, PRICING_PLANS, WHY_CHOOSE_US, 
@@ -26,6 +27,15 @@ import { GoogleMapsSection } from '../components/maps/GoogleMapsSection';
 interface HomePageProps {
   onOpenAudit: (serviceName?: string) => void;
 }
+
+const commitmentIcons: Record<string, typeof Headphones> = {
+  '01': Headphones,
+  '02': Globe,
+  '03': Zap,
+  '04': ShieldCheck,
+  '05': BarChart3,
+  '06': Cpu,
+};
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
@@ -74,15 +84,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
               
               {/* Left Column: Image Asset */}
               <div className="lg:col-span-5 relative">
-                <div className="rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-700 shadow-xl relative group box-zoom">
+                <div className="genmax-card rounded-2xl overflow-hidden relative group box-zoom">
                   <img
-                    src="/src/assets/images/agency_workspace_1793853537773.jpg"
+                    src={agencyWorkspace}
                     alt="Genmax IT Solution engineering team collaborating"
                     className="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
-                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-md">
+                  <div className="genmax-card genmax-card-soft absolute bottom-6 left-6 right-6 p-4 rounded-xl backdrop-blur-md">
                     <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-wider mb-1">
                       Headquartered in Noida, Delhi NCR
                     </div>
@@ -115,19 +125,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
 
                 {/* Four Value Anchors */}
                 <div className="grid grid-cols-2 gap-4 pt-4">
-                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs box-zoom-sm hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700">
+                  <div className="genmax-card genmax-card-soft p-4 rounded-xl box-zoom-sm">
                     <div className="text-sm font-bold text-slate-900 dark:text-white mb-1">Data-Driven Execution</div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">Concrete analytics, keyword telemetry, and measurable ROI.</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs box-zoom-sm hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700">
+                  <div className="genmax-card genmax-card-soft p-4 rounded-xl box-zoom-sm">
                     <div className="text-sm font-bold text-slate-900 dark:text-white mb-1">Ethical White-Hat</div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">Strict adherence to Google search quality standards.</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs box-zoom-sm hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700">
+                  <div className="genmax-card genmax-card-soft p-4 rounded-xl box-zoom-sm">
                     <div className="text-sm font-bold text-slate-900 dark:text-white mb-1">Agile Engineering</div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">Rapid bi-weekly sprints with interactive preview milestones.</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs box-zoom-sm hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700">
+                  <div className="genmax-card genmax-card-soft p-4 rounded-xl box-zoom-sm">
                     <div className="text-sm font-bold text-slate-900 dark:text-white mb-1">365-Day Commitment</div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">1 year of complimentary technical support with every project.</div>
                   </div>
@@ -187,22 +197,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {WHY_CHOOSE_US.map((item) => (
-                <SpotlightCard
-                  key={item.id}
-                  className="p-8 rounded-2xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-400 dark:hover:border-slate-700 transition-all group"
-                >
-                  <span className="text-xs font-mono font-bold text-indigo-600 dark:text-cyan-400 block mb-4">
-                    {item.id} // COMMITMENT
-                  </span>
-                  <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-cyan-400 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {item.description}
-                  </p>
-                </SpotlightCard>
-              ))}
+              {WHY_CHOOSE_US.map((item) => {
+                const Icon = commitmentIcons[item.id] ?? Sparkles;
+                return (
+                  <SpotlightCard
+                    key={item.id}
+                    className="genmax-card genmax-card-orbit genmax-commitment-card rounded-2xl p-6 sm:p-8"
+                  >
+                    <span className="genmax-card-icon mb-5" aria-hidden="true">
+                      <Icon className="size-6" />
+                    </span>
+                    <h3 className="mb-2.5 font-heading text-xl font-bold leading-snug text-white">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-[#d3dff8]">
+                      {item.description}
+                    </p>
+                  </SpotlightCard>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -233,10 +246,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
               {PRICING_PLANS.map((plan) => (
                 <div
                   key={plan.id}
-                  className={`rounded-2xl p-8 flex flex-col justify-between ${
+                  className={`genmax-card genmax-card-orbit rounded-2xl p-8 flex flex-col justify-between ${
                     plan.popular
-                      ? 'bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-[#10182E] border-2 border-indigo-600 dark:border-cyan-400 shadow-xl hover:shadow-2xl relative z-10 box-zoom-popular'
-                      : 'bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-400 dark:hover:border-slate-700 box-zoom'
+                      ? 'genmax-card-emphasis relative z-10 box-zoom-popular'
+                      : 'box-zoom'
                   }`}
                 >
                   {plan.popular && (
@@ -302,7 +315,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
       <ScrollReveal yOffset={28} duration={800} threshold={0.1}>
         <section className="py-20 bg-gradient-to-b from-slate-100 to-[#F8FAFC] dark:from-[#0F172A] dark:to-[#0B1020] border-y border-slate-200 dark:border-slate-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl p-8 sm:p-12 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-700 shadow-xl relative overflow-hidden">
+            <div className="genmax-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="text-center max-w-xl mx-auto mb-8">
@@ -398,7 +411,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
               </h2>
             </div>
 
-            <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl relative box-zoom-sm">
+            <div className="genmax-card p-8 sm:p-12 rounded-3xl relative box-zoom-sm">
               <div className="flex items-center gap-1 text-amber-500 mb-6">
                 {[...Array(TESTIMONIALS[testimonialIdx].rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
@@ -463,7 +476,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                 return (
                   <div
                     key={idx}
-                    className="rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700 box-zoom-sm"
+                    className="genmax-card genmax-card-soft rounded-xl overflow-hidden box-zoom-sm"
                   >
                     <button
                       onClick={() => setActiveFaq(isOpen ? null : idx)}

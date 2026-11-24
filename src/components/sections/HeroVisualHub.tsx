@@ -32,7 +32,7 @@ export const HeroVisualHub: React.FC = () => {
       <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500/20 via-cyan-500/20 to-violet-500/20 rounded-3xl blur-2xl opacity-70 group-hover:opacity-100 transition duration-1000" />
 
       {/* Main Glass Studio Card */}
-      <div className="box-zoom-sm relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-900 shadow-2xl">
+      <div className="genmax-card box-zoom-sm relative rounded-2xl overflow-hidden">
         
         {/* Top Studio Image */}
         <div className="relative h-64 sm:h-72 overflow-hidden">
@@ -57,7 +57,7 @@ export const HeroVisualHub: React.FC = () => {
           </div>
 
           {/* Interactive SERP Rank Preview Floating Over Image */}
-          <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-700/80 shadow-xl">
+          <div className="genmax-card genmax-card-soft absolute bottom-4 left-4 right-4 p-3.5 rounded-xl backdrop-blur-md">
             <div className="flex items-center justify-between text-xs mb-2">
               <span className="font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[10px]">
                 Live Google 3-Pack Telemetry
@@ -133,7 +133,7 @@ export const HeroVisualHub: React.FC = () => {
         initial={{ y: 15, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="box-zoom-sm mt-3 p-3.5 rounded-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-md flex items-center justify-between text-xs"
+        className="genmax-card genmax-card-soft box-zoom-sm mt-3 p-3.5 rounded-xl backdrop-blur-md flex items-center justify-between text-xs"
       >
         <div className="flex items-center gap-2.5">
           <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />

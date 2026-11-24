@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ChevronDown, Layers3, LayoutTemplate, Rocket } from 'lucide-react';
 import {
   APP_MODULES, AUTH_OPTIONS, CURRENCIES, GATEWAYS, LIMITS, PACKAGES, PROJECT_TYPES, TIMELINES, USER_ROLES, WEBSITE_TYPES,
   availableAddOns, defaultPackage, type ApplicationScope, type Currency, type GatewayId,
@@ -12,6 +12,7 @@ import { WebsiteQuoteDialog } from './WebsiteQuoteDialog';
 const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:focus-visible:outline-cyan-400';
 const checkboxStyle = 'mt-0.5 size-4 shrink-0 accent-indigo-600 dark:accent-cyan-400';
 const accent = 'text-indigo-700 dark:text-cyan-300';
+const tierIcons = { starter: LayoutTemplate, business: Layers3, advanced: Rocket } satisfies Record<Tier, typeof Rocket>;
 
 function toggleItem<T>(items: T[], item: T, checked: boolean): T[] {
   return checked ? [...items, item] : items.filter((selected) => selected !== item);
@@ -61,10 +62,14 @@ function PackageCards({ selection, currency, onSelect }: { selection: PackagedSe
         {packages.map(([tier, pkg]) => {
           const isSelected = tier === selection.tier;
           const rate = pkg.rates[currency];
+          const Icon = tierIcons[tier];
           return (
-            <article key={tier} className={`${priceCard} box-zoom hover:shadow-xl hover:border-indigo-300 dark:hover:border-slate-700 flex flex-col p-5 sm:p-6 ${isSelected ? 'ring-2 ring-indigo-600 dark:ring-cyan-400' : ''}`}>
+            <article key={tier} className={`${priceCard} genmax-card-orbit flex flex-col p-5 sm:p-6 ${isSelected ? 'genmax-card-emphasis' : ''}`}>
+              <span className="genmax-card-icon mb-4" aria-hidden="true">
+                <Icon className="size-5" />
+              </span>
               <h4 className="font-heading text-xl font-bold text-slate-900 dark:text-white">{pkg.name}</h4>
-              <div className="my-3 border-b border-slate-100 pb-4 dark:border-slate-800">
+              <div className="genmax-card-divider my-3 border-b pb-4">
                 <p className={`break-words font-heading text-2xl font-bold ${accent}`}>{rate === undefined ? 'Request Pricing' : priceText(rate, currency)}</p>
                 <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">{rate !== undefined ? `Starting price · ${currency}` : currency}</p>
               </div>
@@ -78,12 +83,12 @@ function PackageCards({ selection, currency, onSelect }: { selection: PackagedSe
                 ))}
               </ul>
               <div className="mt-auto">
-                <dl className="grid gap-2 border-t border-slate-100 pt-4 text-xs text-slate-700 dark:border-slate-800 dark:text-slate-300">
+                <dl className="genmax-card-divider grid gap-2 border-t pt-4 text-xs text-slate-700 dark:text-slate-300">
                   <div className="flex flex-wrap justify-between gap-x-3"><dt>Estimated delivery</dt><dd className="font-medium">{pkg.delivery ?? 'Confirmed in quote'}</dd></div>
                   <div className="flex flex-wrap justify-between gap-x-3"><dt>Revision policy</dt><dd className="font-medium">{pkg.revisions ?? 'Confirmed in quote'}</dd></div>
                   <div className="flex flex-wrap justify-between gap-x-3"><dt>Support period</dt><dd className="font-medium">{pkg.support ?? 'Confirmed in quote'}</dd></div>
                 </dl>
-                <details className="group mt-3 border-b border-slate-100 dark:border-slate-800">
+                <details className="genmax-card-divider group mt-3 border-b">
                   <summary className={`flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-md text-sm font-semibold ${accent} ${focusRing}`}>
                     Optional add-ons <ChevronDown aria-hidden="true" className="size-4 shrink-0 group-open:rotate-180 motion-safe:transition-transform" />
                   </summary>
@@ -98,7 +103,8 @@ function PackageCards({ selection, currency, onSelect }: { selection: PackagedSe
                   onClick={() => onSelect(tier)}
                   className={`${isSelected ? primaryButton : `min-h-11 rounded-xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-indigo-50 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 ${focusRing}`} mt-4 w-full`}
                 >
-                  {isSelected ? 'Selected Plan' : 'Select Plan'} <ArrowRight aria-hidden="true" className="ml-1 inline size-4" />
+                  {isSelected ? 'Selected Plan' : 'Select Plan'}
+                  {isSelected ? <CheckCircle2 aria-hidden="true" className="inline size-4" /> : <ArrowRight aria-hidden="true" className="ml-1 inline size-4" />}
                 </button>
               </div>
             </article>
@@ -130,7 +136,7 @@ function PackageRequirements({ selection, onChange }: { selection: PackagedSelec
         <p className="mb-3 text-xs leading-relaxed text-slate-600 dark:text-slate-400">{gatewayAllowance} Integration covers configuration and test payments. Provider approval, transaction fees, paid plugins, and third-party charges are separate.</p>
         <div className="grid gap-2 sm:grid-cols-2">
           {(Object.keys(GATEWAYS) as GatewayId[]).map((id) => (
-            <label key={id} className="flex min-h-11 items-center gap-3 rounded-lg bg-slate-50 px-3 text-sm dark:bg-slate-800/60">
+            <label key={id} className="genmax-card genmax-card-soft flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm">
               <input className={checkboxStyle} type="checkbox" checked={selection.gateways.includes(id)} onChange={(event) => onChange({ ...selection, gateways: toggleItem(selection.gateways, id, event.target.checked) })} />
               {GATEWAYS[id].name}
             </label>
@@ -150,7 +156,7 @@ function PackageRequirements({ selection, onChange }: { selection: PackagedSelec
               onChange({ ...selection, addOns });
             }
             return (
-              <div key={id} className="min-w-0 rounded-xl border border-slate-100 bg-slate-50 px-3 dark:border-slate-800 dark:bg-slate-800/50 box-zoom-sm hover:border-indigo-300 dark:hover:border-slate-700">
+              <div key={id} className="genmax-card genmax-card-soft min-w-0 rounded-xl px-3 box-zoom-sm">
                 <label className="flex min-h-11 items-start gap-2.5 py-3">
                   <input className={checkboxStyle} type="checkbox" checked={included || quantity > 0} disabled={included} onChange={(event) => setQuantity(event.target.checked ? 1 : 0)} />
                   <span className="min-w-0">
@@ -180,7 +186,7 @@ function ScopeChecks<T extends string>({ label, options, selected, onChange }: {
       <legend className="pr-3 font-heading font-bold text-slate-900 dark:text-white">{label}</legend>
       <div className="grid gap-2 sm:grid-cols-2">
         {options.map((option) => (
-          <label key={option} className="flex min-h-11 items-center gap-2.5 rounded-lg bg-slate-50 px-3 py-2 text-sm dark:bg-slate-800/60">
+          <label key={option} className="genmax-card genmax-card-soft flex min-h-11 items-center gap-2.5 rounded-lg px-3 py-2 text-sm">
             <input type="checkbox" className={checkboxStyle} checked={selected.includes(option)} onChange={(event) => onChange(toggleItem(selected, option, event.target.checked))} />
             {option}
           </label>
@@ -224,7 +230,7 @@ export function WebsitePricingConfigurator() {
         <div className="mt-7 grid items-end gap-4 lg:grid-cols-[minmax(0,1fr)_9rem]">
           <fieldset className="min-w-0">
             <legend className="mb-2 text-sm font-semibold text-slate-900 dark:text-white">Website type</legend>
-            <div className="grid grid-cols-2 gap-1.5 rounded-2xl border border-slate-200 bg-slate-100 p-1.5 md:grid-cols-4 dark:border-slate-800 dark:bg-slate-900">
+            <div className="genmax-card genmax-card-soft grid grid-cols-2 gap-1.5 rounded-2xl p-1.5 md:grid-cols-4">
               {(Object.keys(WEBSITE_TYPES) as WebsiteType[]).map((key) => (
                 <button key={key} type="button" aria-pressed={key === type} onClick={() => setType(key)} className={`min-h-12 rounded-xl px-2.5 py-2 text-center text-xs font-semibold leading-snug sm:px-3 sm:text-sm ${focusRing} ${key === type ? `bg-white shadow-xs dark:bg-slate-800 ${accent}` : 'text-slate-700 hover:bg-white/60 dark:text-slate-300 dark:hover:bg-slate-800/70'}`}>
                   {WEBSITE_TYPES[key]}

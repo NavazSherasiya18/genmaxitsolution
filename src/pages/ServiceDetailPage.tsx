@@ -103,7 +103,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
             {/* Performance KPIs Card */}
             {service.metrics.length > 0 && (
               <div className="lg:col-span-4">
-                <div className="p-8 rounded-2xl bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-[#0F172A] border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-xl space-y-6 box-zoom">
+                <div className="genmax-card p-8 rounded-2xl space-y-6 box-zoom">
                   <div className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-cyan-400 pb-3 border-b border-slate-100 dark:border-slate-800">
                     Target Performance & Delivery
                   </div>
@@ -159,7 +159,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
                 </h3>
                 <div className="space-y-3">
                   {service.deliverables.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 shadow-xs hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700 box-zoom-sm">
+                    <div key={idx} className="genmax-card genmax-card-soft flex items-start gap-3 p-3.5 rounded-xl box-zoom-sm">
                       <CheckCircle2 className="w-5 h-5 text-indigo-600 dark:text-cyan-400 shrink-0 mt-0.5" />
                       <span className="text-xs sm:text-sm text-slate-700 dark:text-slate-200">{item}</span>
                     </div>
@@ -171,7 +171,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
             {/* Right Column: 4-Step Process */}
             {service.process.length > 0 && (
               <div className="lg:col-span-5 space-y-6">
-                <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl box-zoom-sm">
+                <div className="genmax-card p-8 rounded-2xl box-zoom-sm">
                   <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-widest mb-2">
                     Our Sprint Execution
                   </div>
@@ -229,7 +229,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
               {service.faqs.map((faq, idx) => {
                 const isOpen = activeFaq === idx;
                 return (
-                  <div key={idx} className="rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700 box-zoom-sm">
+                  <div key={idx} className="genmax-card genmax-card-soft rounded-xl overflow-hidden box-zoom-sm">
                     <button
                       onClick={() => setActiveFaq(isOpen ? null : idx)}
                       className="w-full px-6 py-4 flex items-center justify-between text-left text-sm font-semibold font-heading text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"
@@ -264,7 +264,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ onOpenAudi
                 <Link
                   key={rel.id}
                   to={servicePath(rel.slug)}
-                  className="p-6 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-cyan-500/50 shadow-xs hover:shadow-xl box-zoom group flex flex-col justify-between"
+                  className="genmax-card p-6 rounded-2xl box-zoom group flex flex-col justify-between"
                 >
                   <div>
                     <h3 className="text-base font-bold font-heading text-slate-900 dark:text-white mb-1 group-hover:text-indigo-600 dark:group-hover:text-cyan-400 transition-colors">

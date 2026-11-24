@@ -122,7 +122,7 @@ export const AdminLeadsPage: React.FC = () => {
 
         {/* Metric Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 my-8">
-          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="genmax-card p-6 rounded-2xl">
             <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 uppercase tracking-wider mb-1">
               Total Captured Leads
             </div>
@@ -134,7 +134,7 @@ export const AdminLeadsPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="genmax-card p-6 rounded-2xl">
             <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
               Duplicate Protection
             </div>
@@ -147,7 +147,7 @@ export const AdminLeadsPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="genmax-card p-6 rounded-2xl">
             <div className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mb-1">
               Email Notifications
             </div>
@@ -198,7 +198,7 @@ export const AdminLeadsPage: React.FC = () => {
 
         {/* Content View */}
         {activeTab === 'leads' ? (
-          <div className="rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="genmax-card rounded-2xl overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
@@ -267,7 +267,7 @@ export const AdminLeadsPage: React.FC = () => {
           </div>
         ) : (
           /* Email Dispatch Logs */
-          <div className="rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm p-6 space-y-4">
+          <div className="genmax-card rounded-2xl overflow-hidden p-6 space-y-4">
             <h3 className="text-base font-bold font-heading text-slate-900 dark:text-white">
               Outgoing Email Dispatch Records
             </h3>
@@ -282,7 +282,7 @@ export const AdminLeadsPage: React.FC = () => {
                 emailLogs.map((log) => (
                   <div
                     key={log.id}
-                    className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                    className="genmax-card genmax-card-soft p-4 rounded-xl text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                   >
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">

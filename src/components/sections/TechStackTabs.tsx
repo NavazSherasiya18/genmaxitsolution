@@ -54,7 +54,7 @@ export const TechStackTabs: React.FC = () => {
   const current = techCategories[activeTab];
 
   return (
-    <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
+    <div className="genmax-card rounded-3xl overflow-hidden">
       {/* Category Navigation Bar */}
       <div className="flex border-b border-slate-100 dark:border-slate-800 overflow-x-auto scrollbar-none bg-slate-50/60 dark:bg-slate-900/60">
         <button
@@ -124,7 +124,7 @@ export const TechStackTabs: React.FC = () => {
           {current.technologies.map((t, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 hover:shadow-md box-zoom"
+              className="genmax-card genmax-card-soft p-5 rounded-2xl box-zoom"
             >
               <div className="flex items-center gap-2 text-sm font-bold font-heading text-slate-900 dark:text-white mb-1">
                 <div className="w-2 h-2 rounded-full bg-indigo-600 dark:bg-cyan-400" />

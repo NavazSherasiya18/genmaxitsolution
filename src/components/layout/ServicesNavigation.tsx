@@ -127,7 +127,7 @@ export function ServicesMegaMenu({ active }: { active: boolean }) {
       </button>
 
       <div id={panelId} inert={!open} data-open={Boolean(open)} className="services-mega-menu absolute inset-x-0 top-full mx-auto w-[calc(100%-3rem)] max-w-[76rem] pt-1 whitespace-normal">
-        <div className="flex max-h-[calc(100dvh-6rem)] flex-col rounded-2xl border border-slate-200 bg-white px-4 pt-4 pb-2 shadow-2xl dark:border-slate-800 dark:bg-[var(--bg-primary)] xl:px-6">
+        <div className="genmax-card flex max-h-[calc(100dvh-6rem)] flex-col rounded-2xl px-4 pt-4 pb-2 xl:px-6">
           <div className="services-menu-scroll min-h-0 overflow-y-auto overscroll-contain p-1 pb-3">
             <div className="grid grid-cols-2 gap-x-6 gap-y-4 xl:grid-cols-4">
               {SERVICE_CATEGORIES.map((category) => (

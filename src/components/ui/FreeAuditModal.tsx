@@ -331,7 +331,7 @@ export const FreeAuditModal: React.FC<FreeAuditModalProps> = ({
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white dark:bg-[var(--bg-primary)] border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8"
+        className="genmax-card relative w-full max-w-lg overflow-hidden rounded-2xl p-6 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Ambient Top Glow */}
@@ -359,7 +359,7 @@ export const FreeAuditModal: React.FC<FreeAuditModalProps> = ({
               <span className="text-indigo-600 dark:text-cyan-400 font-medium">{formData.websiteUrl}</span> for an in-depth diagnostic audit. We will deliver your bespoke PDF report and recommendations within 2 business hours.
             </p>
 
-            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-left mb-6 space-y-2 text-xs text-slate-600 dark:text-slate-400">
+            <div className="genmax-card genmax-card-soft p-4 rounded-xl text-left mb-6 space-y-2 text-xs text-slate-600 dark:text-slate-400">
               <div className="flex justify-between">
                 <span>Primary Service:</span>
                 <span className="text-slate-900 dark:text-slate-200 font-medium">{formData.serviceInterest}</span>

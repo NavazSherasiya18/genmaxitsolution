@@ -83,7 +83,7 @@ export const ContactPage: React.FC = () => {
             
             {/* Left Column: Form */}
             <div className="lg:col-span-7">
-              <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xl relative">
+              <div className="genmax-card p-8 sm:p-10 rounded-3xl relative">
                 {isSubmitted ? (
                   <div className="py-12 text-center space-y-4">
                     <div className="w-16 h-16 mx-auto rounded-full bg-emerald-50 dark:bg-cyan-500/10 border border-emerald-200 dark:border-cyan-500/30 flex items-center justify-center text-emerald-600 dark:text-cyan-400">
@@ -226,7 +226,7 @@ export const ContactPage: React.FC = () => {
 
             {/* Right Column: Contact Details & Office */}
             <div className="lg:col-span-5 space-y-8">
-              <div className="p-8 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl box-zoom-sm space-y-6">
+              <div className="genmax-card p-8 rounded-3xl box-zoom-sm space-y-6">
                 <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
                   Direct Office Contacts
                 </h3>

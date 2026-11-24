@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenVerify }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top Trust Pillars Banner */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 mb-16 rounded-2xl bg-slate-900/40 border border-slate-800/60 backdrop-blur-sm">
+        <div className="genmax-card grid grid-cols-1 md:grid-cols-3 gap-6 p-6 mb-16 rounded-2xl backdrop-blur-sm">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
               <ShieldCheck className="w-6 h-6" />

@@ -1,4 +1,5 @@
 import React from 'react';
+import agencyWorkspace from '../assets/images/agency_workspace_1793853537773.jpg';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, HeartHandshake, Zap, Target, Users, Award, MapPin, ArrowRight } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data/websiteContent';
@@ -46,9 +47,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenAudit }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 relative">
-              <div className="rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-700 shadow-xl box-zoom">
+              <div className="genmax-card rounded-2xl overflow-hidden box-zoom">
                 <img
-                  src="/src/assets/images/agency_workspace_1793853537773.jpg"
+                  src={agencyWorkspace}
                   alt="Genmax IT Solution workspace"
                   className="w-full h-[450px] object-cover"
                   referrerPolicy="no-referrer"
@@ -76,11 +77,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenAudit }) => {
               </div>
 
               <div className="pt-2 grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700 box-zoom">
+                <div className="genmax-card genmax-card-soft p-4 rounded-xl box-zoom">
                   <div className="text-2xl font-bold font-heading text-indigo-600 dark:text-cyan-400">500+</div>
                   <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Completed Client Projects</div>
                 </div>
-                <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md hover:border-indigo-300 dark:hover:border-slate-700 box-zoom">
+                <div className="genmax-card genmax-card-soft p-4 rounded-xl box-zoom">
                   <div className="text-2xl font-bold font-heading text-indigo-700 dark:text-indigo-400">99.8%</div>
                   <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Client Satisfaction Rate</div>
                 </div>
@@ -103,7 +104,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenAudit }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-slate-700 box-zoom">
+            <div className="genmax-card p-8 rounded-2xl box-zoom">
               <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-6">
                 <Target className="w-6 h-6" />
               </div>
@@ -113,7 +114,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenAudit }) => {
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-slate-700 box-zoom">
+            <div className="genmax-card p-8 rounded-2xl box-zoom">
               <div className="w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-100 dark:border-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-6">
                 <ShieldCheck className="w-6 h-6" />
               </div>
@@ -123,7 +124,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenAudit }) => {
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-slate-700 box-zoom">
+            <div className="genmax-card p-8 rounded-2xl box-zoom">
               <div className="w-12 h-12 rounded-xl bg-violet-50 dark:bg-violet-500/10 border border-violet-100 dark:border-violet-500/20 flex items-center justify-center text-violet-600 dark:text-violet-400 mb-6">
                 <HeartHandshake className="w-6 h-6" />
               </div>
@@ -155,7 +156,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenAudit }) => {
             {teamMembers.map((member, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-slate-700 box-zoom"
+                className="genmax-card p-6 rounded-2xl box-zoom"
               >
                 <div className="w-16 h-16 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-xl font-bold font-heading text-indigo-600 dark:text-cyan-400 mb-4">
                   {member.name.split(' ').map(n => n[0]).join('')}

@@ -166,7 +166,7 @@ export const GenmaxAiChatbot: React.FC<GenmaxAiChatbotProps> = ({ onOpenAudit })
       {/* ---------------- CHAT WINDOW ---------------- */}
       {isOpen && (
         <div 
-          className="w-[92vw] sm:w-[410px] h-[580px] max-h-[82vh] rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-200 mb-3"
+          className="genmax-card w-[92vw] sm:w-[410px] h-[580px] max-h-[82vh] rounded-3xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-200 mb-3"
           role="dialog"
           aria-label="Genmax AI Consultant Chatbot"
         >
@@ -263,7 +263,7 @@ export const GenmaxAiChatbot: React.FC<GenmaxAiChatbotProps> = ({ onOpenAudit })
                 <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center text-white shrink-0 shadow-xs">
                   <Bot className="w-4 h-4 animate-spin" />
                 </div>
-                <div className="px-3 py-2 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 shadow-xs">
+                <div className="genmax-card genmax-card-soft px-3 py-2 rounded-2xl flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce" style={{ animationDelay: '0ms' }} />
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '150ms' }} />
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce" style={{ animationDelay: '300ms' }} />

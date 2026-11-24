@@ -74,11 +74,12 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
             const targetUrl = project.demoUrl || `/project/${project.slug}`;
             const primaryCta = project.primaryCtaLabel || 'Open Full Landing Page';
             const secondaryCta = project.secondaryCtaLabel || 'Request Quote';
+            const readableAccent = `color-mix(in srgb, ${project.accentColor} 30%, #e9f1ff)`;
 
             return (
               <div
                 key={project.id}
-                className="box-zoom rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl flex flex-col justify-between group hover:border-indigo-400 dark:hover:border-indigo-500/50"
+                className="genmax-card box-zoom rounded-2xl overflow-hidden flex flex-col justify-between group"
               >
                 {/* Card Thumbnail & New-Tab Launch Link */}
                 <a
@@ -121,16 +122,7 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
                   {/* Bottom Clean Metadata & Title */}
                   <div className="absolute bottom-4 left-5 right-5">
                     <div className="text-xs font-medium text-slate-200 flex items-center gap-2 mb-1">
-                      <span
-                        style={{
-                          color:
-                            project.accentColor === '#9E7B42' || project.accentColor === '#9E7C3B'
-                              ? '#DFC285'
-                              : project.accentColor === '#2E7D8C'
-                              ? '#7CC7D4'
-                              : project.accentColor,
-                        }}
-                      >
+                      <span style={{ color: readableAccent }}>
                         {project.categoryLabel}
                       </span>
                       <span aria-hidden="true">·</span>
@@ -146,7 +138,7 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
                 <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-6">
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <ProjectBrandLogo projectId={project.id} size="sm" tone="auto" />
+                      <ProjectBrandLogo projectId={project.id} size="sm" tone="light" />
                       <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                         {project.year}
                       </span>
@@ -173,7 +165,7 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
                         <div key={mIdx} className="space-y-0.5">
                           <div 
                             className="text-sm sm:text-base font-bold font-heading tabular-nums"
-                            style={{ color: project.accentColor }}
+                            style={{ color: readableAccent }}
                           >
                             {m.value}
                           </div>
@@ -218,7 +210,7 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
         </div>
 
         {/* Bottom Guarantee Banner */}
-        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/30 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6 box-zoom-sm hover:shadow-2xl">
+        <div className="genmax-card genmax-card-orbit mt-16 p-8 rounded-2xl text-white flex flex-col lg:flex-row items-center justify-between gap-6 box-zoom-sm">
           <div className="space-y-1.5 text-center lg:text-left">
             <div className="text-xs font-semibold text-cyan-400 flex items-center justify-center lg:justify-start gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />

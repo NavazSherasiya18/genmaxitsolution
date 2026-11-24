@@ -248,7 +248,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
           </div>
 
           {/* Player controls (Prev, Pause/Play, Next, Indicators) */}
-          <div className="flex items-center gap-3 self-start md:self-end bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-xs">
+          <div className="genmax-card genmax-card-soft flex items-center gap-3 self-start md:self-end rounded-2xl p-2">
             <button
               onClick={handlePrev}
               className="w-9 h-9 rounded-xl flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
@@ -295,11 +295,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
               <button
                 key={item.id}
                 onClick={() => handleSelect(idx)}
-                className={`box-zoom-sm group relative text-left p-4 rounded-2xl border cursor-pointer overflow-hidden ${
-                  isSelected
-                    ? 'bg-white dark:bg-slate-900 border-indigo-500/80 dark:border-cyan-400/80 shadow-lg shadow-indigo-500/10'
-                    : 'bg-white/60 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md'
-                }`}
+                className={`genmax-card genmax-card-soft box-zoom-sm group relative overflow-hidden rounded-2xl p-4 text-left cursor-pointer ${isSelected ? 'genmax-card-emphasis' : ''}`}
               >
                 {/* Active progress indicator bar on the active tab */}
                 {isSelected && (
@@ -345,7 +341,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -18 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden p-6 sm:p-10 lg:p-12 relative"
+            className="genmax-card rounded-3xl overflow-hidden p-6 sm:p-10 lg:p-12 relative"
           >
             {/* Top Accent Line */}
             <div 
@@ -379,10 +375,10 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                 </div>
 
                 {/* Key Metrics Row */}
-                <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 box-zoom-sm hover:shadow-md">
+                <div className="genmax-card genmax-card-soft grid grid-cols-3 gap-3 p-4 rounded-2xl box-zoom-sm">
                   {activeCompetency.stats.map((stat, i) => (
                     <div key={i} className="text-left">
-                      <div className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white" style={{ color: activeCompetency.accentColor }}>
+                      <div className="text-xl sm:text-2xl font-bold font-heading" style={{ color: `color-mix(in srgb, ${activeCompetency.accentColor} 30%, #e9f1ff)` }}>
                         {stat.value}
                       </div>
                       <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mt-0.5">
@@ -452,7 +448,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
 
               {/* Right Column: Interactive Domain Canvas Simulation */}
               <div className="lg:col-span-5">
-                <div className="rounded-2xl bg-slate-900 border border-slate-800 p-6 text-white shadow-2xl relative overflow-hidden box-zoom hover:border-indigo-500/50">
+                <div className="genmax-card rounded-2xl p-6 text-white relative overflow-hidden box-zoom">
                   
                   {/* Decorative glowing gradient orb */}
                   <div 
@@ -484,12 +480,12 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
 
                       {/* Live Nodes status */}
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                        <div className="genmax-card genmax-card-soft p-3 rounded-xl">
                           <div className="text-[10px] text-slate-400 uppercase">Throughput</div>
                           <div className="text-lg font-mono font-bold text-white mt-1">14,280 req/s</div>
                           <div className="text-[10px] text-emerald-400 mt-1">▲ 99.98% Success</div>
                         </div>
-                        <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                        <div className="genmax-card genmax-card-soft p-3 rounded-xl">
                           <div className="text-[10px] text-slate-400 uppercase">Redis Cache Hit</div>
                           <div className="text-lg font-mono font-bold text-cyan-400 mt-1">98.4% Hit Rate</div>
                           <div className="text-[10px] text-slate-400 mt-1">1.2ms Avg Retrieval</div>
@@ -497,9 +493,9 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                       </div>
 
                       {/* Terminal Code Snippet */}
-                      <div className="p-3 rounded-xl bg-black/60 font-mono text-[11px] text-slate-300 space-y-1 border border-slate-800">
+                      <div className="genmax-card genmax-card-soft p-3 rounded-xl font-mono text-[11px] text-slate-300 space-y-1">
                         <div className="text-slate-500">// Scalable Multi-Tenant Architecture</div>
-                        <div><span className="text-purple-400">Route</span>::<span className="text-cyan-400">middleware</span>([<span className="text-amber-300">'tenant.enforce'</span>, <span className="text-amber-300">'rate.limit:500'</span>]);</div>
+                        <div><span className="text-purple-300">Route</span>::<span className="text-cyan-400">middleware</span>([<span className="text-amber-300">'tenant.enforce'</span>, <span className="text-amber-300">'rate.limit:500'</span>]);</div>
                         <div><span className="text-indigo-400">const</span> cluster = <span className="text-cyan-400">await</span> genmax.spawnNode(<span className="text-amber-300">'india-primary'</span>);</div>
                         <div className="text-emerald-400">✓ All 12 Microservices Healthy & Synced</div>
                       </div>
@@ -513,7 +509,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                         <span className="text-emerald-400 font-mono">Geo: Sector 62, Noida</span>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-slate-800/90 border border-slate-700 space-y-2">
+                      <div className="genmax-card genmax-card-soft p-3 rounded-xl space-y-2">
                         <div className="flex items-center justify-between text-xs">
                           <span className="font-semibold text-white">Google 3-Pack Target</span>
                           <span className="text-emerald-400 font-bold">Position #1</span>
@@ -528,11 +524,11 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                       </div>
 
                       <div className="grid grid-cols-2 gap-2 text-xs">
-                        <div className="p-2.5 rounded-lg bg-slate-800/60 border border-slate-700">
+                        <div className="genmax-card genmax-card-soft p-2.5 rounded-lg">
                           <div className="text-slate-400 text-[10px]">Indexed Pages</div>
                           <div className="font-mono font-bold text-white mt-0.5">1,480 / 1,480</div>
                         </div>
-                        <div className="p-2.5 rounded-lg bg-slate-800/60 border border-slate-700">
+                        <div className="genmax-card genmax-card-soft p-2.5 rounded-lg">
                           <div className="text-slate-400 text-[10px]">Avg Domain Rating</div>
                           <div className="font-mono font-bold text-cyan-400 mt-0.5">DR 58 (+22)</div>
                         </div>
@@ -547,7 +543,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                         <span className="text-violet-400 font-mono">iOS & Android Ready</span>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-between">
+                      <div className="genmax-card genmax-card-soft p-3 rounded-xl flex items-center justify-between">
                         <div>
                           <div className="text-xs font-semibold text-white">App Store Connect</div>
                           <div className="text-[10px] text-emerald-400 mt-0.5">● Ready for Sale (v2.4.0)</div>
@@ -557,7 +553,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                         </span>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-between">
+                      <div className="genmax-card genmax-card-soft p-3 rounded-xl flex items-center justify-between">
                         <div>
                           <div className="text-xs font-semibold text-white">Google Play Console</div>
                           <div className="text-[10px] text-emerald-400 mt-0.5">● Production Release Active</div>
@@ -567,7 +563,7 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                         </span>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-black/60 font-mono text-[11px] text-slate-300 space-y-0.5 border border-slate-800">
+                      <div className="genmax-card genmax-card-soft p-3 rounded-xl font-mono text-[11px] text-slate-300 space-y-0.5">
                         <div><span className="text-violet-400">Device</span>: iPhone 16 Pro & Galaxy S24</div>
                         <div><span className="text-cyan-400">Frame Budget</span>: 16.6ms @ 60 FPS ✓</div>
                         <div><span className="text-emerald-400">Crash-Free Rate</span>: 99.94%</div>
@@ -583,19 +579,19 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                       </div>
 
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                        <div className="genmax-card genmax-card-soft p-3 rounded-xl">
                           <div className="text-[10px] text-slate-400 uppercase">Conversion Rate</div>
                           <div className="text-lg font-mono font-bold text-emerald-400 mt-1">4.82%</div>
                           <div className="text-[10px] text-slate-300 mt-1">+1.4% vs Industry</div>
                         </div>
-                        <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                        <div className="genmax-card genmax-card-soft p-3 rounded-xl">
                           <div className="text-[10px] text-slate-400 uppercase">Payment Success</div>
                           <div className="text-lg font-mono font-bold text-white mt-1">99.4%</div>
                           <div className="text-[10px] text-cyan-400 mt-1">Razorpay & UPI</div>
                         </div>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-black/60 font-mono text-[11px] text-slate-300 space-y-1 border border-slate-800">
+                      <div className="genmax-card genmax-card-soft p-3 rounded-xl font-mono text-[11px] text-slate-300 space-y-1">
                         <div className="text-slate-400 flex justify-between">
                           <span>Order #49201</span>
                           <span className="text-emerald-400">Paid · ₹3,499</span>
@@ -619,21 +615,21 @@ export const ServiceFocusShowcase: React.FC<ServiceFocusShowcaseProps> = ({ onOp
                       </div>
 
                       <div className="grid grid-cols-3 gap-2 text-center">
-                        <div className="p-2.5 rounded-xl bg-slate-800 border border-slate-700">
+                        <div className="genmax-card genmax-card-soft p-2.5 rounded-xl">
                           <div className="text-lg font-bold font-mono text-emerald-400">99</div>
                           <div className="text-[10px] text-slate-400 mt-0.5">Performance</div>
                         </div>
-                        <div className="p-2.5 rounded-xl bg-slate-800 border border-slate-700">
+                        <div className="genmax-card genmax-card-soft p-2.5 rounded-xl">
                           <div className="text-lg font-bold font-mono text-emerald-400">100</div>
                           <div className="text-[10px] text-slate-400 mt-0.5">Accessibility</div>
                         </div>
-                        <div className="p-2.5 rounded-xl bg-slate-800 border border-slate-700">
+                        <div className="genmax-card genmax-card-soft p-2.5 rounded-xl">
                           <div className="text-lg font-bold font-mono text-emerald-400">100</div>
                           <div className="text-[10px] text-slate-400 mt-0.5">SEO Score</div>
                         </div>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-black/60 font-mono text-[11px] text-slate-300 space-y-1 border border-slate-800">
+                      <div className="genmax-card genmax-card-soft p-3 rounded-xl font-mono text-[11px] text-slate-300 space-y-1">
                         <div className="text-emerald-400">✓ First Contentful Paint: 0.6s</div>
                         <div className="text-emerald-400">✓ Cumulative Layout Shift: 0.00</div>
                         <div className="text-cyan-400">✓ Includes Free Domain (₹999) + 1-Year Warranty</div>

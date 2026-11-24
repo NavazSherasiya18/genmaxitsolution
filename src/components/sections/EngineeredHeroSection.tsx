@@ -619,14 +619,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
               opacity: 0,
             }}
           >
-            <div
-              className="rounded-[22px] overflow-hidden"
-              style={{
-                backgroundColor: 'var(--surface)',
-                border: '1px solid var(--line)',
-                boxShadow: '0 30px 80px -20px rgb(2 6 22 / 0.75)',
-              }}
-            >
+            <div className="genmax-card rounded-[22px] overflow-hidden">
               {/* a) Dynamic Console Area */}
               <div className="p-[22px]">
                 <div className="flex items-center justify-between mb-4">
@@ -653,12 +646,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
                   {activeData.rows.map((row) => (
                     <div
                       key={row.title}
-                      className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border transition-all duration-200 hover:border-[var(--brand)] hover:translate-x-0.5"
-                      style={{
-                        backgroundColor: 'var(--surface)',
-                        borderColor: 'var(--line)',
-                        color: 'var(--ink)',
-                      }}
+                      className="genmax-card genmax-card-soft flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-[var(--ink)] transition-colors duration-200"
                     >
                       <div className="flex-1 min-w-0">
                         <div className="text-[13.5px] font-semibold truncate">{row.title}</div>
@@ -739,11 +727,7 @@ export const EngineeredHeroSection: React.FC<EngineeredHeroSectionProps> = ({ on
 
                 {/* Detailed Breakdown Card for Active Button */}
                 <div
-                  className="p-3.5 rounded-xl border space-y-2 transition-all duration-200"
-                  style={{
-                    backgroundColor: 'var(--bg)',
-                    borderColor: 'var(--line)',
-                  }}
+                  className="genmax-card genmax-card-soft p-3.5 rounded-xl space-y-2"
                 >
                   <p className="text-[12px] leading-relaxed" style={{ color: 'var(--ink)' }}>
                     {activeData.summary}

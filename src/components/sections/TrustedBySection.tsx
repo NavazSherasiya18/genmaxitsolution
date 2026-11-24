@@ -3,9 +3,9 @@ import React from 'react';
 export const TrustedBySection: React.FC = () => {
   const row1Logos = [
     { initials: 'NM', name: 'Novus Medias', sector: 'Media', color: '#4f46e5' },
-    { initials: 'SC', name: 'Skyline Capital', sector: 'Finance', color: '#0891b2' },
+    { initials: 'SC', name: 'Skyline Capital', sector: 'Finance', color: '#0e7490' },
     { initials: 'GT', name: 'Global TransLog', sector: 'Logistics', color: '#7c3aed' },
-    { initials: 'MR', name: 'Matrix Retail', sector: 'Retail', color: '#0d9488' },
+    { initials: 'MR', name: 'Matrix Retail', sector: 'Retail', color: '#0f766e' },
   ];
 
   const row2Logos = [
@@ -56,11 +56,7 @@ export const TrustedBySection: React.FC = () => {
           {[...row1Logos, ...row1Logos, ...row1Logos, ...row1Logos].map((client, idx) => (
             <div
               key={idx}
-              className="inline-flex items-center gap-3 py-3 px-5 pr-5 rounded-[14px] shrink-0 border box-zoom-sm hover:border-[var(--brand)] shadow-2xs hover:shadow-md"
-              style={{
-                backgroundColor: 'var(--bg)',
-                borderColor: 'var(--line)',
-              }}
+              className="genmax-card genmax-card-soft inline-flex items-center gap-3 py-3 px-5 rounded-[14px] shrink-0 box-zoom-sm"
             >
               <div
                 className="w-9 h-9 rounded-[10px] flex items-center justify-center text-white text-[12px] font-semibold shrink-0"
@@ -97,11 +93,7 @@ export const TrustedBySection: React.FC = () => {
           {[...row2Logos, ...row2Logos, ...row2Logos, ...row2Logos].map((client, idx) => (
             <div
               key={idx}
-              className="inline-flex items-center gap-3 py-3 px-5 pr-5 rounded-[14px] shrink-0 border box-zoom-sm hover:border-[var(--brand)] shadow-2xs hover:shadow-md"
-              style={{
-                backgroundColor: 'var(--bg)',
-                borderColor: 'var(--line)',
-              }}
+              className="genmax-card genmax-card-soft inline-flex items-center gap-3 py-3 px-5 rounded-[14px] shrink-0 box-zoom-sm"
             >
               <div
                 className="w-9 h-9 rounded-[10px] flex items-center justify-center text-white text-[12px] font-semibold shrink-0"

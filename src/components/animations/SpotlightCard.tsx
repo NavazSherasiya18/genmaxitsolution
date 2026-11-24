@@ -10,7 +10,7 @@ interface SpotlightCardProps {
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
-  spotlightColor = 'rgba(99, 102, 241, 0.15)',
+  spotlightColor = 'color-mix(in srgb, var(--genmax-card-accent, #465be8) 15%, transparent)',
   onClick,
 }) => {
   const divRef = useRef<HTMLDivElement>(null);

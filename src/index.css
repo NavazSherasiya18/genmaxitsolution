@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
+/* Dashboard cards use their own dark surfaces in either page theme. */
+@custom-variant dark (&:where(.dark, .dark *, .genmax-site .genmax-card, .genmax-site .genmax-card *));
 
 @layer base {
   :root {
@@ -81,6 +82,11 @@
   --genmax-action: linear-gradient(110deg, #2448d2 0%, #5931cc 58%, #07678d 100%);
   --genmax-spectrum: linear-gradient(105deg, #73e7ff 0%, #8caeff 48%, #d1a5ff 100%);
   --genmax-text-gradient: linear-gradient(105deg, #214ac8, #086b9e 48%, #6a2dbb);
+  --genmax-card-base: #0d1735;
+  --genmax-card-border: #304a83;
+  --genmax-card-blue: #3159f5;
+  --genmax-card-cyan: #086a9c;
+  --genmax-card-violet: #753dea;
 
   --color-slate-50: #f5f7ff;
   --color-slate-100: #ebf0fc;
@@ -202,6 +208,149 @@
     radial-gradient(ellipse at 10% 0%, rgb(44 84 215 / 0.18), transparent 60%),
     radial-gradient(ellipse at 95% 100%, rgb(100 42 195 / 0.17), transparent 50%),
     var(--genmax-navy);
+}
+
+.genmax-site .genmax-card {
+  --genmax-card-tint: var(--genmax-card-blue);
+  --genmax-card-tint-end: var(--genmax-card-cyan);
+  --genmax-card-accent: var(--color-indigo-400);
+  --genmax-card-glint: var(--color-cyan-400);
+  --genmax-card-wash: 43%;
+  --genmax-card-wash-end: 22%;
+  --genmax-card-edge: 48%;
+  --genmax-card-hover-edge: 68%;
+  --genmax-card-highlight: 2px;
+  --genmax-card-ink: #f3f7ff;
+  --color-slate-400: #c3d0ea;
+  --color-slate-500: #b6c7e8;
+  --ink: var(--genmax-card-ink);
+  --muted: var(--color-slate-400);
+
+  color-scheme: dark;
+  border: 1px solid color-mix(in srgb, var(--genmax-card-accent) var(--genmax-card-edge), var(--genmax-card-border));
+  background:
+    linear-gradient(92deg, var(--genmax-card-accent), var(--genmax-card-glint) 36%, transparent 87%) top / 100% var(--genmax-card-highlight) no-repeat,
+    linear-gradient(147deg, color-mix(in srgb, var(--genmax-card-tint) var(--genmax-card-wash), var(--genmax-card-base)), color-mix(in srgb, var(--genmax-card-tint-end) var(--genmax-card-wash-end), var(--genmax-card-base)));
+  box-shadow: 0 2px 7px rgb(7 12 35 / 0.06), 0 15px 32px -19px color-mix(in srgb, var(--genmax-card-accent) 62%, transparent);
+}
+
+@layer components {
+  .genmax-site .genmax-card {
+    color: var(--genmax-card-ink);
+  }
+}
+
+.genmax-site .genmax-card:where(:nth-child(3n + 2 of .genmax-card)) {
+  --genmax-card-tint: var(--genmax-card-cyan);
+  --genmax-card-tint-end: var(--genmax-card-blue);
+  --genmax-card-accent: var(--color-cyan-500);
+  --genmax-card-glint: var(--color-cyan-300);
+}
+
+.genmax-site .genmax-card:where(:nth-child(3n of .genmax-card)) {
+  --genmax-card-tint: var(--genmax-card-violet);
+  --genmax-card-tint-end: var(--genmax-card-blue);
+  --genmax-card-accent: var(--color-violet-400);
+  --genmax-card-glint: var(--color-violet-300);
+}
+
+.genmax-site .genmax-card-soft {
+  --genmax-card-wash: 25%;
+  --genmax-card-wash-end: 13%;
+  --genmax-card-edge: 28%;
+  --genmax-card-highlight: 0px;
+  box-shadow: none;
+}
+
+.genmax-site .genmax-card-emphasis {
+  --genmax-card-tint: var(--genmax-card-violet);
+  --genmax-card-tint-end: var(--genmax-card-blue);
+  --genmax-card-accent: var(--color-violet-500);
+  --genmax-card-glint: #ffba70;
+  --genmax-card-wash: 49%;
+  --genmax-card-wash-end: 38%;
+  --genmax-card-edge: 72%;
+  --genmax-card-hover-edge: 82%;
+  --genmax-card-highlight: 3px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--genmax-card-accent) 42%, transparent), 0 17px 35px -21px color-mix(in srgb, var(--genmax-card-accent) 72%, transparent);
+}
+
+.genmax-site .genmax-card-orbit {
+  position: relative;
+  isolation: isolate;
+}
+
+.genmax-site .genmax-card-orbit::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse 10rem 7rem at calc(100% - 0.75rem) -1rem,
+      transparent 92%, color-mix(in srgb, var(--genmax-card-glint) 42%, transparent) 93%, transparent 94%),
+    radial-gradient(ellipse 13rem 8.5rem at calc(100% - 0.75rem) -1rem,
+      transparent 90%, color-mix(in srgb, var(--genmax-card-accent) 22%, transparent) 91%, transparent 92%);
+  pointer-events: none;
+  content: '';
+}
+
+.genmax-site .genmax-card-icon {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.875rem;
+  color: color-mix(in srgb, var(--genmax-card-ink) 78%, var(--genmax-card-glint));
+  border: 1px solid color-mix(in srgb, var(--genmax-card-accent) 35%, transparent);
+  background: linear-gradient(150deg,
+    color-mix(in srgb, var(--genmax-card-glint) 23%, var(--genmax-card-base)), var(--genmax-card-base));
+  box-shadow: 0 5px 14px -9px color-mix(in srgb, var(--genmax-card-accent) 72%, transparent);
+}
+
+.genmax-site .genmax-card-divider {
+  border-color: color-mix(in srgb, var(--genmax-card-accent) 25%, transparent);
+}
+
+.genmax-site .genmax-commitment-card {
+  --genmax-card-cyan: #0b75a4;
+  --genmax-card-base: #111d43;
+  --genmax-card-edge: 59%;
+  background:
+    linear-gradient(90deg, var(--genmax-card-glint), var(--genmax-card-accent) 45%, transparent 86%) top / 100% 2px no-repeat,
+    radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--genmax-card-tint) 75%, transparent), transparent 76%),
+    linear-gradient(125deg, #091329, #111d43);
+  box-shadow: 0 10px 26px -14px rgb(7 12 35 / 0.48), 0 20px 34px -24px color-mix(in srgb, var(--genmax-card-accent) 68%, transparent);
+}
+
+.genmax-site .genmax-commitment-card .genmax-card-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.13), 0 8px 24px -10px var(--genmax-card-glint);
+}
+
+.genmax-site .genmax-card:focus-within {
+  border-color: color-mix(in srgb, var(--genmax-card-accent) 72%, var(--genmax-card-border));
+}
+
+@media (hover: hover) {
+  .genmax-site .genmax-card:hover:not(:focus-within) {
+    border-color: color-mix(in srgb, var(--genmax-card-accent) var(--genmax-card-hover-edge), var(--genmax-card-border));
+  }
+
+  .genmax-site .genmax-card:hover:not(.genmax-card-soft, .genmax-card-emphasis) {
+    box-shadow: 0 5px 12px rgb(7 12 35 / 0.08), 0 16px 30px -20px color-mix(in srgb, var(--genmax-card-accent) 68%, transparent);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .genmax-site .genmax-card-lift {
+    transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  }
+
+  .genmax-site .genmax-card-lift:hover {
+    transform: translateY(-3px);
+  }
 }
 
 /* Custom utility styles */

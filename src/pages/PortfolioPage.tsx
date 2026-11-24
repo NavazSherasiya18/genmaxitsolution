@@ -95,12 +95,12 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
           {filteredStudies.map((study, idx) => (
             <div
               key={study.id}
-              className="rounded-3xl overflow-hidden bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-slate-700 box-zoom-sm p-6 sm:p-10"
+              className="genmax-card genmax-card-orbit rounded-3xl overflow-hidden box-zoom-sm p-6 sm:p-10"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 {/* Image */}
                 <div className={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-md relative group h-80 sm:h-96">
+                  <div className="genmax-card genmax-card-soft rounded-2xl overflow-hidden relative group h-80 sm:h-96">
                     <img
                       src={study.image}
                       alt={study.title}

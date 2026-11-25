@@ -2,34 +2,50 @@ import React, { useState } from 'react';
 import { 
   ExternalLink, CheckCircle2, Code2, ArrowUpRight
 } from 'lucide-react';
-import { SHOWCASE_PROJECTS } from '../../data/showcaseProjects';
+import { SHOWCASE_PROJECTS, type ShowcaseProject } from '../../data/showcaseProjects';
 import { ProjectBrandLogo } from '../brand/ProjectLogos';
+
+export type ProjectCategory = 'all' | ShowcaseProject['category'];
+
+const projectCategories: readonly { id: ProjectCategory; label: string }[] = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'ecommerce', label: 'E-Commerce' },
+  { id: 'travel', label: 'Travel & Resorts' },
+  { id: 'healthtech', label: 'HealthTech SaaS' },
+  { id: 'fintech', label: 'FinTech & Real Estate' },
+  { id: 'logistics', label: 'IoT Logistics' },
+];
 
 interface FeaturedProjectsSectionProps {
   onOpenAudit?: (serviceName?: string) => void;
   title?: string;
   subtitle?: string;
+  projects?: readonly ShowcaseProject[];
+  categoryFilter?: {
+    selected: ProjectCategory;
+    onChange: (category: ProjectCategory) => void;
+  };
 }
 
 export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = ({
   onOpenAudit,
+  projects = SHOWCASE_PROJECTS,
+  categoryFilter,
   title = "Live Production Client Projects",
   subtitle = "Click any project below to open its full standalone experience in a new tab—complete with bespoke visual identity, logo mark, and interactive capabilities."
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [localCategory, setLocalCategory] = useState<ProjectCategory>('all');
+  const selectedCategory = categoryFilter?.selected ?? localCategory;
+  const selectCategory = categoryFilter?.onChange ?? setLocalCategory;
+  const categories = projectCategories.map(({ id, label }) => ({
+    id,
+    label,
+    count: id === 'all' ? projects.length : projects.filter(project => project.category === id).length,
+  })).filter(({ count }) => count > 0);
 
-  const categories = [
-    { id: 'all', label: 'All Projects', count: SHOWCASE_PROJECTS.length },
-    { id: 'ecommerce', label: 'E-Commerce', count: 1 },
-    { id: 'travel', label: 'Travel & Resorts', count: 1 },
-    { id: 'healthtech', label: 'HealthTech SaaS', count: 1 },
-    { id: 'fintech', label: 'FinTech & Real Estate', count: 1 },
-    { id: 'logistics', label: 'IoT Logistics', count: 1 },
-  ];
-
-  const filteredProjects = selectedCategory === 'all' 
-    ? SHOWCASE_PROJECTS 
-    : SHOWCASE_PROJECTS.filter(p => p.category === selectedCategory);
+  const filteredProjects = selectedCategory === 'all'
+    ? projects
+    : projects.filter(project => project.category === selectedCategory);
 
   return (
     <section id="projects-showcase" className="py-24 relative overflow-hidden bg-white dark:bg-[var(--bg-primary)] border-t border-slate-200 dark:border-slate-800 transition-colors">
@@ -51,11 +67,13 @@ export const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = (
         </div>
 
         {/* Interactive Category Segmented Filter Controls */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div role="group" aria-label="Showcase project filters" className="flex flex-wrap items-center justify-center gap-2 mb-12">
           {categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
+              type="button"
+              aria-pressed={selectedCategory === cat.id}
+              onClick={() => selectCategory(cat.id)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 ${
                 selectedCategory === cat.id
                   ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md shadow-indigo-500/20'

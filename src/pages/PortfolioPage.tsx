@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
-import { CASE_STUDIES } from '../data/websiteContent';
-import { ArrowRight, CheckCircle2, TrendingUp, Sparkles, ExternalLink } from 'lucide-react';
-import { FeaturedProjectsSection } from '../components/sections/FeaturedProjectsSection';
+import { ArrowRight } from 'lucide-react';
+import { CASE_STUDIES, type EngagementCategory } from '../data/websiteContent';
+import { SHOWCASE_PROJECTS } from '../data/showcaseProjects';
+import { FeaturedProjectsSection, type ProjectCategory } from '../components/sections/FeaturedProjectsSection';
+
+const engagementFilters = [
+  { id: 'all', label: 'All Engagements' },
+  { id: 'seo', label: 'SEO & Google Maps' },
+  { id: 'ecommerce', label: 'eCommerce & Stores' },
+  { id: 'development', label: 'Custom Software & APIs' },
+] as const satisfies readonly { id: 'all' | EngagementCategory; label: string }[];
 
 interface PortfolioPageProps {
   onOpenAudit: (serviceName?: string) => void;
 }
 
 export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => {
-  const [filter, setFilter] = useState<string>('all');
+  const [filter, setFilter] = useState<'all' | EngagementCategory>('all');
+  const [projectCategory, setProjectCategory] = useState<ProjectCategory>('all');
 
-  const filteredStudies = CASE_STUDIES.filter((c) => {
-    if (filter === 'all') return true;
-    if (filter === 'ecommerce') return c.category.toLowerCase().includes('ecommerce');
-    if (filter === 'seo') return c.category.toLowerCase().includes('seo');
-    if (filter === 'development') return c.category.toLowerCase().includes('development');
-    return true;
-  });
+  const matchesFilter = ({ engagementCategories }: { engagementCategories: readonly EngagementCategory[] }) =>
+    filter === 'all' || engagementCategories.includes(filter);
+  const filteredStudies = CASE_STUDIES.filter(matchesFilter);
+  const filteredProjects = SHOWCASE_PROJECTS.filter(matchesFilter);
 
   return (
     <div className="bg-[var(--bg-primary)] pt-28 pb-20 text-slate-800 dark:text-slate-100 transition-colors duration-300">
@@ -37,57 +43,39 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenAudit }) => 
           </div>
 
           {/* Segmented Filter Controls */}
-          <div className="mt-10 flex flex-wrap gap-2 pt-6 border-t border-slate-200 dark:border-slate-800/80">
-            <button
-              onClick={() => setFilter('all')}
-              className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                filter === 'all'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
-              }`}
-            >
-              All Engagements
-            </button>
-            <button
-              onClick={() => setFilter('seo')}
-              className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                filter === 'seo'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
-              }`}
-            >
-              SEO & Google Maps
-            </button>
-            <button
-              onClick={() => setFilter('ecommerce')}
-              className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                filter === 'ecommerce'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
-              }`}
-            >
-              eCommerce & Stores
-            </button>
-            <button
-              onClick={() => setFilter('development')}
-              className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                filter === 'development'
-                  ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
-              }`}
-            >
-              Custom Software & APIs
-            </button>
+          <div role="group" aria-label="Engagement filters" className="mt-10 flex flex-wrap gap-2 pt-6 border-t border-slate-200 dark:border-slate-800/80">
+            {engagementFilters.map(({ id, label }) => (
+              <button
+                key={id}
+                type="button"
+                aria-pressed={filter === id}
+                onClick={() => {
+                  setFilter(id);
+                  setProjectCategory('all');
+                }}
+                className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                  filter === id
+                    ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-cyan-400 font-semibold border border-slate-200 dark:border-slate-700 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
           </div>
         </div>
       </section>
  
-      {/* 5 Distinct Live Interactive Projects with First-Page Design Previews */}
-      <FeaturedProjectsSection 
-        onOpenAudit={onOpenAudit}
-        title="Interactive Production Deployments"
-        subtitle="Explore our flagship client builds. Each application is engineered with an independent design system, bespoke palette, and interactive first-page design."
-      />
+      {/* Live Interactive Projects with First-Page Design Previews */}
+      {filteredProjects.length > 0 && (
+        <FeaturedProjectsSection
+          projects={filteredProjects}
+          categoryFilter={{ selected: projectCategory, onChange: setProjectCategory }}
+          onOpenAudit={onOpenAudit}
+          title="Interactive Production Deployments"
+          subtitle="Explore our flagship client builds. Each application is engineered with an independent design system, bespoke palette, and interactive first-page design."
+        />
+      )}
 
       {/* Case Studies Detailed Grid */}
       <section className="py-20 border-t border-slate-200 dark:border-slate-800">

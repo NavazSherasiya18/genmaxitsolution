@@ -8,6 +8,7 @@ import primusWorkspaceThumb from '../assets/images/primus_workspace_ui_179482388
 import primusMeridianThumb from '../assets/images/primus_meridian_logistics_1794823850949.jpg';
 import aetherControlTowerThumb from '../assets/images/aether_control_tower_ui_1794824770591.jpg';
 import aetherReeferThumb from '../assets/images/aether_reefer_highway_1794824769801.jpg';
+import type { EngagementCategory } from './websiteContent';
 
 export interface ShowcaseProject {
   id: string;
@@ -20,6 +21,7 @@ export interface ShowcaseProject {
   title: string;
   clientName: string;
   category: 'ecommerce' | 'travel' | 'healthtech' | 'fintech' | 'logistics';
+  engagementCategories: readonly EngagementCategory[];
   categoryLabel: string;
   tagline: string;
   description: string;
@@ -61,6 +63,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     title: 'Aurélia & Co. High Jewelry & Couture',
     clientName: 'Aurélia & Co. Paris · Milan (Concept Store)',
     category: 'ecommerce',
+    engagementCategories: ['ecommerce'],
     categoryLabel: 'Interactive Concept Store',
     tagline: 'Paris–Milan Fine Jewelry Editorial Flagship Concept',
     description: 'Explore a luxury jewelry storefront with shoppable collections, detailed product galleries, saved favorites, and an interactive checkout demo.',
@@ -112,6 +115,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     title: 'Azure Escapes Luxury Coastal Villas',
     clientName: 'Azure Escapes · Santorini, Amalfi Coast & Bali (Concept Website)',
     category: 'travel',
+    engagementCategories: ['development'],
     categoryLabel: 'Luxury Travel & Resort Booking',
     tagline: 'Interactive Luxury Coastal Villa Booking & Availability Showcase',
     description: 'Explore a luxury villa booking platform with destination pages, live demo availability, seasonal pricing, and a complete reservation flow.',
@@ -163,6 +167,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     title: 'HealthLink Clinical Telehealth Platform',
     clientName: 'HealthLink Clinical Operations (Concept Demo)',
     category: 'healthtech',
+    engagementCategories: ['development'],
     categoryLabel: 'HealthTech SaaS',
     tagline: 'Connected Hospital Operations, Pharmacy, Billing & Patient Portal',
     description: 'Explore a hospital operations platform that connects reception, doctors, pharmacy, billing, and patients in one working demo.',
@@ -214,6 +219,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     title: 'Primus Capital Institutional Real Estate',
     clientName: 'Primus Capital Group · London & Singapore (Concept Demo)',
     category: 'fintech',
+    engagementCategories: ['development'],
     categoryLabel: 'FinTech & Real Estate',
     tagline: 'Commercial Real Estate Discovery, Underwriting & Committee Governance',
     description: 'Discover commercial properties, compare deals, model investment returns, and track due diligence in one connected workspace.',
@@ -265,6 +271,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     title: 'Aether Fleet Telemetry & Supply Chain',
     clientName: 'Aether Fleet Operations · Pune, NCR & Bengaluru (Concept Demo)',
     category: 'logistics',
+    engagementCategories: ['development'],
     categoryLabel: 'IoT Logistics',
     tagline: 'Connected Fleet Control Tower, Cold-Chain Monitoring & Driver Dispatch',
     description: 'Track shipments, monitor vehicle and sensor data, resolve cold-chain incidents, and verify delivery in one connected logistics workspace.',

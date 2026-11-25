@@ -13,11 +13,14 @@ export interface ServiceItem {
   faqs: { question: string; answer: string }[];
 }
 
+export type EngagementCategory = 'seo' | 'ecommerce' | 'development';
+
 export interface CaseStudy {
   id: string;
   title: string;
   client: string;
   category: string;
+  engagementCategories: readonly EngagementCategory[];
   summary: string;
   metrics: { label: string; value: string }[];
   tags: string[];
@@ -885,6 +888,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Enterprise eCommerce Revenue Acceleration',
     client: 'Apex Retail Co.',
     category: 'eCommerce SEO & WooCommerce',
+    engagementCategories: ['seo', 'ecommerce'],
     summary: 'Restructured catalog architecture, migrated from bloated legacy theme to headless WooCommerce, and optimized 2,400+ product SKUs for Google search.',
     metrics: [
       { label: 'Organic Revenue', value: '+214%' },
@@ -892,13 +896,14 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Top 3 Product Ranks', value: '142' }
     ],
     tags: ['WooCommerce', 'eCommerce SEO', 'Core Web Vitals'],
-    image: '/src/assets/images/ecommerce_analytics_case_1793853539739.jpg'
+    image: new URL('../assets/images/ecommerce_analytics_case_1793853539739.jpg', import.meta.url).href
   },
   {
     id: 'medicare-clinic',
     title: 'Local Clinic Multi-Location Search Dominance',
     client: 'MediCare Multispecialty Clinics',
     category: 'Local SEO & Web Redesign',
+    engagementCategories: ['seo'],
     summary: 'Captured the Google Maps 3-Pack across 4 clinic branches in Delhi NCR, executing complete NAP synchronization and automated patient review funnels.',
     metrics: [
       { label: 'Patient Calls Uplift', value: '3.8x' },
@@ -906,13 +911,14 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Google Reviews', value: '4.9★ (380+)' }
     ],
     tags: ['Local SEO', 'Google Business Profile', 'Responsive Web'],
-    image: '/src/assets/images/digital_product_showcase_1793853538253.jpg'
+    image: new URL('../assets/images/digital_product_showcase_1793853538253.jpg', import.meta.url).href
   },
   {
     id: 'fleetpro-logistics',
     title: 'Real-Time Logistics Fleet Management Portal',
     client: 'FleetPro Logistics Ltd.',
     category: 'Laravel & Matx React Development',
+    engagementCategories: ['development'],
     summary: 'Engineered a mission-critical web application with live telematics, driver dispatch tracking, automated billing invoicing, and role-based permissions.',
     metrics: [
       { label: 'Monthly Active Fleet', value: '45,000+' },
@@ -920,7 +926,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Dispatch Errors', value: '-82%' }
     ],
     tags: ['Laravel', 'Matx React', 'Real-Time APIs'],
-    image: '/src/assets/images/agency_workspace_1793853537773.jpg'
+    image: new URL('../assets/images/agency_workspace_1793853537773.jpg', import.meta.url).href
   }
 ];
 
